@@ -1,14 +1,96 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = env("DATABASE_URL")
+}
+
+model User {
+    id Int @id @default(autoincrement())
+    username String @unique
+    password String
+    isAdmin Boolean @default(false)
+    foods Food[]
+    clothing Clothing[]
+}
+
+model Trip {
+    id Int @id @default(autoincrement())
+    startDate DateTime
+    endDate DateTime
+    campground Campgrounds @relation(fields: [campgroundId], references: [id], onUpdate: Cascade)
+    campgroundId Int
+    current Boolean @default(true)
+    gasTotal Int
+    gasSingle Int
+    fireNight Int
+    parking Int
+    budgets Budget[]
+    meals Meals[] 
+}
+
+model Budget {
+    id Int @id @default(autoincrement())
+    name String
+    trip Trip @relation(fields: [tripId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    tripId Int
+    total Int
+    individual Float
+}
+
+model Meals {
+    id Int @id @default(autoincrement())
+    day Int?
+    course String
+    name String?
+    foods Food[]
+    trips Trip[]
+}
+
+model Food {
+    id Int @id @default(autoincrement())
+    name String
+    purchased Boolean @default(false)
+    cooler Boolean @default(false)
+    meals Meals[]
+    user User @relation(fields: [userId], references: [id], onUpdate: Cascade)
+    userId Int
+}
+
+model Clothing {
+    id Int @id @default(autoincrement())
+    name String
+    packed Boolean @default(false)
+    user User @relation(fields: [userId], references: [id], onUpdate: Cascade)
+    userId Int
+}
+
+model Campgrounds {
+    id Int @id @default(autoincrement())
+    park String @unique
+    price Int
+    firewood Int
+    distance Float
+    curvy String
+    reserveFrame Int
+    website String
+    generalArea String
+    picture String
+    trips Trip[]
+    activities Activities[]
+}
+
+model Activities {
+    id Int @id @default(autoincrement())
+    name String @unique
+    campgrounds Campgrounds[]
+}
+
+model Equipment {
+    id Int @id @default(autoincrement())
+    name String
+    packed Boolean @default(false)
+    needed Boolean @default(true)
 }

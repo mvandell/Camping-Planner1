@@ -1,7 +1,10 @@
 import express from "express";
 import ViteExpress from "vite-express";
+import morgan from "morgan";
+
 
 const app = express();
+
 
 app.get("/hello", (req, res) => {
   res.send("Hello Vite + React!");
