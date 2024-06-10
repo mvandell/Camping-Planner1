@@ -3,11 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavBar from "./components/NavBar/NavBar";
 import EquipmentPage from "./components/EquipmentPage/EquipmentPage";
-import CampgroundList from "./components/CampgroundList/CampgroundList";
 import CampgroundPage from "./components/CampgroundPage/CampgroundPage";
 import Login from "./components/Login/Login";
 import AccountPage from "./components/AccountPage/AccountPage";
 import MealPage from "./components/MealPage/MealPage";
+import CampgroundList from "./components/CampgroundList/CampgroundList"
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
