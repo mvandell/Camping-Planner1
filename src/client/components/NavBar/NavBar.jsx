@@ -2,6 +2,7 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 
 import { Link } from "react-router-dom";
 
@@ -10,29 +11,29 @@ import AccountDropdown from "./AccountDropdown";
 const NavBar = () => {
     return (
         <div>
-            <Stack direction="row">
-                <Typography variant="h1">
-                    Camping Planner
-                </Typography>
-                <Box sx={{borderRadius: 5}}>
-                    <Link>
-                        <Button>
-                            Current Trip
-                        </Button>
-                    </Link>
-                    <Link>
-                        <Button>
-                            Campgrounds
-                        </Button>
-                    </Link>
-                    <Link>
-                        <Button>
-                            Equipment
-                        </Button>
-                    </Link>
-                    <AccountDropdown />
-                </Box>
-            </Stack>
+                <Stack direction="row">
+                    <Typography variant="h4" sx={{color: "beige", flexGrow: 1}}>
+                        Camping Planner
+                    </Typography>
+                    <Box sx={{ borderRadius: 5, backgroundColor: "beige", boxShadow: 5, py: 0.5 }}>
+                        <Link>
+                            <Button variant="text" sx={{textTransform: "none", ml: 2}}>
+                                Current Trip
+                            </Button>
+                        </Link>
+                        <Link to="/campgrounds">
+                            <Button variant="text" sx={{textTransform: "none"}}>
+                                Campgrounds
+                            </Button>
+                        </Link>
+                        <Link to="/">
+                            <Button variant="text" sx={{textTransform: "none"}}>
+                                Equipment
+                            </Button>
+                        </Link>
+                        <AccountDropdown />
+                    </Box>
+                </Stack>
         </div>
     )
 }

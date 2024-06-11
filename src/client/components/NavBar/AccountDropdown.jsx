@@ -27,7 +27,7 @@ const AccountDropdown = () => {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
-                sx={{ color: "white", textTransform: "none", fontWeight: "bold", fontSize: "16px" }}
+                sx={{ textTransform: "none", mr: 2 }}
             >
                 Account
             </Button>
@@ -39,11 +39,11 @@ const AccountDropdown = () => {
                         open={open}
                         onClose={handleClose}>
                         <MenuItem>
-                        <Link to="/account">
-                            <Button variant="text" sx={{ color: "#303036", textTransform: "none", fontWeight: "bold", fontSize: "16px" }}>
-                                Account Page
-                            </Button>
-                        </Link>
+                            <Link to="/account">
+                                <Button variant="text" sx={{ textTransform: "none" }}>
+                                    Account Page
+                                </Button>
+                            </Link>
                         </MenuItem>
                         <MenuItem>
                             <LogoutButton />
@@ -58,15 +58,15 @@ const AccountDropdown = () => {
                         open={open}
                         onClose={handleClose}>
                         <MenuItem>
-                        <Link to="/login">
-                            <Button variant="text" sx={{ color: "#303036", textTransform: "none", fontWeight: "bold", fontSize: "16px" }}>
-                                Login
-                            </Button>
-                        </Link>
+                            <Link to="/login">
+                                <Button variant="text" sx={{ textTransform: "none" }}>
+                                    Login
+                                </Button>
+                            </Link>
                         </MenuItem>
                     </Menu>
                 </div>
-        }
+            }
         </>
     )
 }
