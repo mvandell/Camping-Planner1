@@ -68,9 +68,20 @@ const TripPage = () => {
                         <Typography variant="h5">
                             Total Costs
                         </Typography>
+                        <Typography>
+                            <b>Gas:</b> ${data.gasTotal}
+                        </Typography>
+                        <Typography>
+                            <b>Parking:</b> ${data.parking}
+                        </Typography>
+                        {data.budgets && data.budgets.map((budget) => (
+                            <Typography key={budget.id}>
+                                <b>{budget.name}:</b> ${budget.total}
+                            </Typography>
+                        ))}
                     </Card>
                     <Card>
-
+                        
                     </Card>
                 </Grid>
                 <Grid item xs={4}> {/* meals */}

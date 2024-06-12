@@ -25,7 +25,7 @@ apiRouter.get("/trip/:id", requireUser, async (req, res, next) => {
             where: {
                 id: Number(req.params.id)
             },
-            include: {meals: true, budgets: true, campground: {select: {park: true}}}
+            include: {meals: true, budgets: true, campground: {select: {park: true, firewood: true}}}
         });
         res.send(trip)
     } catch (error) {
