@@ -15,15 +15,15 @@ import { useGetSingleTripQuery, usePatchTripMutation } from "../../redux/api";
 import { usePatchTripCurrentToggleMutation, usePatchTripMealAddMutation, usePatchTripMealRemoveMutation } from "../../redux/api";
 
 const TripPage = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const token = useSelector((state) => state.auth.token)
 
-    const {data, error, isLoading} = useGetSingleTripQuery(id);
-    const [patchUser] = usePatchTripMutation();
+    const { data, error, isLoading } = useGetSingleTripQuery(id);
+    //const [patchTrip] = usePatchTripMutation();
     const [currentToggle] = usePatchTripCurrentToggleMutation();
     // const [addMeal] = usePatchTripMealAddMutation();
     // const [removeMeal] = usePatchTripMealRemoveMutation();
-    
+
     if (isLoading) {
         return <div> </div>;
     }
@@ -37,17 +37,46 @@ const TripPage = () => {
 
     return (
         <div>
-            <Typography variant="h1">
-                {year}
-            </Typography>
-            <Typography variant="h4">
-                {start} - {end}
-            </Typography>
+            <Stack direction="row">
+                <Typography variant="h1">
+                    {year}
+                </Typography>
+                <Typography variant="h4">
+                    {start} - {end}
+                </Typography>
+                {token &&
+                    <>
+                        <Checkbox
+                            defaultChecked={data.current}
+                            onChange={async () => {
+                                console.log("toggle current");
+                                const response = await currentToggle({ id: data.id, current: !current });
+                                console.log("current", response);
+                            }} />
+                        <Typography>Current</Typography>
+                    </>
+                }
+            </Stack>
             <Link to={`/campgrounds/${data.campgroundId}`}>
-                <Typography>
-                    
+                <Typography variant="h3">
+                    {data.campground.park}
                 </Typography>
             </Link>
+            <Grid container>
+                <Grid item xs={6}> {/* costs */}
+                    <Card>
+                        <Typography variant="h5">
+                            Total Costs
+                        </Typography>
+                    </Card>
+                    <Card>
+
+                    </Card>
+                </Grid>
+                <Grid item xs={4}> {/* meals */}
+                    
+                </Grid>
+            </Grid>
         </div>
     )
 }
