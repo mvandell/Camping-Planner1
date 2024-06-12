@@ -6,16 +6,18 @@ import Alert from "@mui/material/Alert";
 import Checkbox from '@mui/material/Checkbox';
 
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { useGetSingleMealQuery, useDeleteFoodMutation, usePostFoodMutation } from "../../redux/api";
 import { usePatchMealMutation, usePatchMealFoodRemoveMutation, usePatchFoodPurchaseToggleMutation } from "../../redux/api";
 import { usePatchFoodMutation, usePatchFoodCoolerToggleMutation } from "../../redux/api";
 
 const MealPage = () => {
+    const {id} = useParams();
     const [name, setName] = useState("");
     const [userId, setUserId] = useState(null);
 
-    const {data, error, isLoading} = useGetSingleMealQuery();
+    const {data, error, isLoading} = useGetSingleMealQuery(id);
     //const [deleteFood] = useDeleteFoodMutation();
     const [postFood] = usePostFoodMutation();
     const [patchMeal] = usePatchMealMutation();
