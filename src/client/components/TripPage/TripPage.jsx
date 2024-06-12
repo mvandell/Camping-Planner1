@@ -81,11 +81,34 @@ const TripPage = () => {
                         ))}
                     </Card>
                     <Card>
-                        
+                        <Typography variant="h5">
+                            Individual Costs
+                        </Typography>
+                        <Typography>
+                            <b>Gas:</b> ${data.gasSingle}
+                        </Typography>
+                        <Typography>
+                            <b>Firewood:</b> ${data.fireNight}
+                        </Typography>
+                        <Typography>
+                            <b>Parking:</b> ${data.parking/3}
+                        </Typography>
+                        {data.budgets && data.budgets.map((budget) => (
+                            <Typography key={budget.id}>
+                                <b>{budget.name}:</b> ${budget.individual}
+                            </Typography>
+                        ))}
                     </Card>
                 </Grid>
                 <Grid item xs={4}> {/* meals */}
-                    
+                    <Typography variant="h4">
+                        Meals
+                    </Typography>
+                    {data.meals && data.meals.map((meal) => ( //sort by day
+                        <Card>
+                            
+                        </Card>
+                    ))}
                 </Grid>
             </Grid>
         </div>
