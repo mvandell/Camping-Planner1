@@ -28,7 +28,7 @@ const CampgroundList = () => {
             <Typography variant='h1'>
                 Campgrounds
             </Typography>
-            <ImageList>
+            <ImageList variant='masonry'>
                 {data && data.map((campground) => (
                     <ImageListItem key={campground.id} sx={{ m: 1 }}>
                         <img src={campground.picture} alt={campground.park} />

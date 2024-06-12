@@ -106,12 +106,12 @@ async function seed() {
                 website: "https://www.nps.gov/lavo/planyourvisit/manzanita-lake-campground.htm",
                 generalArea: "Northern Sierras",
                 picture: "https://www.recreation.gov/camping/campgrounds/234039",
-                activities: {connect: {
-                    id: sulphur.id,
-                    id: kayak.id,
-                    id: hike.id,
-                    id: swim.id
-                }}
+                activities: {connect: [
+                    {id: sulphur.id},
+                    {id: kayak.id},
+                    {id: hike.id},
+                    {id: swim.id}
+                ]}
             },
             include: {activities: true}
         })
@@ -160,10 +160,10 @@ async function seed() {
                 website: "https://www.parks.ca.gov/?page_id=454",
                 generalArea: "Northern Coast Range",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/e8/30/7e/castle-crags-state-park.jpg?w=1200&h=-1&s=1",
-                activities: {connect: {
-                    id: hike.id,
-                    id: cave.id
-                }}
+                activities: {connect: [
+                    {id: hike.id},
+                    {id: cave.id}
+                ]}
             },
             include: {activities: true}
         })
@@ -195,11 +195,11 @@ async function seed() {
                 website: "https://www.parks.ca.gov/?page_id=510",
                 generalArea: "Tahoe",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/5e/29/c7/sugar-pine-state-park.jpg?w=1100&h=-1&s=1",
-                activities: {connect: {
-                    id: hike.id,
-                    id: swim.id,
-                    id: raft.id
-                }}
+                activities: {connect: [ 
+                    {id: hike.id},
+                    {id: swim.id},
+                    {id: raft.id}
+                ]}
             },
             include: {activities: true}
         })
@@ -214,11 +214,11 @@ async function seed() {
                 website: "https://www.fs.usda.gov/recarea/ltbmu/recarea/?recid=11781",
                 generalArea: "Tahoe",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/7a/3c/2a/20180620-135448-largejpg.jpg?w=1000&h=-1&s=1",
-                activities: {connect: {
-                    id: hike.id,
-                    id: swim.id,
-                    id: raft.id
-                }}
+                activities: {connect: [ 
+                    {id: hike.id},
+                    {id: swim.id},
+                    {id: raft.id}
+                ]}
             },
             include: {activities: true}
         })

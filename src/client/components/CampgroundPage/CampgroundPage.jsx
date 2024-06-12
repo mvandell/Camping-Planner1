@@ -33,32 +33,32 @@ const CampgroundPage = () => {
             <Grid container>
                 <Grid item xs={6}> {/* picture and info */}
                     <Card sx={{ m: 1, p: 3 }}>
-                        <img src={data.picture} alt={data.name} />
+                        <img src={data.picture} alt={data.park}/>
                     </Card>
                     <Grid container>
                         <Grid item>
-                            <Card>
+                            <Card sx={{ m: 1, p: 1 }}>
                                 <Typography>
                                     <b>General Area:</b> {data.generalArea}
                                 </Typography>
                             </Card>
                         </Grid>
                         <Grid item>
-                            <Card>
+                            <Card sx={{ m: 1, p: 1 }}>
                                 <Typography>
                                     <b>Price/night:</b> ${data.price}
                                 </Typography>
                             </Card>
                         </Grid>
                         <Grid item>
-                            <Card>
+                            <Card sx={{ m: 1, p: 1 }}>
                                 <Typography>
-                                    <b>When to Reserve:</b> {data.reserveFrame} months
+                                    <b>Reserve:</b> {data.reserveFrame} months ahead
                                 </Typography>
                             </Card>
                         </Grid>
                         <Grid item>
-                            <Card>
+                            <Card sx={{ m: 1, p: 1 }}>
                                 <Typography>
                                     <b>Firewood Price:</b> ${data.firewood}
                                 </Typography>
@@ -67,25 +67,25 @@ const CampgroundPage = () => {
                     </Grid>
                 </Grid>
                 <Grid item xs={6}> {/* activities and drive info */}
-                    <Card>
-                        <Typography>
+                    <Card sx={{ m: 1, p: 1 }}>
+                        <Typography variant="h5" fontWeight="bold">
                             Activities
                         </Typography>
                         {data.activities && data.activities.map((activity) => (
-                            <Card key={activity.id} sx={{ p: 1, m: 1 }}>
+                            <Box key={activity.id} sx={{ m: 1 }}>
                                 <Typography>{activity.name}</Typography>
-                            </Card>
+                            </Box>
                         ))}
                     </Card>
-                    <Card>
-                        <Typography>
+                    <Card sx={{ m: 1, p: 1 }}>
+                        <Typography variant="h5" fontWeight="bold" sx={{mb:1}}>
                             Drive Info
                         </Typography>
                         <Typography>
-                            Curvy: {data.curvy}
+                            <b>Curvy:</b> {data.curvy}
                         </Typography>
                         <Typography>
-                            Distance: {data.distance} hrs
+                            <b>Distance:</b> {data.distance} hrs
                         </Typography>
                     </Card>
                 </Grid>
