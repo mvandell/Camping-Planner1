@@ -36,27 +36,34 @@ const EquipmentPage = () => {
             <Typography variant="h1">
                 Equipment
             </Typography>
-            {data && data.map((equipment) => (
-                <Card key={equipment.id} sx={{ p: 1, m: 1 }}>
-                    <Stack direction="row">
-                        <Typography>
-                            {equipment.name}
-                        </Typography>
-                        {token && 
-                        <>
-                            <Checkbox 
-                                defaultChecked={equipment.packed}
-                                onChange={async () => {
-                                    console.log("toggle packed");
-                                    const response = await packToggle({id: equipment.id, packed: !packed});
-                                    console.log(response);
-                            }}/>
-                            <Typography>Packed</Typography>
-                        </> //how to tell if admin? useSelector? new GET admin query?
-                        }
-                    </Stack>
-                </Card>
-            ))}
+            <Grid container>
+                <Grid item xs={4}></Grid>
+                <Grid item xs={4}> 
+                    {data && data.map((equipment) => ( //TODO: scrollable
+                        <Card key={equipment.id} sx={{ p: 1, m: 1 }}>
+                            <Stack direction="row">
+                                <Typography>
+                                    {equipment.name}
+                                </Typography>
+                                {token &&
+                                    <>
+                                        <Checkbox
+                                            defaultChecked={equipment.packed}
+                                            onChange={async () => {
+                                                console.log("toggle packed");
+                                                const response = await packToggle({ id: equipment.id, packed: !packed });
+                                                console.log(response);
+                                            }} />
+                                        <Typography>Packed</Typography>
+                                    </> //how to tell if admin? useSelector? new GET admin query?
+                                }
+                            </Stack>
+                        </Card>
+                    ))}
+                </Grid>
+                <Grid item xs={4}></Grid>
+            </Grid>
+
         </div>
     )
 }

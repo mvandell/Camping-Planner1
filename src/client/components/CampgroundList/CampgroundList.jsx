@@ -1,19 +1,19 @@
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import Card from "@mui/material/Card";
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
 import Typography from '@mui/material/Typography';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { useGetAllCampgroundsQuery } from '../../redux/api';
 
 const CampgroundList = () => {
     const token = useSelector((state) => state.auth.token)
-    const navigate = useNavigate();
 
-    const {data, error, isLoading} = useGetAllCampgroundsQuery();
+    const { data, error, isLoading } = useGetAllCampgroundsQuery();
 
     if (isLoading) {
         return <div> </div>;
@@ -21,7 +21,8 @@ const CampgroundList = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-//TODO: filters for reserveFrame and generalArea
+    //TODO: filters for reserveFrame and generalArea
+    //TODO: fix image for lassen in seed
     return (
         <div>
             <Typography variant='h1'>
@@ -29,11 +30,18 @@ const CampgroundList = () => {
             </Typography>
             <ImageList>
                 {data && data.map((campground) => (
-                    <ImageListItem key={campground.id} onClick={navigate(`/`)}>
-                        <img src={campground.picture} alt={campground.park}/>
-                        <ImageListItemBar 
-                            title={campground.name}
-                            subtitle={campground.generalArea} />
+                    <ImageListItem key={campground.id} sx={{ m: 1 }}>
+                        <img src={campground.picture} alt={campground.park} />
+                        <ImageListItemBar
+                            title={campground.park}
+                            subtitle={campground.generalArea}
+                            actionIcon={
+                                <Link to={`/campgrounds/${campground.id}`}>
+                                    <IconButton color='success'>
+                                        <InfoIcon />
+                                    </IconButton>
+                                </Link>
+                            } />
                     </ImageListItem>
                 ))}
             </ImageList>

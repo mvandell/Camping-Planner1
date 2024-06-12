@@ -7,14 +7,16 @@ import Alert from "@mui/material/Alert";
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import { useGetSingleCampgroundQuery, usePatchCampgroundMutation } from "../../redux/api";
 import { usePatchCampgroundActivityAddMutation, usePatchCampgroundActivityRemoveMutation } from "../../redux/api";
 
 const CampgroundPage = () => {
     const token = useSelector((state) => state.auth.token)
+    const {id} = useParams();
 
-    const { data, error, isLoading } = useGetSingleCampgroundQuery();
+    const { data, error, isLoading } = useGetSingleCampgroundQuery(id);
 
     if (isLoading) {
         return <div> </div>;
