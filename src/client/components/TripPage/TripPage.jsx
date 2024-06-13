@@ -104,9 +104,14 @@ const TripPage = () => {
                     <Typography variant="h4">
                         Meals
                     </Typography>
-                    {data.meals && data.meals.map((meal) => ( //sort by day
+                    {data.meals && data.meals.slice().sort(function(a, b){return a.day-b.day}).map((meal) => (
                         <Card>
-                            
+                            <Typography variant="h6">
+                                {meal.course} Day {meal.day}
+                            </Typography>
+                            <Typography variant="h5">
+                                {meal.name}
+                            </Typography>
                         </Card>
                     ))}
                 </Grid>

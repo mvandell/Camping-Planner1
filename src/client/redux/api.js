@@ -170,6 +170,14 @@ const api = createApi({
             }),
             providesTags: ["Meals", "Food", "Users"]
         }),
+        //GET CURRENT TRIP ID
+        getCurrentTripId: builder.query({
+            query: () => ({
+                url: "/api/trip/current",
+                method: "GET",
+            }),
+            providesTags: ["Trips"]
+        }),
         //<---------------------------POST--------------------------->
         //POST TRIP
         postTrip: builder.mutation({
@@ -524,6 +532,7 @@ export const {
     //GET SINGLE
     useGetSingleTripQuery,
     useGetSingleMealQuery,
+    useGetCurrentTripIdQuery,
     //POST
     usePostTripMutation,
     usePostBudgetMutation,

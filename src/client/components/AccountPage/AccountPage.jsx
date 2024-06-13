@@ -10,10 +10,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useGetUserQuery, usePatchFoodCoolerToggleMutation, usePatchFoodPurchaseToggleMutation } from "../../redux/api";
-import { usePatchClothingPackToggleMutation, usePatchClothingMutation } from "../../redux/api";
+import { usePatchClothingPackToggleMutation, usePatchClothingMutation, useGetCurrentTripIdQuery } from "../../redux/api";
 
 const AccountPage = () => {
     const [data, error, isLoading] = useGetUserQuery();
+    const {data: tripData, error: tripError, isLoading: tripIsLoading} = useGetCurrentTripIdQuery();
     const [coolerToggle] = usePatchFoodCoolerToggleMutation();
     const [purchaseToggle] = usePatchFoodPurchaseToggleMutation();
     const [packToggle] = usePatchClothingPackToggleMutation();
@@ -34,7 +35,11 @@ const AccountPage = () => {
             <Grid container>
                 <Grid item >
                     <button>Edit Account</button> {/* open at bottom of section? */}
-                    <button>Current Trip</button> {/* sort all trips or new GET current trip id? */}
+                    <Link to={`/trip/${tripData.id}`}>
+                        <Button variant="text" sx={{ textTransform: "none", ml: 2 }}> 
+                            Current Trip
+                        </Button>
+                    </Link>
                 </Grid>
                 <Grid item >
                     <Typography variant="h3">

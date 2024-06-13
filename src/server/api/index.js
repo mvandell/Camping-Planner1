@@ -32,6 +32,19 @@ apiRouter.get("/trip/:id", requireUser, async (req, res, next) => {
         next(error);
     }
 });
+//<--------------------------GET CURRENT TRIP ID------------------------>
+//GET api/trip/current
+apiRouter.get("/trip/current", requireUser, async (req, res, next) => {
+    try {
+        const current = await prisma.trip.findFirst({
+            where: {current: true},
+            include: {id: true},
+            orderBy: {id: 'desc',}
+        })
+    } catch (error) {
+        next(error);
+    }
+})
 //<--------------------------GET ALL BUDGETS------------------------>
 //GET api/budget
 apiRouter.get("/budget", requireUser, async (req, res, next) => {

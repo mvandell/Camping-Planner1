@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 import AccountPage from "./components/AccountPage/AccountPage";
 import MealPage from "./components/MealPage/MealPage";
 import CampgroundList from "./components/CampgroundList/CampgroundList"
+import TripPage from "./components/TripPage/TripPage";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/meal/:id" element={<MealPage />} />
+        <Route path="/trip/:id" element={<TripPage />} />
       </Routes>
     </div>
   )
