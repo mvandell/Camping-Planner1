@@ -56,7 +56,7 @@ const Login = () => {
                         <form onSubmit={handleSubmit}>
                             <Stack direction="column">
                                 <TextField
-                                    label="Enter Login Username"
+                                    label="Enter Username"
                                     value={username}
                                     onChange={(event) => setUsername(event.target.value)}
                                     size="small"
