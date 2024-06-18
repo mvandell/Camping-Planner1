@@ -34,7 +34,8 @@ authRouter.get("/account", requireUser, async (req, res, next) => {
         const user = await prisma.user.findUnique({
             where: {
                 id: req.user.id
-            }
+            },
+            include: {clothing: true, foods: true}
         });
         delete user.password;
         res.send(user);
