@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const ViteExpress = require("vite-express");
 
 const app = express();
-// const { authMiddleware } = require("./utils");
+const { authMiddleware } = require("./auth/utils");
 
 // Logging middleware
 app.use(morgan("dev"));
@@ -14,7 +14,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(authMiddleware);
+app.use(authMiddleware);
 
 //Test Route
 app.get("/test", (req, res) => {
