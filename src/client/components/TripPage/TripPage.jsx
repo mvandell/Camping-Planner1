@@ -31,9 +31,9 @@ const TripPage = () => {
         return <div>Error:{error.message}</div>;
     }
 
-    const year = format(new Date(data.start), "yyyy");
-    const start = format(new Date(data.start), "MMMM d");
-    const end = format(new Date(data.end), "MMMM d");
+    const year = format(new Date(data.startDate), "yyyy");
+    const start = format(new Date(data.startDate), "MMMM d");
+    const end = format(new Date(data.endDate), "MMMM d");
 
     return (
         <div>
