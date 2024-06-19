@@ -22,7 +22,7 @@ const CampgroundList = () => {
         return <div>Error:{error.message}</div>;
     }
     //TODO: filters for reserveFrame and generalArea
-    //TODO: fix image for lassen in seed
+
     return (
         <div>
             <Typography variant='h1'>

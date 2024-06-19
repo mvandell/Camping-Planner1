@@ -105,7 +105,7 @@ async function seed() {
                 reserveFrame: 6,
                 website: "https://www.nps.gov/lavo/planyourvisit/manzanita-lake-campground.htm",
                 generalArea: "Northern Sierras",
-                picture: "https://www.recreation.gov/camping/campgrounds/234039",
+                picture: "https://cdn.recreation.gov/public/images/71691.jpg",
                 activities: {
                     connect: [
                         { id: sulphur.id },
