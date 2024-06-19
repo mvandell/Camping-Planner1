@@ -154,10 +154,18 @@ const api = createApi({
             providesTags: ["Activities"]
         }),
         //<---------------------------GET SINGLE--------------------------->
+        //GET CURRENT TRIP ID
+        getCurrentTripId: builder.query({
+            query: () => ({
+                url: "/api/trip/current",
+                method: "GET",
+            }),
+            providesTags: ["Trips"]
+        }),
         //GET SINGLE TRIP
         getSingleTrip: builder.query({
             query: (id) => ({
-                url: `/api/trip/${id}`,
+                url: `/api/trip/current/${id}`,
                 method: "GET",
             }),
             providesTags: ["Trips", "Meals"]
@@ -170,14 +178,7 @@ const api = createApi({
             }),
             providesTags: ["Meals", "Food", "Users"]
         }),
-        //GET CURRENT TRIP ID
-        getCurrentTripId: builder.query({
-            query: () => ({
-                url: "/api/trip/current",
-                method: "GET",
-            }),
-            providesTags: ["Trips"]
-        }),
+        
         //<---------------------------POST--------------------------->
         //POST TRIP
         postTrip: builder.mutation({
@@ -530,9 +531,9 @@ export const {
     useGetAllActivitiesQuery,
     useGetCampgroundActivitiesQuery,
     //GET SINGLE
+    useGetCurrentTripIdQuery,
     useGetSingleTripQuery,
     useGetSingleMealQuery,
-    useGetCurrentTripIdQuery,
     //POST
     usePostTripMutation,
     usePostBudgetMutation,

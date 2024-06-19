@@ -18,7 +18,7 @@ const AccountPage = () => {
     const navigate = useNavigate();
 
     const { data, error, isLoading } = useGetUserQuery();
-    //const {data: tripData, error: tripError, isLoading: tripIsLoading} = useGetCurrentTripIdQuery();
+    const {data: tripData, error: tripError, isLoading: tripIsLoading} = useGetCurrentTripIdQuery();
     // const [coolerToggle] = usePatchFoodCoolerToggleMutation();
     // const [purchaseToggle] = usePatchFoodPurchaseToggleMutation();
     // const [packToggle] = usePatchClothingPackToggleMutation();
@@ -44,7 +44,7 @@ const AccountPage = () => {
                     <Button variant="contained" sx={{ textTransform: "none", ml: 2, mt: 1 }}>{/* open at bottom of section? */}
                         Edit Account
                     </Button> 
-                    <Link to={``}>
+                    <Link to={`/trip/${tripData.id}`}>
                         <Button variant="contained" sx={{ textTransform: "none", ml: 2, mt: 1 }}>
                             Current Trip
                         </Button>
