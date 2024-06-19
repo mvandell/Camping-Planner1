@@ -32,7 +32,7 @@ apiRouter.get("/trip/current", requireUser, async (req, res, next) => {
     }
 });
 //<--------------------------GET SINGLE TRIP------------------------>
-//GET api/trip/:id
+//GET api/trip/current/:id
 apiRouter.get("/trip/current/:id", requireUser, async (req, res, next) => {
     try {
         const trip = await prisma.trip.findUnique({

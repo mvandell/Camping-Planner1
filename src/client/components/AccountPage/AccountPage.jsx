@@ -18,7 +18,7 @@ const AccountPage = () => {
     const navigate = useNavigate();
 
     const { data, error, isLoading } = useGetUserQuery();
-    const {data: tripData, error: tripError, isLoading: tripIsLoading} = useGetCurrentTripIdQuery();
+    const { data: tripData, error: tripError, isLoading: tripIsLoading } = useGetCurrentTripIdQuery();
     // const [coolerToggle] = usePatchFoodCoolerToggleMutation();
     // const [purchaseToggle] = usePatchFoodPurchaseToggleMutation();
     // const [packToggle] = usePatchClothingPackToggleMutation();
@@ -39,16 +39,18 @@ const AccountPage = () => {
             <Typography variant="h1">
                 Welcome, {data.username}
             </Typography>
-            <Grid container>
+            <Grid container spacing={3}>
                 <Grid item xs={2}>
-                    <Button variant="contained" sx={{ textTransform: "none", ml: 2, mt: 1 }}>{/* open at bottom of section? */}
-                        Edit Account
-                    </Button> 
-                    <Link to={`/trip/${tripData.id}`}>
-                        <Button variant="contained" sx={{ textTransform: "none", ml: 2, mt: 1 }}>
-                            Current Trip
+                    <Stack direction="column">
+                        <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>{/* open at bottom of section? */}
+                            Edit Account
                         </Button>
-                    </Link>
+                        <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>
+                            <Link to={`/trip/${tripData.id}`}>
+                                Current Trip
+                            </Link>
+                        </Button>
+                    </Stack>
                 </Grid>
                 <Grid item xs={4}>
                     <Typography variant="h3">

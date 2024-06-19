@@ -39,10 +39,10 @@ const EquipmentPage = () => {
             <Grid container>
                 <Grid item xs={4}></Grid>
                 <Grid item xs={4}> 
-                    {data && data.map((equipment) => ( //TODO: scrollable
-                        <Card key={equipment.id} sx={{ p: 1, m: 1 }}>
+                    {data && data.map((equipment) => ( //TODO: scrollable TODO: 2 columns?
+                        <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2 }}>
                             <Stack direction="row">
-                                <Typography>
+                                <Typography sx={{flexGrow: 1}}>
                                     {equipment.name}
                                 </Typography>
                                 {token &&
