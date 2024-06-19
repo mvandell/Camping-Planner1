@@ -52,9 +52,9 @@ async function seed() {
                 await prisma.clothing.create({
                     data: {
                         name: equipments.clothing[j],
-                        user: {connect: {username: allUsers[i]}}
+                        user: { connect: { username: allUsers[i] } }
                     },
-                    include: {user: true}
+                    include: { user: true }
                 })
             }
         }
@@ -106,14 +106,16 @@ async function seed() {
                 website: "https://www.nps.gov/lavo/planyourvisit/manzanita-lake-campground.htm",
                 generalArea: "Northern Sierras",
                 picture: "https://www.recreation.gov/camping/campgrounds/234039",
-                activities: {connect: [
-                    {id: sulphur.id},
-                    {id: kayak.id},
-                    {id: hike.id},
-                    {id: swim.id}
-                ]}
+                activities: {
+                    connect: [
+                        { id: sulphur.id },
+                        { id: kayak.id },
+                        { id: hike.id },
+                        { id: swim.id }
+                    ]
+                }
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         const sequoiaKingsCanyon = await prisma.campgrounds.create({
             data: {
@@ -126,11 +128,13 @@ async function seed() {
                 website: "https://cdn.recreation.gov/public/2018/09/17/13/37/234039_929e2ff8-9952-458e-8299-c76e692b3be8.jpg",
                 generalArea: "Southern Sierras",
                 picture: "https://cdn.recreation.gov/public/images/82369.jpg",
-                activities: {connect: {
-                    id: hike.id,
-                }}
+                activities: {
+                    connect: {
+                        id: hike.id,
+                    }
+                }
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         const calaveras = await prisma.campgrounds.create({
             data: {
@@ -143,11 +147,13 @@ async function seed() {
                 website: "https://www.parks.ca.gov/?page_id=551",
                 generalArea: "Central Sierras",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/4e/be/81/walk-between-two-halves.jpg?w=1200&h=-1&s=1",
-                activities: {connect: {
-                    id: hike.id,
-                }}
+                activities: {
+                    connect: {
+                        id: hike.id,
+                    }
+                }
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         const castleCrags = await prisma.campgrounds.create({
             data: {
@@ -160,12 +166,14 @@ async function seed() {
                 website: "https://www.parks.ca.gov/?page_id=454",
                 generalArea: "Northern Coast Range",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/e8/30/7e/castle-crags-state-park.jpg?w=1200&h=-1&s=1",
-                activities: {connect: [
-                    {id: hike.id},
-                    {id: cave.id}
-                ]}
+                activities: {
+                    connect: [
+                        { id: hike.id },
+                        { id: cave.id }
+                    ]
+                }
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         const plumasEureka = await prisma.campgrounds.create({
             data: {
@@ -178,11 +186,13 @@ async function seed() {
                 website: "https://www.parks.ca.gov/?page_id=507",
                 generalArea: "Central Sierras",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/58/b4/76/mining-equipment-near.jpg?w=1200&h=-1&s=1",
-                activities: {connect: {
-                    id: hike.id,
-                }}
+                activities: {
+                    connect: {
+                        id: hike.id,
+                    }
+                }
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         const sugarPine = await prisma.campgrounds.create({
             data: {
@@ -195,13 +205,15 @@ async function seed() {
                 website: "https://www.parks.ca.gov/?page_id=510",
                 generalArea: "Tahoe",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/5e/29/c7/sugar-pine-state-park.jpg?w=1100&h=-1&s=1",
-                activities: {connect: [ 
-                    {id: hike.id},
-                    {id: swim.id},
-                    {id: raft.id}
-                ]}
+                activities: {
+                    connect: [
+                        { id: hike.id },
+                        { id: swim.id },
+                        { id: raft.id }
+                    ]
+                }
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         const fallenLeafLake = await prisma.campgrounds.create({
             data: {
@@ -214,13 +226,15 @@ async function seed() {
                 website: "https://www.fs.usda.gov/recarea/ltbmu/recarea/?recid=11781",
                 generalArea: "Tahoe",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/7a/3c/2a/20180620-135448-largejpg.jpg?w=1000&h=-1&s=1",
-                activities: {connect: [ 
-                    {id: hike.id},
-                    {id: swim.id},
-                    {id: raft.id}
-                ]}
+                activities: {
+                    connect: [
+                        { id: hike.id },
+                        { id: swim.id },
+                        { id: raft.id }
+                    ]
+                }
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         const silverLake = await prisma.campgrounds.create({
             data: {
@@ -233,11 +247,13 @@ async function seed() {
                 website: "https://www.recreation.gov/camping/campgrounds/232263?tab=info",
                 generalArea: "Central Sierras",
                 picture: "https://cdn.recreation.gov/public/images/64980.jpg",
-                activities: {connect: {
-                    id: hike.id,
-                }}
+                activities: {
+                    connect: {
+                        id: hike.id,
+                    }
+                }
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         const yosemite = await prisma.campgrounds.create({
             data: {
@@ -250,11 +266,13 @@ async function seed() {
                 website: "https://www.nps.gov/yose/planyourvisit/camping.htm",
                 generalArea: "Central Sierras",
                 picture: "https://cdn.recreation.gov/public/2021/04/14/00/55/2991_b79e9355-d662-4380-b51c-9c3f8b81ec24_700.jpeg",
-                activities: {connect: {
-                    id: hike.id,
-                }}
+                activities: {
+                    connect: {
+                        id: hike.id,
+                    }
+                }
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         const koa = await prisma.campgrounds.create({
             data: {
@@ -268,183 +286,493 @@ async function seed() {
                 generalArea: "Northern Sierras",
                 picture: "https://koa.com/content/campgrounds/mt-lassen/photos/a2f84e91-701f-4d96-a6dd-c6daeca0946dphotoc1a84737-3e09-4b73-b482-b7afd7400ecc.JPG.axd?preset=campgroundphoto"
             }
-        })       
+        })
         //-------------------------TRIP/BUDGET--------------------------->
         const y2022 = await prisma.trip.create({
             data: {
                 startDate: new Date("June 10, 2022"),
                 endDate: new Date("June 12, 2022"),
-                campground: {connect: {id: lassen.id}},
+                campground: { connect: { id: lassen.id } },
                 current: false,
                 gasTotal: 180,
                 gasSingle: 60,
                 fireNight: 45,
                 parking: 30,
             },
-            include: {campground: true}
+            include: { campground: true }
         })
         const y2023 = await prisma.trip.create({
             data: {
                 startDate: new Date("June 9, 2023"),
                 endDate: new Date("June 12, 2023"),
-                campground: {connect: {id: koa.id}},
+                campground: { connect: { id: koa.id } },
                 current: false,
                 gasTotal: 180,
                 gasSingle: 60,
                 fireNight: 16,
                 parking: 0,
-                budgets: {create: {
-                    name: "kayaking",
-                    total: 38,
-                    individual: 12.67
-                }},
+                budgets: {
+                    create: {
+                        name: "kayaking",
+                        total: 38,
+                        individual: 12.67
+                    }
+                },
             },
-            include: {campground: true}
+            include: { campground: true }
         })
         const y2024 = await prisma.trip.create({
             data: {
                 startDate: new Date("June 28, 2024"),
                 endDate: new Date("July 1, 2024"),
-                campground: {connect: {id: castleCrags.id}},
+                campground: { connect: { id: castleCrags.id } },
                 gasTotal: 180,
                 gasSingle: 60,
                 fireNight: 24,
                 parking: 0,
-                budgets: {create: {
-                    name: "Shasta Caverns",
-                    total: 131,
-                    individual: 43.68
-                }},
+                budgets: {
+                    create: {
+                        name: "Shasta Caverns",
+                        total: 131,
+                        individual: 43.68
+                    }
+                },
             },
-            include: {campground: true}
+            include: { campground: true }
         })
         //-----------------------------MEALS----------------------------->
         const breakfast = await prisma.meals.create({
             data: {
-                course: "breakfast"
+                course: "breakfast",
+                trips: {
+                    connect: [
+                        { id: y2022.id },
+                        { id: y2023.id },
+                        { id: y2024.id }
+                    ]
+                }
             }
         })
         const nachos = await prisma.meals.create({
             data: {
                 day: 2,
                 course: "dinner",
-                name: "Campfire Nachos"
+                name: "Campfire Nachos",
+                trips: {
+                    connect: [
+                        { id: y2022.id },
+                        { id: y2023.id },
+                        { id: y2024.id }
+                    ]
+                }
+            }
+        })
+        const hotDogs = await prisma.meals.create({
+            data: {
+                day: 1,
+                course: "dinner",
+                name: "hot dogs",
+                trips: {
+                    connect: [
+                        { id: y2022.id },
+                        { id: y2023.id },
+                        { id: y2024.id }
+                    ]
+                }
+            }
+        })
+        const sandwiches = await prisma.meals.create({
+            data: {
+                course: "lunch",
+                trips: {
+                    connect: [
+                        { id: y2022.id },
+                        { id: y2023.id },
+                        { id: y2024.id }
+                    ]
+                }
+            }
+        })
+        const pastaPrimavera = await prisma.meals.create({
+            data: {
+                day: 3,
+                course: "dinner",
+                name: "Pasta Primavera",
+                trips: { connect: { id: y2024.id } }
+            }
+        })
+        const smores = await prisma.meals.create({
+            data: {
+                course: "dessert",
+                trips: {
+                    connect: [
+                        { id: y2022.id },
+                        { id: y2023.id },
+                        { id: y2024.id }
+                    ]
+                }
+            }
+        })
+        const musubi = await prisma.meals.create({
+            data: {
+                day: 1,
+                course: "lunch",
+                trips: {
+                    connect: [
+                        { id: y2022.id },
+                        { id: y2023.id },
+                        { id: y2024.id }
+                    ]
+                }
             }
         })
         //-----------------------------FOOD------------------------------>
         const sausage = await prisma.food.create({
             data: {
                 name: "chicken apple sausage",
-                purchased: true,
                 cooler: true,
-                meals: {connect: {id: breakfast.id}},
-                user: {connect: {id: aloisa.id}}
+                meals: { connect: { id: breakfast.id } },
+                user: { connect: { id: aloisa.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const tomatoes = await prisma.food.create({
             data: {
                 name: "tomatoes",
-                purchased: true,
-                meals: {connect: {id: breakfast.id}},
-                user: {connect: {id: marisa.id}}
+                meals: { connect: [{ id: breakfast.id }, { id: pastaPrimavera.id }] },
+                user: { connect: { id: aloisa.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const fruit = await prisma.food.create({
             data: {
                 name: "fruit",
-                purchased: true,
-                meals: {connect: {id: breakfast.id}},
-                user: {connect: {id: marisa.id}}
+                meals: { connect: { id: breakfast.id } },
+                user: { connect: { id: aloisa.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const oil = await prisma.food.create({
             data: {
                 name: "veggie oil",
-                purchased: true,
                 cooler: true,
-                meals: {connect: {id: nachos.id}},
-                user: {connect: {id: marisa.id}}
+                meals: { connect: { id: nachos.id } },
+                user: { connect: { id: marisa.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const chips = await prisma.food.create({
             data: {
                 name: "tortilla chips",
-                purchased: true,
-                meals: {connect: {id: nachos.id}},
-                user: {connect: {id: marisa.id}}
+                meals: { connect: { id: nachos.id } },
+                user: { connect: { id: ana.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const salsa = await prisma.food.create({
             data: {
                 name: "hot sauce",
-                purchased: true,
-                meals: {connect: {id: nachos.id}},
-                user: {connect: {id: marisa.id}}
+                meals: { connect: { id: nachos.id } },
+                user: { connect: { id: ana.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const cheese = await prisma.food.create({
             data: {
                 name: "mexican cheese blend",
-                purchased: true,
                 cooler: true,
-                meals: {connect: {id: nachos.id}},
-                user: {connect: {id: ana.id}}
+                meals: { connect: { id: nachos.id } },
+                user: { connect: { id: marisa.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const beans = await prisma.food.create({
             data: {
                 name: "black beans",
-                purchased: true,
-                meals: {connect: {id: nachos.id}},
-                user: {connect: {id: marisa.id}}
+                meals: { connect: { id: nachos.id } },
+                user: { connect: { id: aloisa.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const avocado = await prisma.food.create({
             data: {
                 name: "avocado",
-                purchased: true,
                 cooler: true,
-                meals: {connect: {id: nachos.id}},
-                user: {connect: {id: aloisa.id}}
+                meals: { connect: { id: nachos.id } },
+                user: { connect: { id: marisa.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const scallions = await prisma.food.create({
             data: {
                 name: "green onions",
-                purchased: true,
                 cooler: true,
-                meals: {connect: {id: nachos.id}},
-                user: {connect: {id: marisa.id}}
+                meals: { connect: { id: nachos.id } },
+                user: { connect: { id: aloisa.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const cilantro = await prisma.food.create({
             data: {
                 name: "cilantro",
-                purchased: true,
                 cooler: true,
-                meals: {connect: {id: nachos.id}},
-                user: {connect: {id: ana.id}}
+                meals: { connect: { id: nachos.id } },
+                user: { connect: { id: ana.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
         })
         const lime = await prisma.food.create({
             data: {
                 name: "lime",
-                purchased: true,
-                meals: {connect: {id: nachos.id}},
-                user: {connect: {id: marisa.id}}
+                meals: { connect: { id: nachos.id } },
+                user: { connect: { id: marisa.id } }
             },
-            include: {meals: true, user: true}
+            include: { meals: true, user: true }
+        })
+        const buns = await prisma.food.create({
+            data: {
+                name: "hot dog buns",
+                meals: { connect: { id: hotDogs.id } },
+                user: { connect: { id: aloisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const dogs = await prisma.food.create({
+            data: {
+                name: "hot dogs",
+                cooler: true,
+                meals: { connect: { id: hotDogs.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const ketchup = await prisma.food.create({
+            data: {
+                name: "ketchup",
+                cooler: true,
+                meals: { connect: { id: hotDogs.id } },
+                user: { connect: { id: ana.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const mustard = await prisma.food.create({
+            data: {
+                name: "mustard",
+                cooler: true,
+                meals: { connect: { id: hotDogs.id } },
+                user: { connect: { id: ana.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const bread = await prisma.food.create({
+            data: {
+                name: "bread",
+                meals: { connect: { id: sandwiches.id } },
+                user: { connect: { id: aloisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const peanutButter = await prisma.food.create({
+            data: {
+                name: "peanut butter",
+                cooler: true,
+                meals: { connect: { id: sandwiches.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const jam = await prisma.food.create({
+            data: {
+                name: "jam",
+                meals: { connect: { id: sandwiches.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const zucchini = await prisma.food.create({
+            data: {
+                name: "zucchini",
+                cooler: true,
+                meals: { connect: { id: pastaPrimavera.id } },
+                user: { connect: { id: ana.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const summerSquash = await prisma.food.create({
+            data: {
+                name: "yellow summer squash",
+                cooler: true,
+                meals: { connect: { id: pastaPrimavera.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const garlic = await prisma.food.create({
+            data: {
+                name: "garlic",
+                meals: { connect: { id: pastaPrimavera.id } },
+                user: { connect: { id: aloisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const pasta = await prisma.food.create({
+            data: {
+                name: "pasta",
+                meals: { connect: { id: pastaPrimavera.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const salt = await prisma.food.create({
+            data: {
+                name: "salt",
+                meals: { connect: [{ id: breakfast.id }, { id: pastaPrimavera.id }] },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const goatCheese = await prisma.food.create({
+            data: {
+                name: "goat cheese",
+                cooler: true,
+                meals: { connect: { id: hotDogs.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const lemonJuice = await prisma.food.create({
+            data: {
+                name: "lemon juice",
+                cooler: true,
+                meals: { connect: { id: pastaPrimavera.id } },
+                user: { connect: { id: aloisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const graham = await prisma.food.create({
+            data: {
+                name: "graham crackers",
+                meals: { connect: { id: smores.id } },
+                user: { connect: { id: aloisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const marshmallows = await prisma.food.create({
+            data: {
+                name: "marshmallows",
+                meals: { connect: { id: smores.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const chocolate = await prisma.food.create({
+            data: {
+                name: "chocolate",
+                cooler: true,
+                meals: { connect: { id: smores.id } },
+                user: { connect: { id: ana.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const gorp = await prisma.food.create({
+            data: {
+                name: "trail mix",
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const eggs = await prisma.food.create({
+            data: {
+                name: "hard-boiled eggs",
+                cooler: true,
+                meals: { connect: { id: breakfast.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const ramen = await prisma.food.create({
+            data: {
+                name: "ramen",
+                user: { connect: { id: ana.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const spam = await prisma.food.create({
+            data: {
+                name: "spam",
+                meals: { connect: { id: musubi.id } },
+                user: { connect: { id: ana.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const oysterSauce = await prisma.food.create({
+            data: {
+                name: "oyster sauce",
+                meals: { connect: { id: musubi.id } },
+                user: { connect: { id: aloisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const monkfruit = await prisma.food.create({
+            data: {
+                name: "monkfruit",
+                meals: { connect: { id: musubi.id } },
+                user: { connect: { id: ana.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const soySauce = await prisma.food.create({
+            data: {
+                name: "soy sauce",
+                meals: { connect: { id: musubi.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const nori = await prisma.food.create({
+            data: {
+                name: "nori",
+                meals: { connect: { id: musubi.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const rice = await prisma.food.create({
+            data: {
+                name: "sushi rice",
+                meals: { connect: { id: musubi.id } },
+                user: { connect: { id: ana.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const tea = await prisma.food.create({
+            data: {
+                name: "tea",
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const water = await prisma.food.create({
+            data: {
+                name: "gallon of water",
+                user: { connect: { id: ana.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const oatmeal = await prisma.food.create({
+            data: {
+                name: "oatmeal",
+                meals: { connect: { id: breakfast.id } },
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
+        })
+        const biscuits = await prisma.food.create({
+            data: {
+                name: "biscuits or onigiri",
+                user: { connect: { id: marisa.id } }
+            },
+            include: { meals: true, user: true }
         })
 
         console.log("Database is seeded")
