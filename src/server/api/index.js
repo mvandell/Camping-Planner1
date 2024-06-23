@@ -11,22 +11,8 @@ const prisma = new PrismaClient();
 //GET api/trip
 apiRouter.get("/trip", requireUser, async (req, res, next) => {
     try {
-        const allTrips = await prisma.trip.findMany();
+        const allTrips = await prisma.trip.findMany(); //include campground name
         res.send(allTrips);
-    } catch (error) {
-        next(error);
-    }
-});
-//<--------------------------GET CURRENT TRIP ID------------------------>
-//GET api/trip/current
-apiRouter.get("/trip/current", requireUser, async (req, res, next) => {
-    try {
-        const current = await prisma.trip.findFirst({
-            where: {current: true},
-            select: {id: true},
-            orderBy: {id: 'desc',}
-        });
-        res.send(current)
     } catch (error) {
         next(error);
     }
@@ -46,6 +32,21 @@ apiRouter.get("/trip/current/:id", requireUser, async (req, res, next) => {
         next(error);
     }
 });
+//<--------------------------GET CURRENT TRIP ID------------------------>
+//GET api/trip/current
+apiRouter.get("/trip/current", requireUser, async (req, res, next) => {
+    try {
+        const current = await prisma.trip.findFirst({
+            where: {current: true},
+            select: {id: true},
+            orderBy: {id: 'desc'}
+        });
+        res.send(current);
+    } catch (error) {
+        next(error);
+    }
+});
+
 
 //<--------------------------GET ALL BUDGETS------------------------>
 //GET api/budget

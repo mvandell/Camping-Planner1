@@ -154,14 +154,6 @@ const api = createApi({
             providesTags: ["Activities"]
         }),
         //<---------------------------GET SINGLE--------------------------->
-        //GET CURRENT TRIP ID
-        getCurrentTripId: builder.query({
-            query: () => ({
-                url: "/api/trip/current",
-                method: "GET",
-            }),
-            providesTags: ["Trips"]
-        }),
         //GET SINGLE TRIP
         getSingleTrip: builder.query({
             query: (id) => ({
@@ -170,6 +162,15 @@ const api = createApi({
             }),
             providesTags: ["Trips", "Meals"]
         }),
+        //GET CURRENT TRIP ID
+        getCurrentTripId: builder.query({
+            query: () => ({
+                url: "/api/trip/current",
+                method: "GET",
+            }),
+            providesTags: ["Trips"]
+        }),
+
         //GET SINGLE MEAL
         getSingleMeal: builder.query({
             query: (id) => ({
@@ -178,7 +179,7 @@ const api = createApi({
             }),
             providesTags: ["Meals", "Food", "Users"]
         }),
-        
+
         //<---------------------------POST--------------------------->
         //POST TRIP
         postTrip: builder.mutation({
@@ -237,25 +238,25 @@ const api = createApi({
         //<---------------------------PATCH--------------------------->
         //PATCH USER
         patchUser: builder.mutation({
-            query: ({username, password}) => ({
+            query: ({ username, password }) => ({
                 url: "/auth/account/edit",
                 method: "PATCH",
-                body: {username, password},
+                body: { username, password },
             }),
             invalidatesTags: ["Me"]
         }),
         //PATCH TRIP
         patchTrip: builder.mutation({
-            query: ({id, startDate, endDate, gasTotal, gasSingle, fireNight, parking}) => ({
+            query: ({ id, startDate, endDate, gasTotal, gasSingle, fireNight, parking }) => ({
                 url: `/api/trip/${id}/edit`,
                 method: "PATCH",
-                body: {startDate, endDate, gasTotal, gasSingle, fireNight, parking},
+                body: { startDate, endDate, gasTotal, gasSingle, fireNight, parking },
             }),
             invalidatesTags: ["Trips", "Campgrounds"]
         }),
         //PATCH ADD MEAL TO TRIP
         patchTripMealAdd: builder.mutation({
-            query: ({id, meal}) => ({
+            query: ({ id, meal }) => ({
                 url: `api/trip/${id}/${meal}/add`,
                 method: "PATCH",
             }),
@@ -263,7 +264,7 @@ const api = createApi({
         }),
         //PATCH REMOVE MEAL FROM TRIP
         patchTripMealRemove: builder.mutation({
-            query: ({id, meal}) => ({
+            query: ({ id, meal }) => ({
                 url: `api/trip/${id}/${meal}/remove`,
                 method: "PATCH",
             }),
@@ -271,25 +272,25 @@ const api = createApi({
         }),
         //PATCH BUDGET
         patchBudget: builder.mutation({
-            query: ({id, total, individual}) => ({
+            query: ({ id, total, individual }) => ({
                 url: `/api/budget/${id}/edit`,
                 method: "PATCH",
-                body: {total, individual},
+                body: { total, individual },
             }),
             invalidatesTags: ["Budgets"]
         }),
         //PATCH MEAL
         patchMeal: builder.mutation({
-            query: ({id, day, course, name}) => ({
+            query: ({ id, day, course, name }) => ({
                 url: `/api/food/meal/${id}/edit`,
                 method: "PATCH",
-                body: {day, course, name},
+                body: { day, course, name },
             }),
             invalidatesTags: ["Meals"]
         }),
         //PATCH REMOVE FOOD FROM MEAL
         patchMealFoodRemove: builder.mutation({
-            query: ({id, food}) => ({
+            query: ({ id, food }) => ({
                 url: `api/food/meal/${id}/${food}/remove`,
                 method: "PATCH",
             }),
@@ -297,83 +298,83 @@ const api = createApi({
         }),
         //PATCH FOOD
         patchFood: builder.mutation({
-            query: ({id, name}) => ({
+            query: ({ id, name }) => ({
                 url: `/api/food/food/${id}/edit`,
                 method: "PATCH",
-                body: {name},
+                body: { name },
             }),
             invalidatesTags: ["Food"]
         }),
         //PATCH CLOTHING
         patchClothing: builder.mutation({
-            query: ({id, name}) => ({
+            query: ({ id, name }) => ({
                 url: `/api/clothing/${id}/edit`,
                 method: "PATCH",
-                body: {name},
+                body: { name },
             }),
             invalidatesTags: ["Clothing"]
         }),
         //PATCH ACTIVITY
         patchActivity: builder.mutation({
-            query: ({id, name}) => ({
+            query: ({ id, name }) => ({
                 url: `/api/activity/${id}/edit`,
                 method: "PATCH",
-                body: {name},
+                body: { name },
             }),
             invalidatesTags: ["Activities"]
         }),
         //<---------------------------TOGGLES--------------------------->
         //TRIP CURRENT TOGGLE
         patchTripCurrentToggle: builder.mutation({
-            query: ({id, current}) => ({
+            query: ({ id, current }) => ({
                 url: `/api/trip/${id}/current`,
                 method: "PATCH",
-                body: {current},
+                body: { current },
             }),
             invalidatesTags: ["Trips"]
         }),
         //FOOD COOLER TOGGLE
         patchFoodCoolerToggle: builder.mutation({
-            query: ({id, cooler}) => ({
+            query: ({ id, cooler }) => ({
                 url: `/api/food/food/${id}/cooler`,
                 method: "PATCH",
-                body: {cooler},
+                body: { cooler },
             }),
             invalidatesTags: ["Food"]
         }),
         //FOOD PURCHASE TOGGLE
         patchFoodPurchaseToggle: builder.mutation({
-            query: ({id, purchased}) => ({
+            query: ({ id, purchased }) => ({
                 url: `/api/food/food/${id}/purchased`,
                 method: "PATCH",
-                body: {purchased},
+                body: { purchased },
             }),
             invalidatesTags: ["Food"]
         }),
         //CLOTHING PACK TOGGLE
         patchClothingPackToggle: builder.mutation({
-            query: ({id, packed}) => ({
+            query: ({ id, packed }) => ({
                 url: `/api/clothing/${id}/packed`,
                 method: "PATCH",
-                body: {packed},
+                body: { packed },
             }),
             invalidatesTags: ["Clothing"]
         }),
         //EQUIPMENT PACK TOGGLE
         patchEquipmentPackToggle: builder.mutation({
-            query: ({id, packed}) => ({
+            query: ({ id, packed }) => ({
                 url: `/auth/equipment/${id}/pack`,
                 method: "PATCH",
-                body: {packed},
+                body: { packed },
             }),
             invalidatesTags: ["Equipment"]
         }),
         //EQUIPMENT NEED TOGGLE
         patchEquipmentNeedToggle: builder.mutation({
-            query: ({id, needed}) => ({
+            query: ({ id, needed }) => ({
                 url: `/auth/equipment/${id}/need`,
                 method: "PATCH",
-                body: {needed},
+                body: { needed },
             }),
             invalidatesTags: ["Equipment"]
         }),
@@ -444,16 +445,16 @@ const api = createApi({
         }),
         //PATCH CAMPGROUND
         patchCampground: builder.mutation({
-            query: ({id, park, price, firewood, distance, curvy, reserveFrame, website, generalArea, picture}) => ({
+            query: ({ id, park, price, firewood, distance, curvy, reserveFrame, website, generalArea, picture }) => ({
                 url: `/auth/campground/${id}/edit`,
                 method: "PATCH",
-                body: {park, price, firewood, distance, curvy, reserveFrame, website, generalArea, picture},
+                body: { park, price, firewood, distance, curvy, reserveFrame, website, generalArea, picture },
             }),
             invalidatesTags: ["Campgrounds"]
         }),
         //PATCH ADD ACTITITY TO CAMPGROUND
         patchCampgroundActivityAdd: builder.mutation({
-            query: ({id, activity}) => ({
+            query: ({ id, activity }) => ({
                 url: `/acuth/campground/${id}/${activity}/add`,
                 method: "PATCH",
             }),
@@ -461,7 +462,7 @@ const api = createApi({
         }),
         //PATCH REMOVE ACTIVITY FROM CAMPGROUND
         patchCampgroundActivityRemove: builder.mutation({
-            query: ({id, activity}) => ({
+            query: ({ id, activity }) => ({
                 url: `/acuth/campground/${id}/${activity}/remove`,
                 method: "PATCH",
             }),
@@ -469,10 +470,10 @@ const api = createApi({
         }),
         //PATCH EQUIPMENT
         patchEquipment: builder.mutation({
-            query: ({id, name}) => ({
+            query: ({ id, name }) => ({
                 url: `/auth/equipment/${id}/edit`,
                 method: "PATCH",
-                body: {name} 
+                body: { name }
             }),
             invalidatesTags: ["Equipment"]
         }),
@@ -531,8 +532,8 @@ export const {
     useGetAllActivitiesQuery,
     useGetCampgroundActivitiesQuery,
     //GET SINGLE
-    useGetCurrentTripIdQuery,
     useGetSingleTripQuery,
+    useGetCurrentTripIdQuery,
     useGetSingleMealQuery,
     //POST
     usePostTripMutation,

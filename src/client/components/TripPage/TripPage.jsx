@@ -41,7 +41,7 @@ const TripPage = () => {
                 <Typography variant="h1">
                     {year}
                 </Typography>
-                <Typography variant="h4">
+                <Typography variant="h4" sx={{color: "bisque"}}>
                     {start} - {end}
                 </Typography>
                 {token &&
@@ -105,7 +105,7 @@ const TripPage = () => {
                         Meals
                     </Typography>
                     {data.meals && data.meals.slice().sort(function(a, b){return a.day-b.day}).map((meal) => (
-                        <Card>
+                        <Card key={meal.id}>
                             <Typography variant="h6">
                                 {meal.course} Day {meal.day}
                             </Typography>

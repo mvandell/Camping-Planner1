@@ -8,6 +8,7 @@ import { useGetCurrentTripIdQuery } from "../../redux/api";
 const CurrentTripButton = () => {
     const token = useSelector((state) => state.auth.token);
     const { data, error, isLoading } = useGetCurrentTripIdQuery();
+
 if (token) {
     if (isLoading) {
         return <div></div>;
@@ -16,6 +17,8 @@ if (token) {
         return <div>Error:{error.message}</div>;
     }
 }
+else {return <div></div>}
+
     return (
         <>
             {token &&
