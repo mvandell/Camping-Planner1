@@ -13,6 +13,12 @@ a {
 a:hover {
   color: lightblue;
 }
+.park:hover {
+  color: lightblue;
+}
 img {
   width: 100%;
+}
+h1 {
+  color: bisque
 }

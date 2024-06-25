@@ -53,12 +53,12 @@ const TripPage = () => {
                                 const response = await currentToggle({ id: data.id, current: !current });
                                 console.log("current", response);
                             }} />
-                        <Typography>Current</Typography>
+                        <Typography sx={{color: "bisque"}}>Current</Typography>
                     </>
                 }
             </Stack>
             <Link to={`/campgrounds/${data.campgroundId}`}>
-                <Typography variant="h3">
+                <Typography variant="h3" className="park">
                     {data.campground.park}
                 </Typography>
             </Link>
@@ -101,7 +101,7 @@ const TripPage = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={4}> {/* meals */}
-                    <Typography variant="h4">
+                    <Typography variant="h4" sx={{color: "bisque"}}>
                         Meals
                     </Typography>
                     {data.meals && data.meals.slice().sort(function(a, b){return a.day-b.day}).map((meal) => (
