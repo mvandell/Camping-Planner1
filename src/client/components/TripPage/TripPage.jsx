@@ -64,7 +64,7 @@ const TripPage = () => {
             </Link>
             <Grid container>
                 <Grid item xs={6}> {/* costs */}
-                    <Card>
+                    <Card sx={{ m: 1, p: 1 }}>
                         <Typography variant="h5">
                             Total Costs
                         </Typography>
@@ -80,7 +80,7 @@ const TripPage = () => {
                             </Typography>
                         ))}
                     </Card>
-                    <Card>
+                    <Card sx={{ m: 1, p: 1 }}>
                         <Typography variant="h5">
                             Individual Costs
                         </Typography>
@@ -105,7 +105,7 @@ const TripPage = () => {
                         Meals
                     </Typography>
                     {data.meals && data.meals.slice().sort(function(a, b){return a.day-b.day}).map((meal) => (
-                        <Card key={meal.id}>
+                        <Card key={meal.id} sx={{ m: 1, p: 1 }}>
                             <Typography variant="h6">
                                 {meal.course} Day {meal.day}
                             </Typography>
