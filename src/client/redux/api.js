@@ -119,7 +119,7 @@ const api = createApi({
                 url: "/api/trip",
                 method: "GET",
             }),
-            providesTags: ["Trips"]
+            providesTags: ["Trips", "Campgrounds"]
         }),
         //GET ALL BUDGETS
         getAllBudgets: builder.query({
@@ -160,7 +160,7 @@ const api = createApi({
                 url: `/api/trip/current/${id}`,
                 method: "GET",
             }),
-            providesTags: ["Trips", "Meals"]
+            providesTags: ["Trips", "Meals", "Budgets", "Campgrounds"]
         }),
         //GET CURRENT TRIP ID
         getCurrentTripId: builder.query({

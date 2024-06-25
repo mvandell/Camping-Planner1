@@ -11,7 +11,9 @@ const prisma = new PrismaClient();
 //GET api/trip
 apiRouter.get("/trip", requireUser, async (req, res, next) => {
     try {
-        const allTrips = await prisma.trip.findMany(); //include campground name
+        const allTrips = await prisma.trip.findMany({
+            include: {campground: {select: {park: true}}}
+        });
         res.send(allTrips);
     } catch (error) {
         next(error);
