@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid"
 import Alert from "@mui/material/Alert";
 import Checkbox from '@mui/material/Checkbox';
+import InfiniteScroll from 'react-infinite-scroller'; // https://www.npmjs.com/package/react-infinite-scroller
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -39,7 +40,7 @@ const EquipmentPage = () => {
             <Grid container>
                 <Grid item xs={4}></Grid>
                 <Grid item xs={4}> 
-                    {data && data.map((equipment) => ( //TODO: scrollable 
+                    {data && data.map((equipment) => ( //TODO: scrollable react-infinite-scroller
                     //TODO: 2 columns?
                         <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2 }}>
                             <Stack direction="row">
