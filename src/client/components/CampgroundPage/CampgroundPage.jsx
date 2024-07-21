@@ -32,33 +32,33 @@ const CampgroundPage = () => {
             </Typography>
             <Grid container>
                 <Grid item xs={6}> {/* picture and info */}
-                    <Card sx={{ m: 1, p: 3 }}>
+                    <Card sx={{ m: 1, p: 3, backgroundColor: "linen" }}>
                         <img src={data.picture} alt={data.park}/>
                     </Card>
                     <Grid container>
                         <Grid item>
-                            <Card sx={{ m: 1, p: 1 }}>
+                            <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                                 <Typography>
                                     <b>General Area:</b> {data.generalArea}
                                 </Typography>
                             </Card>
                         </Grid>
                         <Grid item>
-                            <Card sx={{ m: 1, p: 1 }}>
+                            <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                                 <Typography>
                                     <b>Price/night:</b> ${data.price}
                                 </Typography>
                             </Card>
                         </Grid>
                         <Grid item>
-                            <Card sx={{ m: 1, p: 1 }}>
+                            <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                                 <Typography>
                                     <b>Reserve:</b> {data.reserveFrame} months ahead
                                 </Typography>
                             </Card>
                         </Grid>
                         <Grid item>
-                            <Card sx={{ m: 1, p: 1 }}>
+                            <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                                 <Typography>
                                     <b>Firewood Price:</b> ${data.firewood}
                                 </Typography>
@@ -67,7 +67,7 @@ const CampgroundPage = () => {
                     </Grid>
                 </Grid>
                 <Grid item xs={6}> {/* activities and drive info */}
-                    <Card sx={{ m: 1, p: 1 }}>
+                    <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                         <Typography variant="h5" fontWeight="bold">
                             Activities
                         </Typography>
@@ -77,7 +77,7 @@ const CampgroundPage = () => {
                             </Box>
                         ))}
                     </Card>
-                    <Card sx={{ m: 1, p: 1 }}>
+                    <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                         <Typography variant="h5" fontWeight="bold" sx={{mb:1}}>
                             Drive Info
                         </Typography>
