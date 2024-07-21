@@ -29,7 +29,7 @@ const CampgroundList = () => {
                 Campgrounds
             </Typography>
             <ImageList variant='masonry'>
-                {data && data.map((campground) => (
+                {data && data.map((campground) => ( //scrollable
                     <ImageListItem key={campground.id} sx={{ m: 1 }}>
                         <img src={campground.picture} alt={campground.park} />
                         <ImageListItemBar
@@ -45,6 +45,7 @@ const CampgroundList = () => {
                     </ImageListItem>
                 ))}
             </ImageList>
+            
         </div>
     )
 }
