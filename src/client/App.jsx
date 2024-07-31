@@ -14,7 +14,7 @@ import TripHistory from "./components/TripHistory/TripHistory";
 const App = () => {
   const token = useSelector((state) => state.auth.token);
   console.log(token) //delete when website finished
-  //TODO: change color scheme of headings - check campground page
+  
   return (
     <div className="App">
       <NavBar />

@@ -1,7 +1,6 @@
 import Card from "@mui/material/Card";
 import Typography from '@mui/material/Typography';
 import Stack from "@mui/material/Stack"
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid"
 import Alert from "@mui/material/Alert";
 import Checkbox from '@mui/material/Checkbox';
@@ -38,29 +37,29 @@ const EquipmentPage = () => {
             </Typography>
             <Grid container>
                 <Grid item xs={4}></Grid>
-                <Grid item xs={4} sx={{height: "85vh", overflowY: "scroll"}}>
-                        {data && data.map((equipment) => (
-                            //TODO: filter by packed status?
-                            <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2 }}>
-                                <Stack direction="row">
-                                    <Typography sx={{ flexGrow: 1 }}>
-                                        {equipment.name}
-                                    </Typography>
-                                    {token &&
-                                        <>
-                                            <Checkbox
-                                                defaultChecked={equipment.packed}
-                                                onChange={async () => {
-                                                    console.log("toggle packed");
-                                                    const response = await packToggle({ id: equipment.id, packed: !packed });
-                                                    console.log(response);
-                                                }} />
-                                            <Typography>packed</Typography>
-                                        </> //how to tell if admin? useSelector? new GET admin query?
-                                    }
-                                </Stack>
-                            </Card>
-                        ))}
+                <Grid item xs={4} sx={{ height: "85vh", overflowY: "scroll" }}>
+                    {data && data.map((equipment) => (
+                        //TODO: filter by packed status?
+                        <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2 }}>
+                            <Stack direction="row">
+                                <Typography sx={{ flexGrow: 1 }}>
+                                    {equipment.name}
+                                </Typography>
+                                {token &&
+                                    <>
+                                        <Checkbox
+                                            defaultChecked={equipment.packed}
+                                            onChange={async () => {
+                                                console.log("toggle packed");
+                                                const response = await packToggle({ id: equipment.id, packed: !packed });
+                                                console.log(response);
+                                            }} />
+                                        <Typography sx={{ py: 1 }}>Packed</Typography>
+                                    </> //how to tell if admin? useSelector? new GET admin query?
+                                }
+                            </Stack>
+                        </Card>
+                    ))}
                 </Grid>
                 <Grid item xs={4}></Grid>
             </Grid>
