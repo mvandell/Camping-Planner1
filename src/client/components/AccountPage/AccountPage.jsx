@@ -59,7 +59,7 @@ const AccountPage = () => {
                     </Typography>
                     <Box sx={{ height: "80vh", overflowY: "scroll" }}>
                         {data.foods && data.foods.map((food) => (
-                            <Card key={food.id} sx={{ p: 1, px: 2, m: 1 }}>
+                            <Card key={food.id} sx={{ p: 1, px: 2, m: 1, backgroundColor: "linen" }}>
                                 <Stack direction="row">
                                     <Typography sx={{ flexGrow: 1 }}>
                                         {food.name}
@@ -91,7 +91,7 @@ const AccountPage = () => {
                     </Typography>
                     <Box sx={{ height: "80vh", overflowY: "scroll" }}>
                         {data.clothing && data.clothing.map((clothing) => (
-                            <Card key={clothing.id} sx={{ p: 1, px: 2, m: 1 }}>
+                            <Card key={clothing.id} sx={{ p: 1, px: 2, m: 1, backgroundColor: "linen" }}>
                                 <Stack direction="row">
                                     <Typography sx={{ flexGrow: 1 }}>
                                         {clothing.name}

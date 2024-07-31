@@ -40,7 +40,7 @@ const EquipmentPage = () => {
                 <Grid item xs={4} sx={{ height: "85vh", overflowY: "scroll" }}>
                     {data && data.map((equipment) => (
                         //TODO: filter by packed status?
-                        <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2 }}>
+                        <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2, backgroundColor: "linen" }}>
                             <Stack direction="row">
                                 <Typography sx={{ flexGrow: 1 }}>
                                     {equipment.name}

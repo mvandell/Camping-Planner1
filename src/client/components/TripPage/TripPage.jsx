@@ -36,26 +36,28 @@ const TripPage = () => {
     const end = format(new Date(data.endDate), "MMMM d");
 
     return (
-        <div>
-            <Stack direction="row">
-                <Typography variant="h1">
+        <div style={{marginTop: "1%"}}>
+            <Stack direction="row" >
+                <Typography variant="h1" sx={{ color: "blanchedalmond" }}>
                     {year}
                 </Typography>
-                <Typography variant="h4" sx={{color: "bisque"}}>
-                    {start} - {end}
-                </Typography>
-                {token &&
-                    <>
-                        <Checkbox
-                            defaultChecked={data.current}
-                            onChange={async () => {
-                                console.log("toggle current");
-                                const response = await currentToggle({ id: data.id, current: !current });
-                                console.log("current", response);
-                            }} />
-                        <Typography sx={{color: "bisque"}}>Current</Typography>
-                    </>
-                }
+                <Box>
+                    <Typography variant="h4" sx={{ color: "blanchedalmond" }}>
+                        {start} - {end}
+                    </Typography>
+                    {token &&
+                        <Stack direction="row">
+                            <Checkbox
+                                defaultChecked={data.current}
+                                onChange={async () => {
+                                    console.log("toggle current");
+                                    const response = await currentToggle({ id: data.id, current: !current });
+                                    console.log("current", response);
+                                }} />
+                            <Typography sx={{ color: "blanchedalmond", my: 1 }}>Current</Typography>
+                        </Stack>
+                    }
+                </Box>
             </Stack>
             <Link to={`/campgrounds/${data.campgroundId}`}>
                 <Typography variant="h3" className="park">
@@ -64,7 +66,7 @@ const TripPage = () => {
             </Link>
             <Grid container>
                 <Grid item xs={6}> {/* costs */}
-                    <Card sx={{ m: 1, p: 1 }}>
+                    <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                         <Typography variant="h5">
                             Total Costs
                         </Typography>
@@ -80,7 +82,7 @@ const TripPage = () => {
                             </Typography>
                         ))}
                     </Card>
-                    <Card sx={{ m: 1, p: 1 }}>
+                    <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                         <Typography variant="h5">
                             Individual Costs
                         </Typography>
@@ -91,7 +93,7 @@ const TripPage = () => {
                             <b>Firewood:</b> ${data.fireNight}
                         </Typography>
                         <Typography>
-                            <b>Parking:</b> ${data.parking/3}
+                            <b>Parking:</b> ${data.parking / 3}
                         </Typography>
                         {data.budgets && data.budgets.map((budget) => (
                             <Typography key={budget.id}>
@@ -101,11 +103,11 @@ const TripPage = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={4}> {/* meals */}
-                    <Typography variant="h4" sx={{color: "bisque"}}>
+                    <Typography variant="h4" sx={{ color: "bisque" }}>
                         Meals
                     </Typography>
-                    {data.meals && data.meals.slice().sort(function(a, b){return a.day-b.day}).map((meal) => (
-                        <Card key={meal.id} sx={{ m: 1, p: 1 }}>
+                    {data.meals && data.meals.slice().sort(function (a, b) { return a.day - b.day }).map((meal) => (
+                        <Card key={meal.id} sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                             <Typography variant="h6">
                                 {meal.course} Day {meal.day}
                             </Typography>

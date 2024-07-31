@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import ForestIcon from '@mui/icons-material/Forest';
 
 import format from 'date-fns/format';
 import { Link } from "react-router-dom";
@@ -27,15 +28,14 @@ const TripHistory = () => {
                 <Grid item xs={4}></Grid>
                 <Grid item xs={4}>
                     {data && data.map((trip) => (
-                        <Card key={trip.id} sx={{ m: 1, p: 1 }}>
-                            {/* campground name and dates */}
-                            {trip.current &&
+                        <Card key={trip.id} sx={{ m: 1, p: 1, backgroundColor: "linen" }}>  
+                            {trip.current && //campground name and dates
                                 <Typography variant="h4">
                                     Current
                                 </Typography>
                             }
                             <Link to={`/trip/${trip.id}`}>
-                                <Typography>
+                                <Typography sx={{fontWeight: "bold"}}>
                                     {format(new Date(trip.startDate), "MMMM d")} - {format(new Date(trip.endDate), "MMMM d, yyyy")}
                                 </Typography>
                             </Link>
@@ -44,6 +44,7 @@ const TripHistory = () => {
                                     {trip.campground.park}
                                 </Typography>
                             </Link>
+                            <ForestIcon sx={{mx: 6, }} fontSize="large" color="success"/>
                         </Card>
                     ))}
                 </Grid>
