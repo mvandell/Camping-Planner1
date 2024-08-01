@@ -6,11 +6,11 @@ import Card from "@mui/material/Card";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useGetCurrentTripIdQuery } from "../../redux/api";
 import AccountDropdown from "./AccountDropdown";
 import CurrentTripButton from "./CurrentTripButton";
 
 const NavBar = () => {
+    const token = useSelector((state) => state.auth.token)
 
     return (
         <div>
@@ -20,11 +20,13 @@ const NavBar = () => {
                 </Typography>
                 <Box sx={{ borderRadius: 5, backgroundColor: "beige", boxShadow: 5, py: 0.5, px: 1 }}>
                     <CurrentTripButton />
+                    {token &&
                     <Link to="/trip/history">
                         <Button variant="text" sx={{ textTransform: "none" }}>
                             All Trips
                         </Button>
                     </Link>
+                    }
                     <Link to="/campgrounds">
                         <Button variant="text" sx={{ textTransform: "none" }}>
                             Campgrounds
