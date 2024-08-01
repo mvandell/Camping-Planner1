@@ -13,7 +13,7 @@ import { usePatchEquipmentMutation, usePatchEquipmentPackToggleMutation, usePatc
 
 const EquipmentPage = () => {
     const token = useSelector((state) => state.auth.token)
-
+    const admin = useSelector((state) => state.auth.admin)
     const [name, setName] = useState("");
 
     const { data, error, isLoading } = useGetAllEquipmentQuery();
@@ -29,7 +29,7 @@ const EquipmentPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-
+console.log("Admin", admin)
     return (
         <div>
             <Typography variant="h1">

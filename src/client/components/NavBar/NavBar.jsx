@@ -11,7 +11,7 @@ import AccountDropdown from "./AccountDropdown";
 import CurrentTripButton from "./CurrentTripButton";
 
 const NavBar = () => {
-
+//TODO: only show AllTrips if user
     return (
         <div>
             <Stack direction="row">

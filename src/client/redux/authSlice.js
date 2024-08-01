@@ -4,17 +4,17 @@ import store from './store';
 
 function storeToken(state, { payload }) {
     state.token = payload.token;
-    window.localStorage.setItem("token", payload.token);
+    window.sessionStorage.setItem("token", payload.token);
     if (payload.isAdmin) {
-        window.localStorage.setItem("admin", true)
+        window.sessionStorage.setItem("admin", true)
     }
 }
 // Create a Redux slice for authentication
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        token: window.localStorage.getItem("token") ?? null,
-        admin: window.localStorage.getItem("admin") ?? false
+        token: window.sessionStorage.getItem("token") ?? null,
+        admin: window.sessionStorage.getItem("admin") ?? false
     },
     reducers: {},
 
@@ -24,9 +24,9 @@ const authSlice = createSlice({
         builder.addMatcher(
             api.endpoints.logout.matchFulfilled, (state) => {
                 state.token = null;
-            state.admin = false;
-            window.localStorage.removeItem("token");
-            window.localStorage.removeItem("admin");
+            //state.admin = false;
+            window.sessionStorage.removeItem("token");
+            window.sessionStorage.removeItem("admin");
             });
     }
 });
