@@ -43,6 +43,21 @@ authRouter.get("/account", requireUser, async (req, res, next) => {
         next(error);
     }
 });
+//<--------------------------GET ADMIN STATUS------------------------>
+//GET /auth/admin
+authRouter.get("/admin", requireUser, async (req, res, next) =>{
+    try {
+        const admin = await prisma.user.findUnique({
+            where: {
+                id: req.user.id
+            },
+            select: {isAdmin: true}
+        });
+        res.send(admin);
+    } catch (error) {
+        next(error);
+    }
+});
 //<--------------------------GET ALL CAMPGROUNDS------------------------>
 //GET /auth/campground
 authRouter.get("/campground", async (req, res, next) => {

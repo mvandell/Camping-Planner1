@@ -44,6 +44,15 @@ const api = createApi({
                 url: `/auth/users/validate`,
                 method: 'GET',
             }),
+            providesTags: ["Users"]
+        }),
+        //GET ADMIN STATUS
+        getAdmin: builder.query({
+            query: () => ({
+                url: '/auth/admin',
+                method: "GET",
+            }),
+            providesTags: ["Me"]
         }),
         //<---------------------------GET USER INFO--------------------------->
         //GET USER
@@ -514,6 +523,7 @@ export const {
     useLoginMutation,
     useLogoutMutation,
     useGetAllUsersValidationQuery,
+    useGetAdminQuery,
     //GET USER INFO
     useGetUserQuery,
     useGetUserFoodQuery,
