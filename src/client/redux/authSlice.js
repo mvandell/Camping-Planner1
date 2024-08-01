@@ -5,8 +5,9 @@ import store from './store';
 function storeToken(state, { payload }) {
     state.token = payload.token;
     window.sessionStorage.setItem("token", payload.token);
-    if (payload.isAdmin) {
-        window.sessionStorage.setItem("admin", true)
+    if (payload.isAdmin == true) {
+        window.sessionStorage.setItem("admin", true);
+        state.admin = true
     }
 }
 // Create a Redux slice for authentication
