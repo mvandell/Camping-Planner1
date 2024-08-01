@@ -4,11 +4,13 @@ import Stack from "@mui/material/Stack"
 import Grid from "@mui/material/Grid"
 import Alert from "@mui/material/Alert";
 import Checkbox from '@mui/material/Checkbox';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from "@mui/material/IconButton";
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import { useGetAllEquipmentQuery, useDeleteEquipmentMutation, usePostEquipmentMutation } from "../../redux/api";
+import { useGetAllEquipmentQuery, useDeleteEquipmentMutation, usePostEquipmentMutation, useGetAdminQuery } from "../../redux/api";
 import { usePatchEquipmentMutation, usePatchEquipmentPackToggleMutation, usePatchEquipmentNeedToggleMutation } from "../../redux/api";
 
 const EquipmentPage = () => {
@@ -17,6 +19,7 @@ const EquipmentPage = () => {
     const [name, setName] = useState("");
 
     const { data, error, isLoading } = useGetAllEquipmentQuery();
+    const { data: adminData, error: adminError, isLoading: adminIsLoading } = useGetAdminQuery();
     const [deleteEquipment] = useDeleteEquipmentMutation();
     //const [patchEquipment] = usePatchEquipmentMutation();
     const [packToggle] = usePatchEquipmentPackToggleMutation();
@@ -29,7 +32,7 @@ const EquipmentPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-
+console.log(adminData)
     return (
         <div>
             <Typography variant="h1">
@@ -42,7 +45,19 @@ const EquipmentPage = () => {
                         //TODO: filter by packed status?
                         <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2, backgroundColor: "linen" }}>
                             <Stack direction="row">
-                                <Typography sx={{ flexGrow: 1 }}>
+                                {token && adminData.isAdmin &&
+                                    <IconButton
+                                    color="error"
+                                    sx={{pl: 0}}
+                                    onClick={() => {
+                                        if (confirm("Are you sure you want to delete this equipment?") === true) {
+                                            deleteEquipment(equipment.id)
+                                        }
+                                    }}>
+                                        <DeleteIcon fontSize="small"/>
+                                    </IconButton>
+                                }
+                                <Typography sx={{ flexGrow: 1, py: 1 }}>
                                     {equipment.name}
                                 </Typography>
                                 {token &&
@@ -55,7 +70,7 @@ const EquipmentPage = () => {
                                                 console.log(response);
                                             }} />
                                         <Typography sx={{ py: 1 }}>Packed</Typography>
-                                    </> //how to tell if admin? useSelector? new GET admin query?
+                                    </>
                                 }
                             </Stack>
                         </Card>
