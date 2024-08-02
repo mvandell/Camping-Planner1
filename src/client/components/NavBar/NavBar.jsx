@@ -21,11 +21,11 @@ const NavBar = () => {
                 <Box sx={{ borderRadius: 5, backgroundColor: "beige", boxShadow: 5, py: 0.5, px: 1 }}>
                     <CurrentTripButton />
                     {token &&
-                    <Link to="/trip/history">
-                        <Button variant="text" sx={{ textTransform: "none" }}>
-                            All Trips
-                        </Button>
-                    </Link>
+                        <Link to="/trip/history">
+                            <Button variant="text" sx={{ textTransform: "none" }}>
+                                All Trips
+                            </Button>
+                        </Link>
                     }
                     <Link to="/campgrounds">
                         <Button variant="text" sx={{ textTransform: "none" }}>

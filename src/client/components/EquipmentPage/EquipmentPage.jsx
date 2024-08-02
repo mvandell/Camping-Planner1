@@ -32,7 +32,7 @@ const EquipmentPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-console.log(adminData)
+    
     return (
         <div>
             <Typography variant="h1">
