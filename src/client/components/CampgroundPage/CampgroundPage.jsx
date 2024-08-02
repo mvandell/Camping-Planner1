@@ -4,19 +4,23 @@ import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Alert from "@mui/material/Alert";
+import Button from '@mui/material/Button';
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 
-import { useGetSingleCampgroundQuery, usePatchCampgroundMutation } from "../../redux/api";
-import { usePatchCampgroundActivityAddMutation, usePatchCampgroundActivityRemoveMutation } from "../../redux/api";
+import { useGetSingleCampgroundQuery, usePatchCampgroundMutation, useDeleteCampgroundMutation } from "../../redux/api";
+import { usePatchCampgroundActivityAddMutation, usePatchCampgroundActivityRemoveMutation, useGetAdminQuery } from "../../redux/api";
 
 const CampgroundPage = () => {
     const token = useSelector((state) => state.auth.token)
     const {id} = useParams();
+    const navigate = useNavigate();
 
     const { data, error, isLoading } = useGetSingleCampgroundQuery(id);
+    const { data: adminData, error: adminError, isLoading: adminIsLoading } = useGetAdminQuery();
+    const [deleteCampground] = useDeleteCampgroundMutation();
 
     if (isLoading) {
         return <div> </div>;
@@ -65,6 +69,20 @@ const CampgroundPage = () => {
                             </Card>
                         </Grid>
                     </Grid>
+                    {token && adminData.isAdmin &&
+                    <Button
+                    variant="contained"
+                    color="error"
+                    sx={{m:1, fontWeight:"bold"}}
+                    onClick={() => {
+                        if (confirm("Are you sure you want to delete this campground?") === true) {
+                            deleteCampground(data.id);
+                            navigate("/campgrounds");
+                        }
+                    }}>
+                        Delete Campground
+                    </Button>
+                    }
                 </Grid>
                 <Grid item xs={6}> {/* activities and drive info */}
                     <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
