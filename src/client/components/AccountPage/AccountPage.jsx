@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 
 import { useGetUserQuery, usePatchFoodCoolerToggleMutation, usePatchFoodPurchaseToggleMutation } from "../../redux/api";
 import { usePatchClothingPackToggleMutation, usePatchClothingMutation, useGetCurrentTripIdQuery } from "../../redux/api";
-
+//TODO: patch user
 const AccountPage = () => {
     const token = useSelector((state) => state.auth.token);
     const navigate = useNavigate();

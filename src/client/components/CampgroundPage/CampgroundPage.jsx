@@ -29,7 +29,9 @@ const CampgroundPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-
+    //TODO: patch campground
+    //TODO: post meal
+    //TODO: delete meal
     return (
         <div>
             <Typography variant="h1" sx={{ color: "beige" }}>

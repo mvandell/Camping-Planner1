@@ -23,7 +23,7 @@ const CampgroundList = () => {
         return <div>Error:{error.message}</div>;
     }
     //TODO: filters for reserveFrame and generalArea
-
+    //TODO: post campground
     return (
         <div>
             <Typography variant='h1'>

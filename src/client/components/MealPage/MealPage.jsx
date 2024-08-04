@@ -32,7 +32,9 @@ const MealPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-
+    //TODO: post food
+    //TODO: patch meal
+    //TODO: delete food
     return (
         <div>
             <Stack direction="row">

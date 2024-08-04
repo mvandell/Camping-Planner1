@@ -30,7 +30,7 @@ const TripPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-
+    //TODO: patch trip
     const year = format(new Date(data.startDate), "yyyy");
     const start = format(new Date(data.startDate), "MMMM d");
     const end = format(new Date(data.endDate), "MMMM d");

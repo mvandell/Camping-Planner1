@@ -23,7 +23,7 @@ const TripHistory = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-
+    //TODO: post trip
     return (
         <div>
             <Typography variant="h1">

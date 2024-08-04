@@ -98,7 +98,7 @@ const EquipmentPage = () => {
                             </Button>
                         </Typography>
                     }
-                    {alert && //new equipment form component
+                    {alert && 
                         <Card sx={{ p: 2, textAlign: "center", mx: 3, my: 1 }}>
                             <form onSubmit={handleSubmit}>
                                 <TextField
