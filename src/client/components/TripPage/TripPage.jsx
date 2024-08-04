@@ -36,7 +36,7 @@ const TripPage = () => {
     const end = format(new Date(data.endDate), "MMMM d");
 
     return (
-        <div style={{marginTop: "1%"}}>
+        <div style={{ marginTop: "1%" }}>
             <Stack direction="row" >
                 <Typography variant="h1" sx={{ color: "blanchedalmond" }}>
                     {year}
@@ -112,7 +112,9 @@ const TripPage = () => {
                                 {meal.course} Day {meal.day}
                             </Typography>
                             <Typography variant="h5">
-                                {meal.name}
+                                <Link to={`/meal/${meal.id}`}>
+                                    {meal.name}
+                                </Link>
                             </Typography>
                         </Card>
                     ))}
