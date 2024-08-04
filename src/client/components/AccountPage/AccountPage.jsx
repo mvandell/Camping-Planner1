@@ -34,7 +34,7 @@ const AccountPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-
+    //TODO: change color of buttons
     return (
         <div>
             <Typography variant="h1">
@@ -42,14 +42,14 @@ const AccountPage = () => {
             </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={2}>
-                    <Stack direction="column">
+                    <Stack direction="column" sx={{textAlign: "center"}}>
                         <Link to={"/account/edit"}>
                             <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>
                                 Edit Account
                             </Button>
                         </Link>
                         <Link to={`/trip/${tripData.id}`}>
-                            <Button variant="contained" sx={{ textTransform: "none", m: 2, width: "88%" }}>
+                            <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>
                                 Current Trip
                             </Button>
                         </Link>

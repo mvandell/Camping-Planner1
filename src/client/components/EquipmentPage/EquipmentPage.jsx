@@ -14,7 +14,6 @@ import { useSelector } from "react-redux";
 
 import { useGetAllEquipmentQuery, useDeleteEquipmentMutation, useGetAdminQuery } from "../../redux/api";
 import { usePostEquipmentMutation, usePatchEquipmentPackToggleMutation, usePatchEquipmentNeedToggleMutation } from "../../redux/api";
-import NewEquipment from "./NewEquipment";
 
 const EquipmentPage = () => {
     const token = useSelector((state) => state.auth.token)

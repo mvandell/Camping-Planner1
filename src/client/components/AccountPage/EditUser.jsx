@@ -41,10 +41,10 @@ const EditUser = () => {
         <Grid container>
             <Grid item xs={4}></Grid>
             <Grid item xs={4}>
-                <Card>
-                    <Typography variant="h4">
+                    <Typography variant="h2" sx={{color: "bisque"}}>
                         Update Your Account:
                     </Typography>
+                <Card sx={{m: 2, p: 3}}>
                     <form onSubmit={handleSubmit}>
                         <Stack direction="column">
                             <TextField
@@ -85,13 +85,13 @@ const EditUser = () => {
                                         <Alert severity="error"> Passwords do not match </Alert> : null
                                 }
                             />
-                            <Typography textAlign="center" sx={{ mt: 1 }}>
-                                <Button type="submit">
+                            <Typography textAlign="center" sx={{ m: 1 }}>
+                                <Button type="submit" variant="contained" sx={{textTransform: "none"}}>
                                     Update
                                 </Button>
                             </Typography>
-                            <Typography textAlign="center">
-                                <Button onClick={() => navigate("/account")} style={{ width: 100 }}>
+                            <Typography textAlign="center" sx={{m: 1}}>
+                                <Button onClick={() => navigate("/account")} variant="contained" sx={{textTransform: "none"}}>
                                     Cancel
                                 </Button>
                             </Typography>
