@@ -18,7 +18,9 @@ const Login = () => {
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
-
+    if (isLoading) {
+        return <div> </div>;
+    }
     if (error) {
         return <div>Whoops! Something went wrong logging you in.</div>
     }

@@ -43,9 +43,11 @@ const AccountPage = () => {
             <Grid container spacing={3}>
                 <Grid item xs={2}>
                     <Stack direction="column">
-                        <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>{/* open at bottom of section? */}
-                            Edit Account
-                        </Button>
+                        <Link to={"/account/edit"}>
+                            <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>
+                                Edit Account
+                            </Button>
+                        </Link>
                         <Link to={`/trip/${tripData.id}`}>
                             <Button variant="contained" sx={{ textTransform: "none", m: 2, width: "88%" }}>
                                 Current Trip
