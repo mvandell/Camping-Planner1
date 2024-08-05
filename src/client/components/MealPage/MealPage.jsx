@@ -2,7 +2,7 @@ import Card from "@mui/material/Card";
 import Typography from '@mui/material/Typography';
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box";
-import Alert from "@mui/material/Alert";
+import Grid from "@mui/material/Grid";
 import Checkbox from '@mui/material/Checkbox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from "@mui/material/IconButton";
@@ -36,63 +36,70 @@ const MealPage = () => {
     }
     //TODO: post food
     //TODO: patch meal
-    //TODO: format
     return (
         <div>
             <Stack direction="row">
-                <Typography>
+                <Typography variant="h1" sx={{ color: "blanchedalmond", m: 1 }}>
                     {data.name}
                 </Typography>
-                <Typography>
-                    {data.course}
-                </Typography>
-                {data.day &&
-                    <Typography>
-                        Day: {data.day}
+                <Stack direction="column">
+                    <Typography variant="h3" sx={{ color: "blanchedalmond" }}>
+                        {data.course}
                     </Typography>
-                }
-            </Stack>
-            <Typography>
-                Ingredients:
-            </Typography>
-            {data.foods && data.foods.map((ingredient) => (
-                <Card key={ingredient.id} sx={{ p: 1, m: 1 }}>
-                    <Stack direction="row">
-                        <IconButton
-                            color="error"
-                            sx={{ pl: 0 }}
-                            onClick={() => {
-                                if (confirm("Are you sure you want to delete this ingredient?") === true) {
-                                    deleteFood(ingredient.id)
-                                }
-                            }}>
-                            <DeleteIcon fontSize="small" />
-                        </IconButton>
-                        <Typography>
-                            {ingredient.name}
+                    {data.day &&
+                        <Typography variant="h3" sx={{ color: "blanchedalmond" }}>
+                            Day {data.day}
                         </Typography>
-                        <Checkbox
-                            defaultChecked={ingredient.cooler}
-                            onChange={async () => {
-                                console.log("toggle cooler");
-                                const response = await coolerToggle({ id: ingredient.id, cooler: !cooler });
-                                console.log("cooler", response);
-                            }} />
-                        <Typography>Cooler</Typography>
-                        <Checkbox
-                            defaultChecked={ingredient.purchased}
-                            onChange={async () => {
-                                console.log("toggle purchased");
-                                const response = await purchaseToggle({ id: ingredient.id, purchased: !purchased });
-                                console.log("purchased", response);
-                            }} />
-                        <Typography>Purchased</Typography>
-                    </Stack>
-                    <Typography>
-                        {ingredient.user.username}
+                    }
+                </Stack>
+            </Stack>
+            <Grid container>
+                <Grid item xs={3}></Grid>
+                <Grid item xs={5}>
+                    <Typography variant="h3" sx={{ color: "bisque" }}>
+                        Ingredients:
                     </Typography>
-                </Card>
-            ))}
+                    {data.foods && data.foods.map((ingredient) => (
+                        <Card key={ingredient.id} sx={{ p: 1, m: 1, backgroundColor: "linen" }}>
+                            <Stack direction="row">
+                                <IconButton
+                                    color="error"
+                                    sx={{ pl: 0 }}
+                                    onClick={() => {
+                                        if (confirm("Are you sure you want to delete this ingredient?") === true) {
+                                            deleteFood(ingredient.id)
+                                        }
+                                    }}>
+                                    <DeleteIcon fontSize="small" />
+                                </IconButton>
+                                <Typography sx={{ flexGrow: 1, py: 1, fontWeight: "bold" }}>
+                                    {ingredient.name}
+                                </Typography>
+                                <Checkbox
+                                    defaultChecked={ingredient.cooler}
+                                    onChange={async () => {
+                                        console.log("toggle cooler");
+                                        const response = await coolerToggle({ id: ingredient.id, cooler: !cooler });
+                                        console.log("cooler", response);
+                                    }} />
+                                <Typography>Cooler</Typography>
+                                <Checkbox
+                                    defaultChecked={ingredient.purchased}
+                                    onChange={async () => {
+                                        console.log("toggle purchased");
+                                        const response = await purchaseToggle({ id: ingredient.id, purchased: !purchased });
+                                        console.log("purchased", response);
+                                    }} />
+                                <Typography>Purchased</Typography>
+                            </Stack>
+                            <Typography sx={{}}>
+                                {ingredient.user.username}
+                            </Typography>
+                        </Card>
+                    ))}
+                </Grid>
+                <Grid item xs={3}></Grid>
+            </Grid>
         </div>
     )
 }
