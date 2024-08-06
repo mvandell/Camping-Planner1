@@ -35,6 +35,7 @@ const AccountPage = () => {
         return <div>Error:{error.message}</div>;
     }
     //TODO: change color of buttons
+    //TODO: post clothing
     return (
         <div>
             <Typography variant="h1">

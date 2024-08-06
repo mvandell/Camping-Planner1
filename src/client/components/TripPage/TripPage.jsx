@@ -31,6 +31,8 @@ const TripPage = () => {
         return <div>Error:{error.message}</div>;
     }
     //TODO: patch trip
+    //TODO: post meal
+    //TODO: delete meal
     const year = format(new Date(data.startDate), "yyyy");
     const start = format(new Date(data.startDate), "MMMM d");
     const end = format(new Date(data.endDate), "MMMM d");
