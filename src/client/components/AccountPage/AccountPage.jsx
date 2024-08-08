@@ -13,7 +13,8 @@ import { useSelector } from "react-redux";
 
 import { useGetUserQuery, usePatchFoodCoolerToggleMutation, usePatchFoodPurchaseToggleMutation } from "../../redux/api";
 import { usePatchClothingPackToggleMutation, usePatchClothingMutation, useGetCurrentTripIdQuery } from "../../redux/api";
-//TODO: patch user
+import NewClothing from "./NewClothing";
+
 const AccountPage = () => {
     const token = useSelector((state) => state.auth.token);
     const navigate = useNavigate();
@@ -35,7 +36,7 @@ const AccountPage = () => {
         return <div>Error:{error.message}</div>;
     }
     //TODO: change color of buttons
-    //TODO: post clothing
+    //TODO: delete clothing
     return (
         <div>
             <Typography variant="h1">
@@ -43,7 +44,7 @@ const AccountPage = () => {
             </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={2}>
-                    <Stack direction="column" sx={{textAlign: "center"}}>
+                    <Stack direction="column" sx={{ textAlign: "center" }}>
                         <Link to={"/account/edit"}>
                             <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>
                                 Edit Account
@@ -68,7 +69,7 @@ const AccountPage = () => {
                                         {food.name}
                                     </Typography>
                                     <Checkbox
-                                        defaultChecked={food.cooler}
+                                        defaultChecked={food.cooler} //icon instead?
                                         onChange={async () => {
                                             console.log("toggle cooler");
                                             const response = await coolerToggle({ id: food.id, cooler: !cooler });
@@ -76,7 +77,7 @@ const AccountPage = () => {
                                         }} />
                                     <Typography sx={{ py: 1, pr: 1 }}>Cooler</Typography>
                                     <Checkbox
-                                        defaultChecked={food.purchased}
+                                        defaultChecked={food.purchased} //icon instead?
                                         onChange={async () => {
                                             console.log("toggle purchased");
                                             const response = await purchaseToggle({ id: food.id, purchased: !purchased });
@@ -88,7 +89,7 @@ const AccountPage = () => {
                         ))}
                     </Box>
                 </Grid>
-                <Grid item xs={4}> {/* scrollable */}
+                <Grid item xs={3}> {/* scrollable */}
                     <Typography variant="h3" sx={{ color: "bisque" }}>
                         Clothing
                     </Typography>
@@ -111,6 +112,9 @@ const AccountPage = () => {
                             </Card>
                         ))}
                     </Box>
+                </Grid>
+                <Grid item xs={3}>
+                    <NewClothing />
                 </Grid>
             </Grid>
         </div>
