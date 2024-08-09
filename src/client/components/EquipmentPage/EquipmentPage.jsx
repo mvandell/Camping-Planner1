@@ -58,7 +58,7 @@ const EquipmentPage = () => {
                         //TODO: filter by packed status?
                         <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2, backgroundColor: "linen" }}>
                             <Stack direction="row">
-                                {token && adminData.isAdmin &&
+                                {adminData.isAdmin === true &&
                                     <IconButton
                                         color="error"
                                         sx={{ pl: 0 }}

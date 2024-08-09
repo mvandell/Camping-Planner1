@@ -30,7 +30,7 @@ const NewClothing = () => {
     }
 
     return (
-        <Card sx={{ p: 2, m: 1, backgroundColor: "linen" }}>
+        <Card sx={{ p: 2, m: 2, backgroundColor: "linen" }}>
             <form onSubmit={handleSubmit}>
                 <Stack direction="column">
                     <TextField
@@ -39,7 +39,7 @@ const NewClothing = () => {
                         onChange={(event) => setName(event.target.value)}
                         size="small"
                         variant="filled" />
-                    <Typography textAlign="center" sx={{ m: 1 }}>
+                    <Typography textAlign="center" sx={{ m: 1, mt: 2 }}>
                         <Button type="submit" variant="contained" sx={{ textTransform: "none" }}>
                             Submit
                         </Button>
