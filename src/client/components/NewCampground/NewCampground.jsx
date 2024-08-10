@@ -14,11 +14,11 @@ const NewCampground = () => {
     const navigate = useNavigate();
 
     const [park, setPark] = useState("");
-    const [price, setPrice] = useState(null);
-    const [firewood, setFirewood] = useState(null);
-    const [distance, setDistance] = useState(null);
+    const [price, setPrice] = useState("");
+    const [firewood, setFirewood] = useState("");
+    const [distance, setDistance] = useState("");
     const [curvy, setCurvy] = useState("");
-    const [reserve, setReserve] = useState(null);
+    const [reserve, setReserve] = useState("");
     const [web, setWeb] = useState("");
     const [area, setArea] = useState("");
     const [picture, setPicture] = useState("");
@@ -26,7 +26,7 @@ const NewCampground = () => {
     const [postCampground, { error, isLoading }] = usePostCampgroundMutation();
 
     if (isLoading) {
-        return null;
+        return <div></div>;
     }
     if (error) {
         return <div> Sorry! There's a problem posting the campground. </div>
@@ -40,91 +40,111 @@ const NewCampground = () => {
             console.error(error)
         }
     }
-
+    //TODO: button colors
     return (
-        <form onSubmit={handleSubmit}>
-            <TextField
-                label="Park Name"
-                helperText={<Typography>Please include NP if National Park or SP if State Park.</Typography>}
-                value={park}
-                onChange={(event) => setPark(event.target.value)}
-                size="small"
-                variant="filled"
-                required />
-            <TextField
-                label="Price/night"
-                type="number"
-                value={price}
-                onChange={(event) => setPrice(event.target.value)}
-                size="small"
-                variant="filled"
-                required />
-            <TextField
-                label="Firewood price/bundle"
-                type="number"
-                value={firewood}
-                onChange={(event) => setFirewood(event.target.value)}
-                size="small"
-                variant="filled"
-                required />
-            <TextField
-                label="Distance in hours"
-                type="number"
-                value={distance}
-                onChange={(event) => setDistance(event.target.value)}
-                size="small"
-                variant="filled"
-                required />
-            <TextField
-                label="Curvy?"
-                value={curvy}
-                helperText={<Typography>Short description OK</Typography>}
-                onChange={(event) => setCurvy(event.target.value)}
-                size="small"
-                variant="filled"
-                required />
-            <TextField
-                label="When to Reserve"
-                type="number"
-                helperText={<Typography>in months</Typography>}
-                value={reserve}
-                onChange={(event) => setReserve(event.target.value)}
-                size="small"
-                variant="filled"
-                required />
-            <TextField
-                label="Website"
-                value={web}
-                onChange={(event) => setWeb(event.target.value)}
-                size="small"
-                variant="filled"
-                required />
-            <TextField
-                label="General Area"
-                value={area}
-                onChange={(event) => setArea(event.target.value)}
-                size="small"
-                variant="filled"
-                required />
-            <TextField
-                label="Picture web address"
-                value={picture}
-                helperText={<Typography>Link to the picture, must end in a picture file extension</Typography>}
-                onChange={(event) => setPicture(event.target.value)}
-                size="small"
-                variant="filled"
-                required />
-            <Typography textAlign="center" sx={{ m: 1 }}>
-                <Button type="submit" variant="contained" sx={{ textTransform: "none" }}>
-                    Submit
-                </Button>
-            </Typography>
-            <Typography textAlign="center" sx={{ m: 1 }}>
-                <Button onClick={() => navigate("/account")} variant="contained" sx={{ textTransform: "none" }}>
-                    Cancel
-                </Button>
-            </Typography>
-        </form>
+        <Grid container>
+            <Grid item xs={1}></Grid>
+            <Grid item xs={8}>
+                <Card sx={{ backgroundColor: "linen", m: 2, p: 2 }}>
+                    <Typography variant="h3" sx={{ mb: 1 }}>
+                        New Campground
+                    </Typography>
+                    <form onSubmit={handleSubmit}>
+                        <TextField
+                            label="Park Name"
+                            helperText="Please include NP if National Park or SP if State Park."
+                            value={park}
+                            onChange={(event) => setPark(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <TextField
+                            label="Price/night"
+                            type="number"
+                            value={price}
+                            onChange={(event) => setPrice(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <TextField
+                            label="Firewood price/bundle"
+                            type="number"
+                            value={firewood}
+                            onChange={(event) => setFirewood(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <TextField
+                            label="Distance in hours"
+                            type="number"
+                            value={distance}
+                            onChange={(event) => setDistance(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <TextField
+                            label="Curvy?"
+                            value={curvy}
+                            helperText="Short description OK"
+                            onChange={(event) => setCurvy(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <TextField
+                            label="When to Reserve"
+                            type="number"
+                            helperText="in months"
+                            value={reserve}
+                            onChange={(event) => setReserve(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <TextField
+                            label="Website"
+                            value={web}
+                            onChange={(event) => setWeb(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <TextField
+                            label="General Area"
+                            value={area}
+                            onChange={(event) => setArea(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <TextField
+                            label="Picture web address"
+                            value={picture}
+                            helperText="Link to the picture, must end in a picture file extension"
+                            onChange={(event) => setPicture(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <Typography textAlign="center" sx={{ m: 1 }}>
+                            <Button type="submit" variant="contained" sx={{ textTransform: "none" }}>
+                                Submit
+                            </Button>
+                        </Typography>
+                        <Typography textAlign="center" sx={{ m: 1 }}>
+                            <Button onClick={() => navigate("/account")} variant="contained" sx={{ textTransform: "none" }}>
+                                Cancel
+                            </Button>
+                        </Typography>
+                    </form>
+                </Card>
+            </Grid>
+            <Grid item xs={1}></Grid>
+        </Grid>
     )
 }
 export default NewCampground;
