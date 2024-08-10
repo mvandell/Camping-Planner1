@@ -35,6 +35,9 @@ const EquipmentPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
+    if (adminIsLoading) {
+        return <div></div>
+    }
 
     const handleSubmit = async (event) => {
         try {
@@ -90,7 +93,7 @@ const EquipmentPage = () => {
                     ))}
                 </Grid>
                 <Grid item xs={4}>
-                    {token && adminData.isAdmin &&
+                    {adminData.isAdmin === true &&
                         <Typography textAlign="center">
                             <Button variant="contained" onClick={() => setAlert(true)} sx={{ textTransform: "none" }}>
                                 New Equipment
