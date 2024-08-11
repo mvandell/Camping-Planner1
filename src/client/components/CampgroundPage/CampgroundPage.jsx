@@ -71,18 +71,27 @@ const CampgroundPage = () => {
                         </Grid>
                     </Grid>
                     {token && adminData.isAdmin &&
-                        <Button
-                            variant="contained"
-                            color="error"
-                            sx={{ m: 1, fontWeight: "bold" }}
-                            onClick={() => {
-                                if (confirm("Are you sure you want to delete this campground?") === true) {
-                                    deleteCampground(data.id);
-                                    navigate("/campgrounds");
-                                }
-                            }}>
-                            Delete Campground
-                        </Button>
+                        <>
+                            <Button
+                                variant="contained"
+                                color="error"
+                                sx={{ m: 1, fontWeight: "bold" }}
+                                onClick={() => {
+                                    if (confirm("Are you sure you want to delete this campground?") === true) {
+                                        deleteCampground(data.id);
+                                        navigate("/campgrounds");
+                                    }
+                                }}>
+                                Delete Campground
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="warning"
+                                sx={{ m: 1, fontWeight: "bold" }}
+                                onClick={() => navigate(`/campgrounds/${data.id}/edit`)}>
+                                Edit Campground
+                            </Button>
+                        </>
                     }
                 </Grid>
                 <Grid item xs={6}> {/* activities and drive info */}
@@ -93,7 +102,7 @@ const CampgroundPage = () => {
                         {data.activities && data.activities.map((activity) => (
                             <Box key={activity.id} sx={{ m: 1 }}>
                                 <Stack direction="row">
-                                    <CircleIcon sx={{fontSize: 9, p: 1}} />
+                                    <CircleIcon sx={{ fontSize: 9, p: 1 }} />
                                     <Typography>{activity.name}</Typography>
                                 </Stack>
                             </Box>

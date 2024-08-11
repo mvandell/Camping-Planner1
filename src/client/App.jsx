@@ -11,7 +11,8 @@ import CampgroundList from "./components/CampgroundList/CampgroundList"
 import TripPage from "./components/TripPage/TripPage";
 import TripHistory from "./components/TripHistory/TripHistory";
 import EditUser from "./components/AccountPage/EditUser";
-import NewCampground from "./components/NewCampground/NewCampground";
+import EditCampground from "./components/CampgroundPage/EditCampground";
+import NewCampground from "./components/CampgroundPage/NewCampground";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/" element={<EquipmentPage />} />
         <Route path="/campgrounds" element={<CampgroundList />} />
         <Route path="/campgrounds/new/post" element={<NewCampground />} />
+        <Route path="/campgrounds/:id/edit" element={<EditCampground />} />
         <Route path="/campgrounds/:id" element={<CampgroundPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<AccountPage />} />

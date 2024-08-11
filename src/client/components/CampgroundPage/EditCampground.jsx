@@ -59,12 +59,12 @@ const EditCampground = () => {
         <Grid container>
             <Grid item xs={1}></Grid>
             <Grid item xs={8}>
-                <Typography variant="h3" sx={{ mb: 1, color: "bisque" }}>
+                <Typography variant="h2" sx={{ mb: 1, color: "bisque" }}>
                     Edit Campground
                 </Typography>
-                <Card sx={{ backgroundColor: "linen", m: 2, p: 2, mt: 5 }}>
+                <Card sx={{ backgroundColor: "linen", m: 2, p: 2 }}>
                     <Typography textAlign="center" sx={{ m: 1 }}>
-                        <Button onClick={populateForm} variant="filled" sx={{ textTransform: "none" }}>
+                        <Button onClick={populateForm} variant="contained" sx={{ textTransform: "none" }}>
                             Populate Form
                         </Button>
                     </Typography>
@@ -155,7 +155,7 @@ const EditCampground = () => {
                             </Button>
                         </Typography>
                         <Typography textAlign="center" sx={{ m: 1 }}>
-                            <Button onClick={() => navigate("/account")} variant="contained" sx={{ textTransform: "none" }}>
+                            <Button onClick={() => navigate("/campgrounds")} variant="contained" sx={{ textTransform: "none" }}>
                                 Cancel
                             </Button>
                         </Typography>
