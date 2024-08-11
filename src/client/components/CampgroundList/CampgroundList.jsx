@@ -34,7 +34,7 @@ const CampgroundList = () => {
             <Typography variant='h1'>
                 Campgrounds
             </Typography>
-            {adminData.isAdmin === true &&
+            {token && adminData.isAdmin === true &&
                 <IconButton
                     color='warning'
                     onClick={() => navigate("/campgrounds/new/post")}>

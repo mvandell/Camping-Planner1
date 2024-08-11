@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { useGetSingleCampgroundQuery, usePatchCampgroundMutation, useDeleteCampgroundMutation } from "../../redux/api";
+import { useGetSingleCampgroundQuery, useDeleteCampgroundMutation } from "../../redux/api";
 import { usePatchCampgroundActivityAddMutation, usePatchCampgroundActivityRemoveMutation, useGetAdminQuery } from "../../redux/api";
 
 const CampgroundPage = () => {
@@ -29,7 +29,7 @@ const CampgroundPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    //TODO: patch campground
+    //TODO: add/remove activities
     return (
         <div>
             <Typography variant="h1" sx={{ color: "beige" }}>
@@ -70,7 +70,7 @@ const CampgroundPage = () => {
                             </Card>
                         </Grid>
                     </Grid>
-                    {token && adminData.isAdmin &&
+                    {token && adminData.isAdmin === true &&
                         <>
                             <Button
                                 variant="contained"

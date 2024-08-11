@@ -28,16 +28,15 @@ const EquipmentPage = () => {
     const [packToggle] = usePatchEquipmentPackToggleMutation();
     //const [needToggle] = usePatchEquipmentNeedToggleMutation();
 
-
     if (isLoading) {
         return <div> </div>;
     }
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    if (adminIsLoading) {
-        return <div></div>
-    }
+    // if (adminIsLoading) {
+    //     return <div></div>
+    // }
 
     const handleSubmit = async (event) => {
         try {
@@ -61,7 +60,7 @@ const EquipmentPage = () => {
                         //TODO: filter by packed status?
                         <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2, backgroundColor: "linen" }}>
                             <Stack direction="row">
-                                {adminData.isAdmin === true &&
+                                {token && adminData.isAdmin === true &&
                                     <IconButton
                                         color="error"
                                         sx={{ pl: 0 }}
@@ -93,7 +92,7 @@ const EquipmentPage = () => {
                     ))}
                 </Grid>
                 <Grid item xs={4}>
-                    {adminData.isAdmin === true &&
+                    {token && adminData.isAdmin === true &&
                         <Typography textAlign="center">
                             <Button variant="contained" onClick={() => setAlert(true)} sx={{ textTransform: "none" }}>
                                 New Equipment
