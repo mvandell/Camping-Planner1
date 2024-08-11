@@ -7,11 +7,12 @@ import Grid from "@mui/material/Grid";
 import Alert from "@mui/material/Alert";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { usePostCampgroundMutation } from "../../redux/api";
+import { useNavigate, useParams } from "react-router-dom";
+import { usePatchCampgroundMutation, useGetSingleCampgroundQuery } from "../../redux/api";
 
-const NewCampground = () => {
+const EditCampground = () => {
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const [park, setPark] = useState("");
     const [price, setPrice] = useState("");
@@ -23,31 +24,49 @@ const NewCampground = () => {
     const [area, setArea] = useState("");
     const [picture, setPicture] = useState("");
 
-    const [postCampground, { error, isLoading }] = usePostCampgroundMutation();
+    const { data, error, isLoading } = useGetSingleCampgroundQuery(id);
+    const [patchCampground] = usePatchCampgroundMutation();
 
     if (isLoading) {
         return <div></div>;
     }
     if (error) {
-        return <div> Sorry! There's a problem posting the campground. </div>
+        return <div> Error:{error.message} </div>
     }
 
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const result = await postCampground({ park, price: Number(price), firewood: Number(firewood), distance: Number(distance), curvy, reserveFrame: Number(reserve), website: web, generalArea: area, picture })
+            const result = await patchCampground({ park, price: Number(price), firewood: Number(firewood), distance: Number(distance), curvy, reserveFrame: Number(reserve), website: web, generalArea: area, picture })
         } catch (error) {
             console.error(error)
         }
     }
-    //TODO: button colors
+    const populateForm = (event) => {
+        event.preventDefault();
+        setPark(data.park);
+        setPrice(data.price);
+        setFirewood(data.firewood);
+        setDistance(data.distance);
+        setCurvy(data.curvy);
+        setReserve(data.reserveFrame);
+        setWeb(data.website);
+        setArea(data.generalArea);
+        setPicture(data.picture);
+    }
+
     return (
         <Grid container>
             <Grid item xs={1}></Grid>
             <Grid item xs={8}>
-                <Card sx={{ backgroundColor: "linen", m: 2, p: 2 }}>
-                    <Typography variant="h3" sx={{ mb: 1 }}>
-                        New Campground
+                <Typography variant="h3" sx={{ mb: 1, color: "bisque" }}>
+                    Edit Campground
+                </Typography>
+                <Card sx={{ backgroundColor: "linen", m: 2, p: 2, mt: 5 }}>
+                    <Typography textAlign="center" sx={{ m: 1 }}>
+                        <Button onClick={populateForm} variant="filled" sx={{ textTransform: "none" }}>
+                            Populate Form
+                        </Button>
                     </Typography>
                     <form onSubmit={handleSubmit}>
                         <TextField
@@ -147,4 +166,4 @@ const NewCampground = () => {
         </Grid>
     )
 }
-export default NewCampground;
+export default EditCampground;
