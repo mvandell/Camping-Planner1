@@ -71,8 +71,7 @@ const EditTrip = () => {
                             onChange={(event) => setStart(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }}
-                            required />
+                            sx={{ mx: 2, my: 1 }} />
                         <TextField
                             label="End Date"
                             type="date"
@@ -80,8 +79,7 @@ const EditTrip = () => {
                             onChange={(event) => setEnd(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }}
-                            required />
+                            sx={{ mx: 2, my: 1 }} />
                         <TextField
                             label="Gas Total"
                             type="number"
@@ -89,8 +87,7 @@ const EditTrip = () => {
                             onChange={(event) => setGasTotal(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }}
-                            required />
+                            sx={{ mx: 2, my: 1 }} />
                         <TextField
                             label="Gas/person"
                             type="number"
@@ -98,8 +95,7 @@ const EditTrip = () => {
                             onChange={(event) => setGasSingle(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }}
-                            required />
+                            sx={{ mx: 2, my: 1 }} />
                         <TextField
                             label="Firewood cost per night"
                             type="number"
@@ -107,8 +103,7 @@ const EditTrip = () => {
                             onChange={(event) => setFire(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }}
-                            required />
+                            sx={{ mx: 2, my: 1 }} />
                         <TextField
                             label="Parking price"
                             type="number"
@@ -116,8 +111,7 @@ const EditTrip = () => {
                             onChange={(event) => setParking(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }}
-                            required />
+                            sx={{ mx: 2, my: 1 }} />
                         <Typography textAlign="center" sx={{ m: 1 }}>
                             <Button type="submit" variant="contained" sx={{ textTransform: "none" }}>
                                 Submit
