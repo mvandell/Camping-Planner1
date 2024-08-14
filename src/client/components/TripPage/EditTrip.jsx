@@ -6,10 +6,10 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Alert from "@mui/material/Alert";
 
+import { format } from "date-fns";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { usePatchTripMutation, useGetSingleTripQuery } from "../../redux/api";
-import { format } from "date-fns";
 
 const EditTrip = () => {
     const navigate = useNavigate();
@@ -42,8 +42,8 @@ const EditTrip = () => {
     }
     const populateForm = (event) => {
         event.preventDefault();
-        setStart(format(new Date(data.start), "yyyy-MM-dd"));
-        setEnd(format(new Date(data.end), "yyyy-MM-dd"));
+        setStart(format(new Date(data.startDate), "yyyy-MM-dd"));
+        setEnd(format(new Date(data.endDate), "yyyy-MM-dd"));
         setGasTotal(data.gasTotal);
         setGasSingle(data.gasSingle);
         setFire(data.fireNight);
@@ -64,21 +64,24 @@ const EditTrip = () => {
                         </Button>
                     </Typography>
                     <form onSubmit={handleSubmit}>
-                        <Stack direction="row">
-                        <label> Start Date:
-                            <input
-                                type="date"
-                                name="startTime"
-                                value={start}
-                                onChange={(event) => { setStart(event.target.value) }} />
-                        </label>
-                        <label> End Date: 
-                            <input
-                                type="date"
-                                name="endTime"
-                                value={end}
-                                onChange={(event) => { setEnd(event.target.value) }} />
-                        </label></Stack>
+                        <TextField
+                            label="Start Date"
+                            type="date"
+                            value={start}
+                            onChange={(event) => setStart(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
+                        <TextField
+                            label="End Date"
+                            type="date"
+                            value={end}
+                            onChange={(event) => setEnd(event.target.value)}
+                            size="small"
+                            variant="filled"
+                            sx={{ mx: 2, my: 1 }}
+                            required />
                         <TextField
                             label="Gas Total"
                             type="number"
@@ -121,7 +124,7 @@ const EditTrip = () => {
                             </Button>
                         </Typography>
                         <Typography textAlign="center" sx={{ m: 1 }}>
-                            <Button onClick={() => navigate("/campgrounds")} variant="contained" sx={{ textTransform: "none" }}>
+                            <Button onClick={() => navigate(`/trip/${data.id}`)} variant="contained" sx={{ textTransform: "none" }}>
                                 Cancel
                             </Button>
                         </Typography>
