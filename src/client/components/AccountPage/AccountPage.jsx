@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useGetUserQuery,  useGetCurrentTripIdQuery } from "../../redux/api";
+import { useGetUserQuery, useGetCurrentTripIdQuery } from "../../redux/api";
 
 import NewClothing from "./NewClothing";
 import FoodList from "./FoodList";
@@ -45,11 +45,13 @@ const AccountPage = () => {
                                 Edit Account
                             </Button>
                         </Link>
-                        <Link to={`/trip/${tripData.id}`}>
-                            <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>
-                                Current Trip
-                            </Button>
-                        </Link>
+                        {tripData &&
+                            <Link to={`/trip/${tripData.id}`}>
+                                <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>
+                                    Current Trip
+                                </Button>
+                            </Link>
+                        }
                     </Stack>
                 </Grid>
                 <Grid item xs={4}>

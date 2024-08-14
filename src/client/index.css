@@ -22,3 +22,7 @@ img {
 h1 {
   color: bisque
 }
+label {
+  font-family: "arial";
+  margin-bottom: 8px;
+}
