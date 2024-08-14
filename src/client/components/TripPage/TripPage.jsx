@@ -5,10 +5,11 @@ import Stack from "@mui/material/Stack"
 import Alert from "@mui/material/Alert";
 import Checkbox from '@mui/material/Checkbox';
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button"
 
 import format from 'date-fns/format'
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { useGetSingleTripQuery, usePatchTripMutation } from "../../redux/api";
@@ -17,6 +18,7 @@ import { usePatchTripCurrentToggleMutation, usePatchTripMealAddMutation, usePatc
 const TripPage = () => {
     const { id } = useParams();
     const token = useSelector((state) => state.auth.token)
+    const navigate = useNavigate();
 
     const { data, error, isLoading } = useGetSingleTripQuery(id);
     //const [patchTrip] = usePatchTripMutation();
@@ -30,7 +32,6 @@ const TripPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    //TODO: patch trip
     //TODO: post meal
     //TODO: delete meal
     const year = format(new Date(data.startDate), "yyyy");
@@ -61,11 +62,20 @@ const TripPage = () => {
                     }
                 </Box>
             </Stack>
+            <Stack direction="row">
             <Link to={`/campgrounds/${data.campgroundId}`}>
-                <Typography variant="h3" className="park">
+                <Typography variant="h2" className="park">
                     {data.campground.park}
                 </Typography>
             </Link>
+            <Button
+                variant="contained"
+                color="info"
+                sx={{ m: 2, fontWeight: "bold", ml: 3 }}
+                onClick={() => navigate(`/trip/${data.id}/edit`)}>
+                Edit Trip
+            </Button>
+            </Stack>
             <Grid container>
                 <Grid item xs={6}> {/* costs */}
                     <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>

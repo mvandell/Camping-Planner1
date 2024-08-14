@@ -31,16 +31,16 @@ const CampgroundList = () => {
     return (
         <div>
             <Stack direction="row">
-            <Typography variant='h1'>
-                Campgrounds
-            </Typography>
-            {token && adminData.isAdmin === true &&
-                <IconButton
-                    color='warning'
-                    onClick={() => navigate("/campgrounds/new/post")}>
-                    <AddLocationAltIcon sx={{fontSize: 75}}/>
-                </IconButton>
-            }
+                <Typography variant='h1'>
+                    Campgrounds
+                </Typography>
+                {token && adminData.isAdmin === true &&
+                    <IconButton
+                        color='warning'
+                        onClick={() => navigate("/campgrounds/new/post")}>
+                        <AddLocationAltIcon sx={{ fontSize: 75 }} />
+                    </IconButton>
+                }
             </Stack>
             <Box sx={{ height: "85vh", overflowY: "scroll" }}>
                 <ImageList variant='masonry'>
