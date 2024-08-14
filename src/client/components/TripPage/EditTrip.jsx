@@ -58,12 +58,13 @@ const EditTrip = () => {
                     Edit Campground
                 </Typography>
                 <Card sx={{ backgroundColor: "linen", m: 2, p: 2 }}>
-                    <Typography textAlign="center" sx={{ m: 1 }}>
+                    <Typography textAlign="center" sx={{ m: 1, mb: 2 }}>
                         <Button onClick={populateForm} variant="contained" sx={{ textTransform: "none" }}>
                             Populate Form
                         </Button>
                     </Typography>
                     <form onSubmit={handleSubmit}>
+                        <Stack direction="row">
                         <label> Start Date:
                             <input
                                 type="date"
@@ -71,13 +72,13 @@ const EditTrip = () => {
                                 value={start}
                                 onChange={(event) => { setStart(event.target.value) }} />
                         </label>
-                        <label> End Date:
+                        <label> End Date: 
                             <input
                                 type="date"
                                 name="endTime"
                                 value={end}
                                 onChange={(event) => { setEnd(event.target.value) }} />
-                        </label>
+                        </label></Stack>
                         <TextField
                             label="Gas Total"
                             type="number"

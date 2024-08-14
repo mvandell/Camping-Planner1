@@ -24,5 +24,9 @@ h1 {
 }
 label {
   font-family: "arial";
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+}
+input {
+  margin-left: 5px;
 }
