@@ -34,9 +34,7 @@ const EquipmentPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    // if (adminIsLoading) {
-    //     return <div></div>
-    // }
+    //TODO: fix isAdmin error on first render
 
     const handleSubmit = async (event) => {
         try {

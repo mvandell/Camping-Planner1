@@ -38,7 +38,7 @@ const NewTrip = () => {
 
     return (
         <Grid container>
-            <Grid item xs={1}></Grid>
+            <Grid item xs={2}></Grid>
             <Grid item xs={8}>
                 <Typography variant="h2" sx={{ mb: 1, color: "bisque" }}>
                     New Trip
@@ -112,7 +112,7 @@ const NewTrip = () => {
                     </form>
                 </Card>
             </Grid>
-            <Grid item xs={1}></Grid>
+            <Grid item xs={2}></Grid>
         </Grid>
     )
 }

@@ -1,7 +1,7 @@
 import Card from "@mui/material/Card";
 import Typography from '@mui/material/Typography';
 import Stack from "@mui/material/Stack"
-import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import ForestIcon from '@mui/icons-material/Forest';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -23,14 +23,25 @@ const TripHistory = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    //TODO: post trip
+
     return (
         <div>
             <Typography variant="h1">
                 Trip History
             </Typography>
             <Grid container>
-                <Grid item xs={4}></Grid>
+                <Grid item xs={4}>
+                    {adminData.isAdmin === true &&
+                        <Link to={"/trip/new"}>
+                            <Button
+                                variant="contained"
+                                color="warning"
+                                sx={{ mx: 7, my: 1 }}>
+                                New Trip
+                            </Button>
+                        </Link>
+                    }
+                </Grid>
                 <Grid item xs={4}>
                     {data && data.map((trip) => (
                         <Card key={trip.id} sx={{ m: 1, p: 1, backgroundColor: "linen" }}>

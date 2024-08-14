@@ -14,6 +14,7 @@ import EditUser from "./components/AccountPage/EditUser";
 import EditCampground from "./components/CampgroundPage/EditCampground";
 import NewCampground from "./components/CampgroundPage/NewCampground";
 import EditTrip from "./components/TripPage/EditTrip";
+import NewTrip from "./components/TripHistory/NewTrip";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/account/edit" element={<EditUser />} />
         <Route path="/meal/:id" element={<MealPage />} />
         <Route path="/trip/history" element={<TripHistory />} />
+        <Route path="/trip/new" element={<NewTrip />} />
         <Route path="/trip/:id/edit" element={<EditTrip />} />
         <Route path="/trip/:id" element={<TripPage />} />
       </Routes>
