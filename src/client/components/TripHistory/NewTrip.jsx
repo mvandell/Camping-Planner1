@@ -4,19 +4,14 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
-import Alert from "@mui/material/Alert";
 
-import { format } from "date-fns";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { usePatchTripMutation, useGetSingleTripQuery } from "../../redux/api";
+import { useNavigate } from "react-router-dom";
+import { usePostTripMutation } from "../../redux/api";
 
-const EditTrip = () => {
+const NewTrip = () => {
     const navigate = useNavigate();
-    const { id } = useParams();
-
-    const { data, error, isLoading } = useGetSingleTripQuery(id);
-    const [patchTrip] = usePatchTripMutation();
+    const [postTrip, {error, isLoading}] = usePostTripMutation();
 
     const [start, setStart] = useState(""); //date
     const [end, setEnd] = useState(""); //date
@@ -35,19 +30,10 @@ const EditTrip = () => {
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const result = await patchTrip({ startDate: start, endDate: end, gasTotal: Number(gasTotal), gasSingle: Number(gasSingle), fireNight: Number(fire), parking: Number(parking) });
+            const result = await postTrip({ startDate: start, endDate: end, gasTotal: Number(gasTotal), gasSingle: Number(gasSingle), fireNight: Number(fire), parking: Number(parking) });
         } catch (error) {
             console.error(error)
         }
-    }
-    const populateForm = (event) => {
-        event.preventDefault();
-        setStart(format(new Date(data.startDate), "yyyy-MM-dd"));
-        setEnd(format(new Date(data.endDate), "yyyy-MM-dd"));
-        setGasTotal(data.gasTotal);
-        setGasSingle(data.gasSingle);
-        setFire(data.fireNight);
-        setParking(data.parking);
     }
 
     return (
@@ -55,14 +41,9 @@ const EditTrip = () => {
             <Grid item xs={1}></Grid>
             <Grid item xs={8}>
                 <Typography variant="h2" sx={{ mb: 1, color: "bisque" }}>
-                    Edit Trip
+                    New Trip
                 </Typography>
                 <Card sx={{ backgroundColor: "linen", m: 2, p: 2 }}>
-                    <Typography textAlign="center" sx={{ m: 1, mb: 2 }}>
-                        <Button onClick={populateForm} variant="contained" sx={{ textTransform: "none" }}>
-                            Populate Form
-                        </Button>
-                    </Typography>
                     <form onSubmit={handleSubmit}>
                         <TextField
                             label="Start Date"
@@ -71,7 +52,8 @@ const EditTrip = () => {
                             onChange={(event) => setStart(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }} />
+                            sx={{ mx: 2, my: 1 }}
+                            required />
                         <TextField
                             label="End Date"
                             type="date"
@@ -79,7 +61,8 @@ const EditTrip = () => {
                             onChange={(event) => setEnd(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }} />
+                            sx={{ mx: 2, my: 1 }}
+                            required />
                         <TextField
                             label="Gas Total"
                             type="number"
@@ -87,7 +70,8 @@ const EditTrip = () => {
                             onChange={(event) => setGasTotal(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }} />
+                            sx={{ mx: 2, my: 1 }}
+                            required />
                         <TextField
                             label="Gas/person"
                             type="number"
@@ -95,7 +79,8 @@ const EditTrip = () => {
                             onChange={(event) => setGasSingle(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }} />
+                            sx={{ mx: 2, my: 1 }}
+                            required />
                         <TextField
                             label="Firewood cost per night"
                             type="number"
@@ -103,7 +88,8 @@ const EditTrip = () => {
                             onChange={(event) => setFire(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }} />
+                            sx={{ mx: 2, my: 1 }}
+                            required />
                         <TextField
                             label="Parking price"
                             type="number"
@@ -111,14 +97,15 @@ const EditTrip = () => {
                             onChange={(event) => setParking(event.target.value)}
                             size="small"
                             variant="filled"
-                            sx={{ mx: 2, my: 1 }} />
+                            sx={{ mx: 2, my: 1 }}
+                            required />
                         <Typography textAlign="center" sx={{ m: 1 }}>
                             <Button type="submit" variant="contained" sx={{ textTransform: "none" }}>
                                 Submit
                             </Button>
                         </Typography>
                         <Typography textAlign="center" sx={{ m: 1 }}>
-                            <Button onClick={() => navigate(`/trip/${data.id}`)} variant="contained" sx={{ textTransform: "none" }}>
+                            <Button onClick={() => navigate("/trip/history")} variant="contained" sx={{ textTransform: "none" }}>
                                 Cancel
                             </Button>
                         </Typography>
@@ -129,4 +116,4 @@ const EditTrip = () => {
         </Grid>
     )
 }
-export default EditTrip;
+export default NewTrip;
