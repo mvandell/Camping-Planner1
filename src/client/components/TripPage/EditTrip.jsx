@@ -112,13 +112,14 @@ const EditTrip = () => {
                             size="small"
                             variant="filled"
                             sx={{ mx: 2, my: 1 }} />
-                        <Typography textAlign="center" sx={{ m: 1 }}>
-                            <Button type="submit" variant="contained" sx={{ textTransform: "none" }}>
-                                Submit
+                        <Typography textAlign="center">
+                            <Button type="submit" variant="contained" color="success" sx={{ textTransform: "none", m: 1 }}>
+                                Update
                             </Button>
-                        </Typography>
-                        <Typography textAlign="center" sx={{ m: 1 }}>
-                            <Button onClick={() => navigate(`/trip/${data.id}`)} variant="contained" sx={{ textTransform: "none" }}>
+                            <Button
+                                onClick={() => navigate(`/trip/${data.id}`)}
+                                variant="contained"
+                                sx={{ textTransform: "none", m: 1, backgroundColor: "sienna", ":hover": { backgroundColor: "saddlebrown" } }}>
                                 Cancel
                             </Button>
                         </Typography>

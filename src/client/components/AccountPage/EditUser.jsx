@@ -29,7 +29,7 @@ const EditUser = () => {
             console.error(error)
         }
     }
-//TODO: button colors
+
     if (isLoading) {
         return <div> </div>;
     }
@@ -41,10 +41,10 @@ const EditUser = () => {
         <Grid container>
             <Grid item xs={4}></Grid>
             <Grid item xs={4}>
-                    <Typography variant="h2" sx={{color: "bisque"}}>
-                        Update Your Account:
-                    </Typography>
-                <Card sx={{m: 2, p: 3}}>
+                <Typography variant="h2" sx={{ color: "bisque" }}>
+                    Update Your Account:
+                </Typography>
+                <Card sx={{ m: 2, p: 3 }}>
                     <form onSubmit={handleSubmit}>
                         <Stack direction="column">
                             <TextField
@@ -85,13 +85,14 @@ const EditUser = () => {
                                         <Alert severity="error"> Passwords do not match </Alert> : null
                                 }
                             />
-                            <Typography textAlign="center" sx={{ m: 1 }}>
-                                <Button type="submit" variant="contained" sx={{textTransform: "none"}}>
+                            <Typography textAlign="center">
+                                <Button type="submit" variant="contained" color="success" sx={{ textTransform: "none", m: 1 }}>
                                     Update
                                 </Button>
-                            </Typography>
-                            <Typography textAlign="center" sx={{m: 1}}>
-                                <Button onClick={() => navigate("/account")} variant="contained" sx={{textTransform: "none"}}>
+                                <Button
+                                    onClick={() => navigate("/account")}
+                                    variant="contained"
+                                    sx={{ textTransform: "none", m: 1, backgroundColor: "sienna", ":hover": { backgroundColor: "saddlebrown" } }}>
                                     Cancel
                                 </Button>
                             </Typography>

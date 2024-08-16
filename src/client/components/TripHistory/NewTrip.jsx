@@ -11,7 +11,7 @@ import { usePostTripMutation } from "../../redux/api";
 
 const NewTrip = () => {
     const navigate = useNavigate();
-    const [postTrip, {error, isLoading}] = usePostTripMutation();
+    const [postTrip, { error, isLoading }] = usePostTripMutation();
 
     const [start, setStart] = useState(""); //date
     const [end, setEnd] = useState(""); //date
@@ -99,13 +99,14 @@ const NewTrip = () => {
                             variant="filled"
                             sx={{ mx: 2, my: 1 }}
                             required />
-                        <Typography textAlign="center" sx={{ m: 1 }}>
-                            <Button type="submit" variant="contained" sx={{ textTransform: "none" }}>
+                        <Typography textAlign="center">
+                            <Button type="submit" variant="contained" color="success" sx={{ textTransform: "none", m: 1 }}>
                                 Submit
                             </Button>
-                        </Typography>
-                        <Typography textAlign="center" sx={{ m: 1 }}>
-                            <Button onClick={() => navigate("/trip/history")} variant="contained" sx={{ textTransform: "none" }}>
+                            <Button
+                                onClick={() => navigate("/trip/history")}
+                                variant="contained"
+                                sx={{ textTransform: "none", m: 1, backgroundColor: "sienna", ":hover": { backgroundColor: "saddlebrown" } }}>
                                 Cancel
                             </Button>
                         </Typography>

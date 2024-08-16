@@ -30,7 +30,6 @@ const AccountPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    //TODO: change color of buttons
 
     return (
         <div>
@@ -41,13 +40,13 @@ const AccountPage = () => {
                 <Grid item xs={2}>
                     <Stack direction="column" sx={{ textAlign: "center" }}>
                         <Link to={"/account/edit"}>
-                            <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>
+                            <Button variant="contained" color="warning" sx={{ textTransform: "none", m: 2 }}>
                                 Edit Account
                             </Button>
                         </Link>
                         {tripData &&
                             <Link to={`/trip/${tripData.id}`}>
-                                <Button variant="contained" sx={{ textTransform: "none", m: 2 }}>
+                                <Button variant="contained" color="success" sx={{ textTransform: "none", m: 2 }}>
                                     Current Trip
                                 </Button>
                             </Link>

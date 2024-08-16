@@ -40,7 +40,7 @@ const NewClothing = () => {
                         size="small"
                         variant="filled" />
                     <Typography textAlign="center" sx={{ m: 1, mt: 2 }}>
-                        <Button type="submit" variant="contained" sx={{ textTransform: "none" }}>
+                        <Button type="submit" color="success" variant="contained" sx={{ textTransform: "none" }}>
                             Submit
                         </Button>
                     </Typography>

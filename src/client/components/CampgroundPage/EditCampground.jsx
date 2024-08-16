@@ -33,7 +33,7 @@ const EditCampground = () => {
     if (error) {
         return <div> Error:{error.message} </div>
     }
-//TODO: button colors
+
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
@@ -149,13 +149,14 @@ const EditCampground = () => {
                             variant="filled"
                             sx={{ mx: 2, my: 1 }}
                             required />
-                        <Typography textAlign="center" sx={{ m: 1 }}>
-                            <Button type="submit" variant="contained" sx={{ textTransform: "none" }}>
-                                Submit
+                        <Typography textAlign="center">
+                            <Button type="submit" variant="contained" color="success" sx={{ textTransform: "none", m: 1 }}>
+                                Update
                             </Button>
-                        </Typography>
-                        <Typography textAlign="center" sx={{ m: 1 }}>
-                            <Button onClick={() => navigate("/campgrounds")} variant="contained" sx={{ textTransform: "none" }}>
+                            <Button
+                                onClick={() => navigate(`/campgrounds/${data.id}`)}
+                                variant="contained"
+                                sx={{ textTransform: "none", m: 1, backgroundColor: "sienna", ":hover": { backgroundColor: "saddlebrown" } }}>
                                 Cancel
                             </Button>
                         </Typography>

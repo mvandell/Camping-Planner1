@@ -21,7 +21,6 @@ const TripPage = () => {
     const navigate = useNavigate();
 
     const { data, error, isLoading } = useGetSingleTripQuery(id);
-    //const [patchTrip] = usePatchTripMutation();
     const [currentToggle] = usePatchTripCurrentToggleMutation();
     // const [addMeal] = usePatchTripMealAddMutation();
     // const [removeMeal] = usePatchTripMealRemoveMutation();
@@ -70,7 +69,7 @@ const TripPage = () => {
             </Link>
             <Button
                 variant="contained"
-                color="info"
+                color="warning"
                 sx={{ m: 2, fontWeight: "bold", ml: 3 }}
                 onClick={() => navigate(`/trip/${data.id}/edit`)}>
                 Edit Trip
