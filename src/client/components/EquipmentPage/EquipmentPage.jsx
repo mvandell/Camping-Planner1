@@ -79,7 +79,7 @@ const EquipmentPage = () => {
                                             defaultChecked={equipment.packed}
                                             onChange={async () => {
                                                 console.log("toggle packed");
-                                                const response = await packToggle({ id: equipment.id, packed: !packed });
+                                                const response = await packToggle({ id: equipment.id, packed: !equipment.packed });
                                                 console.log(response);
                                             }} />
                                         <Typography sx={{ py: 1 }}>Packed</Typography>

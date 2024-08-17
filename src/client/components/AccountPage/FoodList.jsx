@@ -34,18 +34,18 @@ const FoodList = () => {
                                 {food.name}
                             </Typography>
                             <Checkbox
-                                defaultChecked={food.cooler} //icon instead? snowflake? fridge?
+                                defaultChecked={food.cooler}
                                 onChange={async () => {
                                     console.log("toggle cooler");
-                                    const response = await coolerToggle({ id: food.id, cooler: !cooler });
+                                    const response = await coolerToggle({ id: food.id, cooler: !food.cooler });
                                     console.log("cooler", response);
                                 }} />
                             <KitchenIcon fontSize="medium" sx={{py: 1}}/>
                             <Checkbox
-                                defaultChecked={food.purchased} //icon instead? store? storeFront? shoppingCart?
+                                defaultChecked={food.purchased}
                                 onChange={async () => {
                                     console.log("toggle purchased");
-                                    const response = await purchaseToggle({ id: food.id, purchased: !purchased });
+                                    const response = await purchaseToggle({ id: food.id, purchased: !food.purchased });
                                     console.log("purchased", response);
                                 }} />
                             <ShoppingCartIcon fontSize="medium" sx={{py: 1}}/>

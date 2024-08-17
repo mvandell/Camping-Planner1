@@ -43,7 +43,7 @@ const MapAllClothing = () => {
                             defaultChecked={clothing.packed}
                             onChange={async () => {
                                 console.log("toggle packed");
-                                const response = await packToggle({ id: clothing.id, packed: !packed });
+                                const response = await packToggle({ id: clothing.id, packed: !clothing.packed });
                                 console.log(response);
                             }} />
                         <BackpackIcon fontSize="medium" sx={{ py: 1 }} />

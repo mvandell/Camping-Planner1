@@ -79,7 +79,7 @@ const MealPage = () => {
                                     defaultChecked={ingredient.cooler}
                                     onChange={async () => {
                                         console.log("toggle cooler");
-                                        const response = await coolerToggle({ id: ingredient.id, cooler: !cooler });
+                                        const response = await coolerToggle({ id: ingredient.id, cooler: !ingredient.cooler });
                                         console.log("cooler", response);
                                     }} />
                                 <Typography>Cooler</Typography>
@@ -87,7 +87,7 @@ const MealPage = () => {
                                     defaultChecked={ingredient.purchased}
                                     onChange={async () => {
                                         console.log("toggle purchased");
-                                        const response = await purchaseToggle({ id: ingredient.id, purchased: !purchased });
+                                        const response = await purchaseToggle({ id: ingredient.id, purchased: !ingredient.purchased });
                                         console.log("purchased", response);
                                     }} />
                                 <Typography>Purchased</Typography>

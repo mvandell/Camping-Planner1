@@ -44,7 +44,7 @@ const CampgroundList = () => {
             </Stack>
             <Box sx={{ height: "85vh", overflowY: "scroll" }}>
                 <ImageList variant='masonry'>
-                    {data && data.map((campground) => ( //scrollable
+                    {data && data.map((campground) => (
                         <ImageListItem key={campground.id} sx={{ m: 1 }}>
                             <img src={campground.picture} alt={campground.park} />
                             <ImageListItemBar
