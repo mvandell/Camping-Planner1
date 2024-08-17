@@ -12,7 +12,7 @@ import { useGetUserQuery, useGetCurrentTripIdQuery } from "../../redux/api";
 
 import NewClothing from "./NewClothing";
 import FoodList from "./FoodList";
-import ClothingList from "./ClothingList";
+import ClothingList from "./ClothingList/ClothingList";
 
 const AccountPage = () => {
     const token = useSelector((state) => state.auth.token);
