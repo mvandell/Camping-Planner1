@@ -4,6 +4,7 @@ import Stack from "@mui/material/Stack"
 import Grid from "@mui/material/Grid"
 import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
+import Switch from '@mui/material/Switch';
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -45,13 +46,15 @@ const EquipmentPage = () => {
             <Typography variant="h1">
                 Equipment
             </Typography>
-            <Stack direction="row">
-                <Switch
-                    defaultChecked={unpacked}
-                    sx={{ backgroundColor: "#B2702E", borderRadius: 5 }}
-                    onChange={() => { setUnpacked(!unpacked) }} />
-                <Typography sx={{ color: "beige", py: 1, ml: 1 }}>Unpacked only</Typography>
-            </Stack>
+            {token &&
+                <Stack direction="row">
+                    <Switch
+                        defaultChecked={unpacked}
+                        sx={{ backgroundColor: "#B2702E", borderRadius: 5 }}
+                        onChange={() => { setUnpacked(!unpacked) }} />
+                    <Typography sx={{ color: "beige", py: 1, ml: 1 }}>Unpacked only</Typography>
+                </Stack>
+            }
             <Grid container>
                 <Grid item xs={4}></Grid>
                 <Grid item xs={4} sx={{ height: "85vh", overflowY: "scroll" }}>
@@ -63,7 +66,7 @@ const EquipmentPage = () => {
                         <div>
                             <MapAllEquipment />
                         </div>
-                }
+                    }
                 </Grid>
                 <Grid item xs={4}>
                     {token && data.isAdmin === true &&

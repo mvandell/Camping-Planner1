@@ -27,7 +27,7 @@ const MapAllEquipment = () => {
 
     return (
         <>
-            {data && data.map((equipment) => (
+            {data && data.slice().sort((a, b) => a.id - b.id).map((equipment) => (
                 <Card key={equipment.id} sx={{ p: 1, m: 1, px: 2, backgroundColor: "linen" }}>
                     <Stack direction="row">
                         {token && adminData.isAdmin === true &&
