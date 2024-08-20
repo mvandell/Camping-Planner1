@@ -27,7 +27,7 @@ const CampgroundList = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    //TODO: filters for reserveFrame and generalArea
+    //TODO: sort by reserveFrame and generalArea
     return (
         <div>
             <Stack direction="row">

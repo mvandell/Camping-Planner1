@@ -7,7 +7,7 @@ import MapUnpackedClothing from "./MapUnpackedClothing";
 import MapAllClothing from "./MapAllClothing";
 
 const ClothingList = () => {
-    const [unpacked, setUnpacked] = useState(false)
+    const [unpacked, setUnpacked] = useState(false);
 
     return (
         <div>
