@@ -274,6 +274,27 @@ async function seed() {
             },
             include: { activities: true }
         })
+        const bliss = await prisma.campgrounds.create({
+            data: {
+                park: "Bliss SP",
+                price: 40,
+                firewood: 10,
+                distance: 4,
+                curvy: "at end",
+                reserveFrame: 6,
+                website: "https://www.parks.ca.gov/?page_id=505",
+                generalArea: "Tahoe",
+                picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/8c/28/3f/dl-bliss-state-park.jpg?w=1000&h=-1&s=1",
+                activities: {
+                    connect: [
+                        { id: hike.id },
+                        { id: swim.id },
+                        { id: raft.id }
+                    ]
+                }
+            },
+            include: { activities: true }
+        })
         const koa = await prisma.campgrounds.create({
             data: {
                 park: "Shingletown KOA",
