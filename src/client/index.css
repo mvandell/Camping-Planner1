@@ -1,7 +1,7 @@
 html {
   padding: 0;
   margin: 0;
-  background-image: url("./images/trees.jpg");
+  background-image: url("./images/aspenTops.jpg");
   background-size: cover;
 }
 a {
@@ -20,7 +20,7 @@ img {
   width: 100%;
 }
 h1 {
-  color: bisque
+  color: #0B132B
 }
 label {
   font-family: "arial";
