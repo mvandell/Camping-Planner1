@@ -5,9 +5,14 @@ import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
-import AddLocationIcon from '@mui/icons-material/AddLocation';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import Stack from "@mui/material/Stack"
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import BookOnlineIcon from '@mui/icons-material/BookOnline';
+import PlaceIcon from '@mui/icons-material/Place';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -28,6 +33,8 @@ const CampgroundList = () => {
         return <div>Error:{error.message}</div>;
     }
     //TODO: sort by reserveFrame and generalArea
+        //switch case or nested if/else or ternary
+        //variables a=b, b=a
     return (
         <div>
             <Stack direction="row">
@@ -42,6 +49,20 @@ const CampgroundList = () => {
                     </IconButton>
                 }
             </Stack>
+            <ToggleButtonGroup exclusive sx={{backgroundColor: "ivory", m: 1}}>
+                <ToggleButton >
+                    <BookOnlineIcon/> <ArrowUpwardIcon/>
+                </ToggleButton>
+                <ToggleButton >
+                    <BookOnlineIcon/> <ArrowDownwardIcon/>
+                </ToggleButton>
+                <ToggleButton >
+                    <PlaceIcon/> <ArrowUpwardIcon/>
+                </ToggleButton>
+                <ToggleButton >
+                    <PlaceIcon/> <ArrowDownwardIcon/>
+                </ToggleButton>
+            </ToggleButtonGroup>
             <Box sx={{ height: "85vh", overflowY: "scroll" }}>
                 <ImageList variant='masonry'>
                     {data && data.map((campground) => (
