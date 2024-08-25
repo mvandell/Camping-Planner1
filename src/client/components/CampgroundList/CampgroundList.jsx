@@ -13,15 +13,20 @@ import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import PlaceIcon from '@mui/icons-material/Place';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import SortIcon from '@mui/icons-material/Sort';
+import ClearIcon from '@mui/icons-material/Clear';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 import { useGetAllCampgroundsQuery, useGetAdminQuery } from '../../redux/api';
 
 const CampgroundList = () => {
     const token = useSelector((state) => state.auth.token)
     const navigate = useNavigate();
+
+    const [sort, setSort] = useState(0);
 
     const { data, error, isLoading } = useGetAllCampgroundsQuery();
     const { data: adminData, error: adminError, isLoading: adminIsLoading } = useGetAdminQuery();
@@ -32,9 +37,13 @@ const CampgroundList = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
+    const handleSort = (event, newSort) => {
+        setSort(newSort);
+    }
     //TODO: sort by reserveFrame and generalArea
-        //switch case or nested if/else or ternary
-        //variables a=b, b=a
+    //switch case or 
+    //nested if/else or ternary
+    //variables a=b, b=a
     return (
         <div>
             <Stack direction="row">
@@ -49,19 +58,28 @@ const CampgroundList = () => {
                     </IconButton>
                 }
             </Stack>
-            <ToggleButtonGroup exclusive sx={{backgroundColor: "ivory", m: 1}}>
-                <ToggleButton >
-                    <BookOnlineIcon/> <ArrowUpwardIcon/>
+            <ToggleButtonGroup
+                value={sort}
+                exclusive
+                onChange={handleSort}
+                sx={{ backgroundColor: "ivory", m: 1 }}
+                aria-label='sort'>
+                  <ToggleButton value={0} aria-label='no sort'>
+                    <SortIcon fontSize='small'/> <ClearIcon fontSize='small'/>
+                </ToggleButton>   
+                <ToggleButton value={1} aria-label='reserve increasing'>
+                    <BookOnlineIcon fontSize='small'/> <ArrowUpwardIcon fontSize='small'/>
                 </ToggleButton>
-                <ToggleButton >
-                    <BookOnlineIcon/> <ArrowDownwardIcon/>
+                <ToggleButton value={2} aria-label='reserve decreasing'>
+                    <BookOnlineIcon fontSize='small'/> <ArrowDownwardIcon fontSize='small'/>
                 </ToggleButton>
-                <ToggleButton >
-                    <PlaceIcon/> <ArrowUpwardIcon/>
+                <ToggleButton value={3} aria-label='area increasing'>
+                    <PlaceIcon fontSize='small'/> <ArrowUpwardIcon fontSize='small'/>
                 </ToggleButton>
-                <ToggleButton >
-                    <PlaceIcon/> <ArrowDownwardIcon/>
+                <ToggleButton value={4} aria-label='area decreasing'>
+                    <PlaceIcon fontSize='small'/> <ArrowDownwardIcon fontSize='small'/>
                 </ToggleButton>
+               
             </ToggleButtonGroup>
             <Box sx={{ height: "85vh", overflowY: "scroll" }}>
                 <ImageList variant='masonry'>
