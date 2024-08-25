@@ -79,9 +79,8 @@ const CampgroundList = () => {
                 <ToggleButton value={4} aria-label='area decreasing'>
                     <PlaceIcon fontSize='small'/> <ArrowDownwardIcon fontSize='small'/>
                 </ToggleButton>
-               
             </ToggleButtonGroup>
-            <Box sx={{ height: "85vh", overflowY: "scroll" }}>
+            <Box sx={{ height: "80vh", overflowY: "scroll" }}>
                 <ImageList variant='masonry'>
                     {data && data.map((campground) => (
                         <ImageListItem key={campground.id} sx={{ m: 1 }}>

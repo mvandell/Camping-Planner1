@@ -57,7 +57,7 @@ const EquipmentPage = () => {
             }
             <Grid container>
                 <Grid item xs={4}></Grid>
-                <Grid item xs={4} sx={{ height: "85vh", overflowY: "scroll" }}>
+                <Grid item xs={4} sx={{ height: "83vh", overflowY: "scroll" }}>
                     {unpacked ?
                         <div>
                             <MapUnpackedEquipment />
