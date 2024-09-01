@@ -15,7 +15,7 @@ const MapCampgrounds = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-
+    console.log("MapCampgrounds")
     return (
         <>
             {data && data.map((campground) => (

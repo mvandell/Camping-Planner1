@@ -6,6 +6,7 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import Stack from "@mui/material/Stack"
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Radio from '@mui/material/Radio';
 import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import PlaceIcon from '@mui/icons-material/Place';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -26,7 +27,7 @@ const CampgroundList = () => {
     const token = useSelector((state) => state.auth.token)
     const navigate = useNavigate();
 
-    const [sort, setSort] = useState(0);
+    const [sort, setSort] = useState("0");
 
     const { data, error, isLoading } = useGetAllCampgroundsQuery();
     const { data: adminData, error: adminError, isLoading: adminIsLoading } = useGetAdminQuery();
@@ -37,28 +38,14 @@ const CampgroundList = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    const handleSort = (event, newSort) => {
-        setSort(newSort);
+    const handleSort = (event) => {
+        setSort(event.target.value);
     }
-    const renderSwitch = () => {
-        switch(sort) {
-            case 0:
-                <MapCampgrounds/>
-                break
-            case 1 || 2:
-                <SortCampgroundsReserve type={sort}/>
-                break;
-            case 3 || 4:
-                <SortCampgroundsArea type={sort}/>
-                break;
-            default:
-                <MapCampgrounds/>
-                break;
-    }}
     //TODO: sort by reserveFrame and generalArea
-    //switch case or 
-    //nested if/else or ternary
-    //variables a=b, b=a
+    //sort not working cuz of masonry
+        //filter would work
+        //could add reserveFrame to subtitle
+
     return (
         <div>
             <Stack direction="row">
@@ -73,32 +60,58 @@ const CampgroundList = () => {
                     </IconButton>
                 }
             </Stack>
-            <ToggleButtonGroup
+            {/* <ToggleButtonGroup
                 value={sort}
                 exclusive
                 onChange={handleSort}
                 sx={{ backgroundColor: "ivory", m: 1 }}
                 aria-label='sort'>
-                <ToggleButton value={0} aria-label='no sort'>
+                <ToggleButton value="0" aria-label='no sort'>
                     <SortIcon fontSize='small' /> <ClearIcon fontSize='small' />
                 </ToggleButton>
-                <ToggleButton value={1} aria-label='reserve increasing'>
+                <ToggleButton value="1" aria-label='reserve increasing'>
                     <BookOnlineIcon fontSize='small' /> <ArrowUpwardIcon fontSize='small' />
                 </ToggleButton>
-                <ToggleButton value={2} aria-label='reserve decreasing'>
+                <ToggleButton value="2" aria-label='reserve decreasing'>
                     <BookOnlineIcon fontSize='small' /> <ArrowDownwardIcon fontSize='small' />
                 </ToggleButton>
-                <ToggleButton value={3} aria-label='area increasing'>
+                <ToggleButton value="3" aria-label='area increasing'>
                     <PlaceIcon fontSize='small' /> <ArrowUpwardIcon fontSize='small' />
                 </ToggleButton>
-                <ToggleButton value={4} aria-label='area decreasing'>
+                <ToggleButton value="4" aria-label='area decreasing'>
                     <PlaceIcon fontSize='small' /> <ArrowDownwardIcon fontSize='small' />
                 </ToggleButton>
-            </ToggleButtonGroup>
+            </ToggleButtonGroup> */}
+            <form onChange={handleSort}>
+                <label>
+                    <SortIcon fontSize='small' /> <ClearIcon fontSize='small' />
+                    <input type='radio' value={0} name='sorting'/>
+                </label>
+                <label>
+                    <BookOnlineIcon fontSize='small' /> <ArrowUpwardIcon fontSize='small' />
+                    <input type='radio' value={1} name='sorting'/>
+                </label>
+                <label>
+                    <BookOnlineIcon fontSize='small' /> <ArrowDownwardIcon fontSize='small' />
+                    <input type='radio' value={2} name='sorting'/>
+                </label>
+                <label>
+                    <PlaceIcon fontSize='small' /> <ArrowUpwardIcon fontSize='small' />
+                    <input type='radio' value={3} name='sorting'/>
+                </label>
+                <label>
+                    <PlaceIcon fontSize='small' /> <ArrowDownwardIcon fontSize='small' />
+                    <input type='radio' value={4} name='sorting'/>
+                </label>
+            </form>
             <Box sx={{ height: "80vh", overflowY: "scroll" }}>
                 <ImageList variant='masonry'>
                     <>
-                       {renderSwitch()}
+                        {
+                            (sort == 1 || sort == 2) ? <SortCampgroundsReserve type={sort} />
+                                : (sort == 3 || sort == 4) ? <SortCampgroundsArea type={sort} />
+                                    : <MapCampgrounds />
+                        }
                     </>
                 </ImageList>
             </Box>
