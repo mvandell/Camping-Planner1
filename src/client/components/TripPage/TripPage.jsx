@@ -40,11 +40,11 @@ const TripPage = () => {
     return (
         <div style={{ marginTop: "1%" }}>
             <Stack direction="row" >
-                <Typography variant="h1" sx={{ color: "blanchedalmond" }}>
+                <Typography variant="h1" >
                     {year}
                 </Typography>
                 <Box>
-                    <Typography variant="h4" sx={{ color: "blanchedalmond" }}>
+                    <Typography variant="h4" sx={{ color: "#CE853B" }}>
                         {start} - {end}
                     </Typography>
                     {token &&
@@ -56,7 +56,7 @@ const TripPage = () => {
                                     const response = await currentToggle({ id: data.id, current: !current });
                                     console.log("current", response);
                                 }} />
-                            <Typography sx={{ color: "blanchedalmond", my: 1 }}>Current</Typography>
+                            <Typography sx={{ color: "#CE853B", my: 1 }}>Current</Typography>
                         </Stack>
                     }
                 </Box>
