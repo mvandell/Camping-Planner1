@@ -45,6 +45,9 @@ const CampgroundList = () => {
     //sort not working cuz of masonry
         //filter would work
         //could add reserveFrame to subtitle
+    //use cases
+        //know generalArea, need to pick a campground
+        //not sure where to go, need to decide - more likely
 
     return (
         <div>
