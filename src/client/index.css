@@ -8,13 +8,13 @@ a {
   text-decoration: none;
 }
 .park { 
-  color: bisque;
+  color: #FFAC47;
 }
 a:hover {
   color: lightblue;
 }
 .park:hover {
-  color: lightblue;
+  color: pink;
 }
 img {
   width: 100%;

@@ -33,6 +33,8 @@ const TripPage = () => {
     }
     //TODO: post meal
     //TODO: delete meal
+    //TODO: break up into more components
+    //remove days from meals?
     const year = format(new Date(data.startDate), "yyyy");
     const start = format(new Date(data.startDate), "MMMM d");
     const end = format(new Date(data.endDate), "MMMM d");
@@ -62,21 +64,24 @@ const TripPage = () => {
                 </Box>
             </Stack>
             <Stack direction="row">
-            <Link to={`/campgrounds/${data.campgroundId}`}>
-                <Typography variant="h2" className="park">
-                    {data.campground.park}
-                </Typography>
-            </Link>
-            <Button
-                variant="contained"
-                color="warning"
-                sx={{ m: 2, fontWeight: "bold", ml: 3 }}
-                onClick={() => navigate(`/trip/${data.id}/edit`)}>
-                Edit Trip
-            </Button>
+                <Link to={`/campgrounds/${data.campgroundId}`}>
+                    <Typography variant="h2" className="park">
+                        {data.campground.park}
+                    </Typography>
+                </Link>
+                <Button
+                    variant="contained"
+                    color="warning"
+                    sx={{ m: 2, fontWeight: "bold", ml: 3 }}
+                    onClick={() => navigate(`/trip/${data.id}/edit`)}>
+                    Edit Trip
+                </Button>
             </Stack>
             <Grid container>
                 <Grid item xs={6}> {/* costs */}
+                    <Typography variant="h4" sx={{ color: "bisque" }}>
+                        Costs
+                    </Typography>
                     <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                         <Typography variant="h5">
                             Total Costs

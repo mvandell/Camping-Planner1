@@ -47,7 +47,7 @@ const CampgroundList = () => {
                     </IconButton>
                 }
             </Stack>
-            <Box sx={{ height: "80vh", overflowY: "scroll" }}>
+            <Box sx={{ height: "85vh", overflowY: "scroll" }}>
                 <ImageList variant='masonry'>
                     <MapCampgrounds />
                 </ImageList>
