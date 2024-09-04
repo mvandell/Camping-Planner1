@@ -18,7 +18,7 @@ const NavBar = () => {
                 <Typography variant="h4" sx={{ color: "beige", flexGrow: 1 }}>
                     Camping Planner
                 </Typography>
-                <Box sx={{ borderRadius: 5, backgroundColor: "beige", boxShadow: 5, py: 0.5, px: 1 }}>
+                <Box sx={{ borderRadius: 5, backgroundColor: "beige", boxShadow: 5, py: 0.5, px: 1 }}> {/* TODO: change color of box */}
                     <CurrentTripButton />
                     {token &&
                         <Link to="/trip/history">

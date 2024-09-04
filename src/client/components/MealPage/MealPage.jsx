@@ -6,6 +6,8 @@ import Grid from "@mui/material/Grid";
 import Checkbox from '@mui/material/Checkbox';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from "@mui/material/IconButton";
+import KitchenIcon from '@mui/icons-material/Kitchen';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -13,6 +15,8 @@ import { useParams } from "react-router-dom";
 import { useGetSingleMealQuery, useDeleteFoodMutation, usePostFoodMutation } from "../../redux/api";
 import { usePatchMealMutation, usePatchMealFoodRemoveMutation, usePatchFoodPurchaseToggleMutation } from "../../redux/api";
 import { usePatchFoodMutation, usePatchFoodCoolerToggleMutation } from "../../redux/api";
+
+//TODO: change color of headings
 
 const MealPage = () => {
     const { id } = useParams();
@@ -76,21 +80,21 @@ const MealPage = () => {
                                     {ingredient.name}
                                 </Typography>
                                 <Checkbox
-                                    defaultChecked={ingredient.cooler}
-                                    onChange={async () => {
-                                        console.log("toggle cooler");
-                                        const response = await coolerToggle({ id: ingredient.id, cooler: !ingredient.cooler });
-                                        console.log("cooler", response);
-                                    }} />
-                                <Typography>Cooler</Typography>
-                                <Checkbox
-                                    defaultChecked={ingredient.purchased}
-                                    onChange={async () => {
-                                        console.log("toggle purchased");
-                                        const response = await purchaseToggle({ id: ingredient.id, purchased: !ingredient.purchased });
-                                        console.log("purchased", response);
-                                    }} />
-                                <Typography>Purchased</Typography>
+                                defaultChecked={ingredient.cooler}
+                                onChange={async () => {
+                                    console.log("toggle cooler");
+                                    const response = await coolerToggle({ id: ingredient.id, cooler: !food.cooler });
+                                    console.log("cooler", response);
+                                }} />
+                            <KitchenIcon fontSize="medium" sx={{py: 1}}/>
+                            <Checkbox
+                                defaultChecked={ingredient.purchased}
+                                onChange={async () => {
+                                    console.log("toggle purchased");
+                                    const response = await purchaseToggle({ id: ingredient.id, purchased: !food.purchased });
+                                    console.log("purchased", response);
+                                }} />
+                            <ShoppingCartIcon fontSize="medium" sx={{py: 1}}/>
                             </Stack>
                             <Typography sx={{}}>
                                 {ingredient.user.username}
