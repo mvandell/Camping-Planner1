@@ -18,22 +18,22 @@ const NavBar = () => {
                 <Typography variant="h4" sx={{ color: "beige", flexGrow: 1 }}>
                     Camping Planner
                 </Typography>
-                <Box sx={{ borderRadius: 5, backgroundColor: "beige", boxShadow: 5, py: 0.5, px: 1 }}> {/* TODO: change color of box */}
+                <Box sx={{ borderRadius: 5, backgroundColor: "aliceblue", boxShadow: 5, py: 0.5, px: 1 }}>
                     <CurrentTripButton />
                     {token &&
                         <Link to="/trip/history">
-                            <Button variant="text" sx={{ textTransform: "none" }}>
+                            <Button variant="text" color="success" sx={{ textTransform: "none", ":hover": { backgroundColor: "#ADD9FF" } }}>
                                 All Trips
                             </Button>
                         </Link>
                     }
                     <Link to="/campgrounds">
-                        <Button variant="text" sx={{ textTransform: "none" }}>
+                        <Button variant="text" color="success" sx={{ textTransform: "none", ":hover": { backgroundColor: "#ADD9FF" } }}>
                             Campgrounds
                         </Button>
                     </Link>
                     <Link to="/">
-                        <Button variant="text" sx={{ textTransform: "none" }}>
+                        <Button variant="text" color="success" sx={{ textTransform: "none", ":hover": { backgroundColor: "#ADD9FF" } }}>
                             Equipment
                         </Button>
                     </Link>

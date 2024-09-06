@@ -22,7 +22,8 @@ const LogoutButton = () => {
             <Button
                 onClick={async () => { await logout(); navigate("/"); }}
                 variant="text"
-                sx={{ textTransform: "none" }}>
+                color="success"
+                sx={{ textTransform: "none", ":hover": { backgroundColor: "#ADD9FF" } }}>
                     Logout
             </Button>
         </>

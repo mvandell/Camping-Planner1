@@ -32,8 +32,8 @@ const CampgroundPage = () => {
     //TODO: add/remove activities
     return (
         <div>
-            <Typography variant="h1" sx={{ color: "beige" }}>
-                <a href={data.website} target="_blank" className="park">{data.park}</a>
+            <Typography variant="h1">
+                <a href={data.website} target="_blank" id="parkTitle">{data.park}</a>
             </Typography>
             <Grid container>
                 <Grid item xs={6}> {/* picture and info */}

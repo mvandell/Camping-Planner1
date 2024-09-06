@@ -27,7 +27,8 @@ const AccountDropdown = () => {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
-                sx={{ textTransform: "none", mr: 2 }}
+                color="success"
+                sx={{ textTransform: "none", mr: 2, ":hover": { backgroundColor: "#ADD9FF" } }}
             >
                 Account
             </Button>
@@ -37,15 +38,16 @@ const AccountDropdown = () => {
                         id="account-menu"
                         anchorEl={anchorEl}
                         open={open}
+                        MenuListProps={{dense:true}}
                         onClose={handleClose}>
-                        <MenuItem>
+                        <MenuItem sx={{backgroundColor: "aliceblue"}}>
                             <Link to="/account">
-                                <Button variant="text" sx={{ textTransform: "none" }}>
+                                <Button variant="text" color="success" sx={{ textTransform: "none", ":hover": { backgroundColor: "#ADD9FF" } }}>
                                     Account Page
                                 </Button>
                             </Link>
                         </MenuItem>
-                        <MenuItem>
+                        <MenuItem sx={{backgroundColor: "aliceblue"}}>
                             <LogoutButton />
                         </MenuItem>
                     </Menu>
@@ -56,10 +58,11 @@ const AccountDropdown = () => {
                         id="account-menu"
                         anchorEl={anchorEl}
                         open={open}
+                        MenuListProps={{dense:true}}
                         onClose={handleClose}>
-                        <MenuItem>
+                        <MenuItem sx={{backgroundColor: "aliceblue"}}>
                             <Link to="/login">
-                                <Button variant="text" sx={{ textTransform: "none" }}>
+                                <Button variant="text" color="success" sx={{ textTransform: "none", ":hover": { backgroundColor: "#ADD9FF" } }}>
                                     Login
                                 </Button>
                             </Link>

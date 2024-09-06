@@ -7,19 +7,19 @@ html {
 a {
   text-decoration: none;
 }
-.park { 
+#park { 
   color: #FFAC47;
 }
 a:hover {
-  color: lightblue;
+  color: #2CB52C;
 }
-.park:hover {
+#park:hover, #parkTitle:hover {
   color: pink;
 }
 img {
   width: 100%;
 }
-h1 {
+h1, #parkTitle {
   color: #CE853B;
 } /* TODO: fix styling */
 label {

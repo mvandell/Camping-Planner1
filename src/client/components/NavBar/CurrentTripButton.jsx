@@ -23,7 +23,7 @@ else {return <div></div>}
         <>
             {token &&
                 <Link to={`/trip/${data.id}`}>
-                    <Button variant="text" sx={{ textTransform: "none", ml: 2 }}>
+                    <Button variant="text" color="success" sx={{ textTransform: "none", ml: 2, ":hover": { backgroundColor: "#ADD9FF" } }}>
                         Current Trip
                     </Button>
                 </Link>

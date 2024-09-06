@@ -16,8 +16,6 @@ import { useGetSingleMealQuery, useDeleteFoodMutation, usePostFoodMutation } fro
 import { usePatchMealMutation, usePatchMealFoodRemoveMutation, usePatchFoodPurchaseToggleMutation } from "../../redux/api";
 import { usePatchFoodMutation, usePatchFoodCoolerToggleMutation } from "../../redux/api";
 
-//TODO: change color of headings
-
 const MealPage = () => {
     const { id } = useParams();
     const [name, setName] = useState("");
@@ -43,15 +41,15 @@ const MealPage = () => {
     return (
         <div>
             <Stack direction="row">
-                <Typography variant="h1" sx={{ color: "blanchedalmond", m: 1 }}>
+                <Typography variant="h1" sx={{ m: 1 }}>
                     {data.name}
                 </Typography>
                 <Stack direction="column">
-                    <Typography variant="h3" sx={{ color: "blanchedalmond" }}>
+                    <Typography variant="h3" sx={{ color: "#FFAC47" }}>
                         {data.course}
                     </Typography>
                     {data.day &&
-                        <Typography variant="h3" sx={{ color: "blanchedalmond" }}>
+                        <Typography variant="h3" sx={{ color: "#FFAC47" }}>
                             Day {data.day}
                         </Typography>
                     }

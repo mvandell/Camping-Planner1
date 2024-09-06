@@ -65,7 +65,7 @@ const TripPage = () => {
             </Stack>
             <Stack direction="row">
                 <Link to={`/campgrounds/${data.campgroundId}`}>
-                    <Typography variant="h2" className="park">
+                    <Typography variant="h2" id="park">
                         {data.campground.park}
                     </Typography>
                 </Link>
