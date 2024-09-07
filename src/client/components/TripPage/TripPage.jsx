@@ -2,7 +2,6 @@ import Grid from "@mui/material/Grid"
 import Card from "@mui/material/Card";
 import Typography from '@mui/material/Typography';
 import Stack from "@mui/material/Stack"
-import Alert from "@mui/material/Alert";
 import Checkbox from '@mui/material/Checkbox';
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button"
@@ -11,9 +10,10 @@ import format from 'date-fns/format'
 import { useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import TripPageBody from "./TripPageBody"
 
-import { useGetSingleTripQuery, usePatchTripMutation } from "../../redux/api";
-import { usePatchTripCurrentToggleMutation, usePatchTripMealAddMutation, usePatchTripMealRemoveMutation } from "../../redux/api";
+import { useGetSingleTripQuery, usePatchTripCurrentToggleMutation} from "../../redux/api";
+import { usePatchTripMealAddMutation, usePatchTripMealRemoveMutation } from "../../redux/api";
 
 const TripPage = () => {
     const { id } = useParams();
@@ -33,7 +33,6 @@ const TripPage = () => {
     }
     //TODO: post meal
     //TODO: delete meal
-    //TODO: break up into more components
     //remove days from meals?
     const year = format(new Date(data.startDate), "yyyy");
     const start = format(new Date(data.startDate), "MMMM d");
@@ -77,65 +76,7 @@ const TripPage = () => {
                     Edit Trip
                 </Button>
             </Stack>
-            <Grid container>
-                <Grid item xs={6}> {/* costs */}
-                    <Typography variant="h4" sx={{ color: "bisque" }}>
-                        Costs
-                    </Typography>
-                    <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
-                        <Typography variant="h5">
-                            Total Costs
-                        </Typography>
-                        <Typography>
-                            <b>Gas:</b> ${data.gasTotal}
-                        </Typography>
-                        <Typography>
-                            <b>Parking:</b> ${data.parking}
-                        </Typography>
-                        {data.budgets && data.budgets.map((budget) => (
-                            <Typography key={budget.id}>
-                                <b>{budget.name}:</b> ${budget.total}
-                            </Typography>
-                        ))}
-                    </Card>
-                    <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
-                        <Typography variant="h5">
-                            Individual Costs
-                        </Typography>
-                        <Typography>
-                            <b>Gas:</b> ${data.gasSingle}
-                        </Typography>
-                        <Typography>
-                            <b>Firewood:</b> ${data.fireNight}
-                        </Typography>
-                        <Typography>
-                            <b>Parking:</b> ${data.parking / 3}
-                        </Typography>
-                        {data.budgets && data.budgets.map((budget) => (
-                            <Typography key={budget.id}>
-                                <b>{budget.name}:</b> ${budget.individual}
-                            </Typography>
-                        ))}
-                    </Card>
-                </Grid>
-                <Grid item xs={4}> {/* meals */}
-                    <Typography variant="h4" sx={{ color: "bisque" }}>
-                        Meals
-                    </Typography>
-                    {data.meals && data.meals.slice().sort(function (a, b) { return a.day - b.day }).map((meal) => (
-                        <Card key={meal.id} sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
-                            <Typography variant="h6">
-                                {meal.course} Day {meal.day}
-                            </Typography>
-                            <Typography variant="h5">
-                                <Link to={`/meal/${meal.id}`}>
-                                    {meal.name}
-                                </Link>
-                            </Typography>
-                        </Card>
-                    ))}
-                </Grid>
-            </Grid>
+            <TripPageBody data={data}/>
         </div>
     )
 }
