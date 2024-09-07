@@ -32,6 +32,7 @@ const EquipmentPage = () => {
     }
     //TODO: fix isAdmin error on first render
     //TODO: make a homepage
+        //simple - title and links
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
