@@ -15,9 +15,9 @@ const Homepage = () => {
     return (
         <Box sx={{my: "20%"}}>
             <Typography variant='h1' textAlign="center">
-                <ForestIcon sx={{ mx: 6 }} fontSize="large" color="success" />
+                <ForestIcon sx={{ mx: 6, color: "#4caf50" }} fontSize="large" />
                 Camping Planner
-                <ForestIcon sx={{ mx: 6 }} fontSize="large" color="success" />
+                <ForestIcon sx={{ mx: 6, color: "#4caf50" }} fontSize="large" />
             </Typography>
             <Box sx={{textAlign:"center"}}>
                 <CurrentTripButton type="contained" c="#174F1B" />
