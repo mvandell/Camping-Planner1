@@ -18,7 +18,7 @@ const NavBar = () => {
                     Camping Planner
                 </Typography>
                 <Box sx={{ borderRadius: 5, backgroundColor: "aliceblue", boxShadow: 5, py: 0.5, px: 1 }}>
-                    <CurrentTripButton />
+                    <CurrentTripButton type="text" c="#ADD9FF" />
                     {token &&
                         <Link to="/trip/history">
                             <Button variant="text" color="success" sx={{ textTransform: "none", ":hover": { backgroundColor: "#ADD9FF" } }}>

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 
 import { useGetCurrentTripIdQuery } from "../../redux/api";
 
-const CurrentTripButton = () => {
+const CurrentTripButton = ({type, c}) => {
     const token = useSelector((state) => state.auth.token);
     const { data, error, isLoading } = useGetCurrentTripIdQuery();
 
@@ -23,7 +23,7 @@ else {return <div></div>}
         <>
             {token &&
                 <Link to={`/trip/${data.id}`}>
-                    <Button variant="text" color="success" sx={{ textTransform: "none", ml: 2, ":hover": { backgroundColor: "#ADD9FF" } }}>
+                    <Button variant={type} color="success" sx={{ textTransform: "none", ml: 2, ":hover": { backgroundColor: c } }}>
                         Current Trip
                     </Button>
                 </Link>

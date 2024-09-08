@@ -4,7 +4,7 @@ import { useLogoutMutation } from "../../redux/api";
 
 import { useNavigate } from "react-router-dom";
 
-const LogoutButton = () => {
+const LogoutButton = ({type, c}) => {
     const [logout, { data, error, isLoading }] = useLogoutMutation();
     const navigate = useNavigate();
 
@@ -21,9 +21,9 @@ const LogoutButton = () => {
         <>
             <Button
                 onClick={async () => { await logout(); navigate("/"); }}
-                variant="text"
+                variant={type}
                 color="success"
-                sx={{ textTransform: "none", ":hover": { backgroundColor: "#ADD9FF" } }}>
+                sx={{ textTransform: "none", ":hover": { backgroundColor: c } }}>
                     Logout
             </Button>
         </>

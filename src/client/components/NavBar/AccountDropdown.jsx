@@ -48,7 +48,7 @@ const AccountDropdown = () => {
                             </Link>
                         </MenuItem>
                         <MenuItem sx={{backgroundColor: "aliceblue"}}>
-                            <LogoutButton />
+                            <LogoutButton type="text" c="#ADD9FF" />
                         </MenuItem>
                     </Menu>
                 </div>
