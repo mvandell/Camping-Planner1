@@ -15,6 +15,7 @@ import EditCampground from "./components/CampgroundPage/EditCampground";
 import NewCampground from "./components/CampgroundPage/NewCampground";
 import EditTrip from "./components/TripPage/EditTrip";
 import NewTrip from "./components/TripHistory/NewTrip";
+import Homepage from "./components/Homepage/Homepage";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -25,7 +26,8 @@ const App = () => {
       <NavBar />
       
       <Routes>
-        <Route path="/" element={<EquipmentPage />} />
+        <Route path="/" element={<Homepage />} />
+        <Route path="/equipment" element={<EquipmentPage />} />
         <Route path="/campgrounds" element={<CampgroundList />} />
         <Route path="/campgrounds/new/post" element={<NewCampground />} />
         <Route path="/campgrounds/:id/edit" element={<EditCampground />} />

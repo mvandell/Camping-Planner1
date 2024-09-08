@@ -2,7 +2,6 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
