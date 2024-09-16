@@ -2,13 +2,13 @@
 const express = require("express");
 const authRouter = express.Router();
 
-const {requireAdmin, requireUser} = require("./utils");
+const { requireAdmin, requireUser } = require("./utils");
 
-const {PrismaClient} = require("@prisma/client");
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const jwt = require("jsonwebtoken");
-const {JWT_SECRET} = process.env;
+const { JWT_SECRET } = process.env;
 const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
@@ -18,7 +18,7 @@ authRouter.get("/users/validate", async (req, res, next) => {
     try {
         const user = prisma.user
         const users = await user.findMany({
-            select: {username: true}
+            select: { username: true }
         });
 
         delete user.password
@@ -35,7 +35,7 @@ authRouter.get("/account", requireUser, async (req, res, next) => {
             where: {
                 id: req.user.id
             },
-            include: {clothing: true, foods: true}
+            include: { clothing: true, foods: true }
         });
         delete user.password;
         res.send(user);
@@ -45,13 +45,13 @@ authRouter.get("/account", requireUser, async (req, res, next) => {
 });
 //<--------------------------GET ADMIN STATUS------------------------>
 //GET /auth/admin
-authRouter.get("/admin", requireUser, async (req, res, next) =>{
+authRouter.get("/admin", requireUser, async (req, res, next) => {
     try {
         const admin = await prisma.user.findUnique({
             where: {
                 id: req.user.id
             },
-            select: {isAdmin: true}
+            select: { isAdmin: true }
         });
         res.send(admin);
     } catch (error) {
@@ -76,7 +76,7 @@ authRouter.get("/campground/:id", async (req, res, next) => {
             where: {
                 id: Number(req.params.id)
             },
-            include: {activities: true}
+            include: { activities: true }
         });
         res.send(campground);
     } catch (error) {
@@ -99,7 +99,7 @@ authRouter.get("/equipment", async (req, res, next) => {
 authRouter.delete("/campground/:id", [requireUser, requireAdmin], async (req, res, next) => {
     try {
         const deletedCampground = await prisma.campgrounds.delete({
-            where: {id: Number(req.params.id)}
+            where: { id: Number(req.params.id) }
         });
         if (!deletedCampground) {
             return res.status(404).send("Campground not found");
@@ -115,7 +115,7 @@ authRouter.delete("/campground/:id", [requireUser, requireAdmin], async (req, re
 authRouter.delete("/equipment/:id", [requireUser, requireAdmin], async (req, res, next) => {
     try {
         const deletedEquipment = await prisma.equipment.delete({
-            where: {id: Number(req.params.id)}
+            where: { id: Number(req.params.id) }
         });
         if (!deletedEquipment) {
             return res.status(404).send("Equipment item not found");
@@ -131,7 +131,7 @@ authRouter.delete("/equipment/:id", [requireUser, requireAdmin], async (req, res
 authRouter.delete("/trip/:id", [requireUser, requireAdmin], async (req, res, next) => {
     try {
         const deletedTrip = await prisma.trip.delete({
-            where: {id: Number(req.params.id)}
+            where: { id: Number(req.params.id) }
         });
         if (!deletedTrip) {
             return res.status(404).send("Trip not found");
@@ -146,7 +146,7 @@ authRouter.delete("/trip/:id", [requireUser, requireAdmin], async (req, res, nex
 //POST auth/login
 authRouter.post("/login", async (req, res, next) => {
     try {
-        const {username, password} = req.body;
+        const { username, password } = req.body;
         const user = await prisma.user.findUnique({
             where: {
                 username: username
@@ -162,8 +162,8 @@ authRouter.post("/login", async (req, res, next) => {
             return res.status(401).send("Incorrect password.");
         }
         //Create token
-        const token = jwt.sign({id: user.id}, process.env.JWT_SECRET);
-        res.send({token});
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
+        res.send({ token });
         console.log("Login successful!")
     } catch (error) {
         next(error);
@@ -174,7 +174,7 @@ authRouter.post("/login", async (req, res, next) => {
 //POST auth/equipment
 authRouter.post("/equipment", [requireUser, requireAdmin], async (req, res, next) => {
     try {
-        const {name, needed} = req.body;
+        const { name, needed } = req.body;
         const newEquipment = await prisma.equipment.create({
             data: {
                 name,
@@ -191,17 +191,17 @@ authRouter.post("/equipment", [requireUser, requireAdmin], async (req, res, next
 //POST auth/campground
 authRouter.post("/campground", [requireUser, requireAdmin], async (req, res, next) => {
     try {
-        const {park, price, firewood, distance, curvy, reserveFrame, website, generalArea, picture} = req.body;
+        const { park, price, firewood, distance, curvy, reserveFrame, website, generalArea, picture } = req.body;
         console.log(id)
         const newCampground = await prisma.campgrounds.create({
             data: {
-                park, 
-                price, 
-                firewood, 
-                distance, 
-                curvy, 
-                reserveFrame, 
-                website, 
+                park,
+                price,
+                firewood,
+                distance,
+                curvy,
+                reserveFrame,
+                website,
                 generalArea,
                 picture
             },
@@ -216,7 +216,7 @@ authRouter.post("/campground", [requireUser, requireAdmin], async (req, res, nex
 //PATCH auth/account/edit
 authRouter.patch("/account/edit", requireUser, async (req, res, next) => {
     try {
-        const {username, password} = req.body;
+        const { username, password } = req.body;
         let hashedPassword = "";
         if (password !== null) {
             hashedPassword = await bcrypt.hash(password, SALT_COUNT);
@@ -224,7 +224,7 @@ authRouter.patch("/account/edit", requireUser, async (req, res, next) => {
         }
 
         const updatedUser = await prisma.user.update({
-            where: {id: req.user.id},
+            where: { id: req.user.id },
             data: {
                 username: username || undefined,
                 password: hashedPassword || undefined
@@ -241,23 +241,23 @@ authRouter.patch("/account/edit", requireUser, async (req, res, next) => {
 //PATCH auth/campground/:id/edit
 authRouter.patch("/campground/:id/edit", [requireUser, requireAdmin], async (req, res, next) => {
     try {
-        const {park, price, firewood, distance, curvy, reserveFrame, website, generalArea} = req.body;
+        const { park, price, firewood, distance, curvy, reserveFrame, website, generalArea } = req.body;
         const updatedCampground = await prisma.campgrounds.update({
-            where: {id: Number(req.params.id)},
+            where: { id: Number(req.params.id) },
             data: {
-                park: park || undefined, 
-                price: price || undefined, 
-                firewood: firewood || undefined, 
-                distance: distance || undefined, 
-                curvy: curvy || undefined, 
-                reserveFrame: reserveFrame || undefined, 
-                website: website || undefined, 
+                park: park || undefined,
+                price: price || undefined,
+                firewood: firewood || undefined,
+                distance: distance || undefined,
+                curvy: curvy || undefined,
+                reserveFrame: reserveFrame || undefined,
+                website: website || undefined,
                 generalArea: generalArea || undefined,
                 picture: picture || undefined
             }
         });
         if (!updatedCampground) {
-            res.status(404).send({message: "Campground not found"});
+            res.status(404).send({ message: "Campground not found" });
         } else {
             res.send(updatedCampground);
         }
@@ -269,16 +269,16 @@ authRouter.patch("/campground/:id/edit", [requireUser, requireAdmin], async (req
 authRouter.patch("/campground/:id/:activity/add", [requireUser, requireAdmin], async (req, res, next) => {
     try {
         const updatedCampground = await prisma.campgrounds.update({
-            where: {id: Number(req.params.id)},
+            where: { id: Number(req.params.id) },
             data: {
                 activities: {
-                    connect: {id: Number(req.params.activity)},
+                    connect: { id: Number(req.params.activity) },
                 },
             },
-            include: {activities: true}
+            include: { activities: true }
         });
         if (!updatedCampground) {
-            res.status(404).send({message: "Campground not found"});
+            res.status(404).send({ message: "Campground not found" });
         } else {
             res.send(updatedCampground);
         }
@@ -287,19 +287,20 @@ authRouter.patch("/campground/:id/:activity/add", [requireUser, requireAdmin], a
     }
 });
 //PATCH auth/campground/:id/:activity/remove
-authRouter.patch("/campground/:id/:activity/remove", [requireUser, requireAdmin], async (req, res, next) => {
+authRouter.patch("/campground/:id/activity/remove", [requireUser, requireAdmin], async (req, res, next) => {
     try {
+        const { id } = req.body;
         const updatedCampground = await prisma.campgrounds.update({
-            where: {id: Number(req.params.id)},
+            where: { id: Number(req.params.id) }, //campgrounds
             data: {
                 activities: {
-                    disconnect: [{id: Number(req.params.activity)}],
+                    disconnect: [{ id: id }], //activities
                 },
             },
-            include: {activities: true}
+            include: { activities: true }
         })
         if (!updatedCampground) {
-            res.status(404).send({message: "Campground not found"});
+            res.status(404).send({ message: "Campground not found" });
         } else {
             res.send(updatedCampground);
         }
@@ -312,13 +313,13 @@ authRouter.patch("/campground/:id/:activity/remove", [requireUser, requireAdmin]
 //PATCH auth/equipment/:id/edit
 authRouter.patch("/equipment/:id/edit", [requireUser, requireAdmin], async (req, res, next) => {
     try {
-        const {name} = req.body;
+        const { name } = req.body;
         const updatedEquipment = await prisma.equipment.update({
-            where: {id: Number(req.params.id)},
-            data: {name: name || undefined}
+            where: { id: Number(req.params.id) },
+            data: { name: name || undefined }
         });
         if (!updatedEquipment) {
-            res.status(404).send({message: "Equipment not found"});
+            res.status(404).send({ message: "Equipment not found" });
         } else {
             res.send(updatedEquipment);
         }
@@ -330,10 +331,10 @@ authRouter.patch("/equipment/:id/edit", [requireUser, requireAdmin], async (req,
 //PATCH auth/equipment/:id/pack
 authRouter.patch("/equipment/:id/pack", requireUser, async (req, res, next) => {
     try {
-        const {packed} = req.body;
+        const { packed } = req.body;
         const packToggle = await prisma.equipment.update({
-            where: {id:Number(req.params.id)},
-            data: {packed: packed}
+            where: { id: Number(req.params.id) },
+            data: { packed: packed }
         });
         res.send(packToggle);
     } catch (error) {
@@ -344,10 +345,10 @@ authRouter.patch("/equipment/:id/pack", requireUser, async (req, res, next) => {
 //PATCH auth/equipment/:id/need
 authRouter.patch("/equipment/:id/need", requireUser, async (req, res, next) => {
     try {
-        const {needed} = req.body;
+        const { needed } = req.body;
         const needToggle = await prisma.equipment.update({
-            where: {id: Number(req.params.id)},
-            data: {needed: needed}
+            where: { id: Number(req.params.id) },
+            data: { needed: needed }
         });
         res.send(needToggle);
     } catch (error) {

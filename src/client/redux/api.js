@@ -471,9 +471,10 @@ const api = createApi({
         }),
         //PATCH REMOVE ACTIVITY FROM CAMPGROUND
         patchCampgroundActivityRemove: builder.mutation({
-            query: ({ id, activity }) => ({
-                url: `/acuth/campground/${id}/${activity}/remove`,
+            query: ({ id }) => ({
+                url: `/acuth/campground/${id}/activity/remove`,
                 method: "PATCH",
+                body: {id}
             }),
             invalidatesTags: ["Campgrounds", "Activities"]
         }),

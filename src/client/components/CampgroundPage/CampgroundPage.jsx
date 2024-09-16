@@ -22,6 +22,7 @@ const CampgroundPage = () => {
     const { data, error, isLoading } = useGetSingleCampgroundQuery(id);
     const { data: adminData, error: adminError, isLoading: adminIsLoading } = useGetAdminQuery();
     const [deleteCampground] = useDeleteCampgroundMutation();
+    const [removeActivity] = usePatchCampgroundActivityRemoveMutation();
 
     if (isLoading) {
         return <div> </div>;
