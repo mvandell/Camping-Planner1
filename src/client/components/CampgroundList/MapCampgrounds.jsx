@@ -15,7 +15,7 @@ const MapCampgrounds = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    console.log("MapCampgrounds")
+
     return (
         <>
             {data && data.map((campground) => (
@@ -25,7 +25,7 @@ const MapCampgrounds = () => {
                         title={campground.park}
                         subtitle={campground.generalArea}
                         actionIcon={
-                            <Link to={`/campgrounds/${campground.id}`}>
+                            <Link to={`/campground/${campground.id}`}>
                                 <IconButton color='success'>
                                     <InfoIcon />
                                 </IconButton>

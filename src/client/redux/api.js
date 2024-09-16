@@ -464,17 +464,17 @@ const api = createApi({
         //PATCH ADD ACTITITY TO CAMPGROUND
         patchCampgroundActivityAdd: builder.mutation({
             query: ({ id, activity }) => ({
-                url: `/acuth/campground/${id}/${activity}/add`,
+                url: `/auth/campground/${id}/${activity}/add`,
                 method: "PATCH",
             }),
             invalidatesTags: ["Campgrounds", "Activities"]
         }),
         //PATCH REMOVE ACTIVITY FROM CAMPGROUND
         patchCampgroundActivityRemove: builder.mutation({
-            query: ({ id }) => ({
-                url: `/acuth/campground/${id}/activity/remove`,
+            query: ({ id, activityId }) => ({
+                url: `/auth/campground/${id}/activity/remove`,
                 method: "PATCH",
-                body: {id}
+                body: {activityId},
             }),
             invalidatesTags: ["Campgrounds", "Activities"]
         }),

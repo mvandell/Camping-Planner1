@@ -289,12 +289,12 @@ authRouter.patch("/campground/:id/:activity/add", [requireUser, requireAdmin], a
 //PATCH auth/campground/:id/:activity/remove
 authRouter.patch("/campground/:id/activity/remove", [requireUser, requireAdmin], async (req, res, next) => {
     try {
-        const { id } = req.body;
+        const { activityId } = req.body;
         const updatedCampground = await prisma.campgrounds.update({
             where: { id: Number(req.params.id) }, //campgrounds
             data: {
                 activities: {
-                    disconnect: [{ id: id }], //activities
+                    disconnect: [{ id: activityId }], //activities
                 },
             },
             include: { activities: true }

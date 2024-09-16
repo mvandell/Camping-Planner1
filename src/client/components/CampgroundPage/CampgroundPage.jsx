@@ -6,6 +6,8 @@ import Grid from "@mui/material/Grid";
 import Alert from "@mui/material/Alert";
 import Button from '@mui/material/Button';
 import CircleIcon from '@mui/icons-material/Circle';
+import ClearIcon from '@mui/icons-material/Clear';
+import IconButton from '@mui/material/IconButton';
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -31,6 +33,12 @@ const CampgroundPage = () => {
         return <div>Error:{error.message}</div>;
     }
     //TODO: add/remove activities
+    //TODO: break up into more components
+
+    //remove activity table b/c not accessing specific activities
+        //simpler to just add/remove specific activities
+        //more specific
+        //require user, not admin
     return (
         <div>
             <Typography variant="h1">
@@ -103,6 +111,18 @@ const CampgroundPage = () => {
                         {data.activities && data.activities.map((activity) => (
                             <Box key={activity.id} sx={{ m: 1 }}>
                                 <Stack direction="row">
+                                    {token && adminData.isAdmin === true &&
+                                        <IconButton
+                                            onClick={() => {
+                                                if (confirm("Are you sure you want to remove this activity from this campground?") === true) {
+                                                    removeActivity({activityId: Number(activity.id)})
+                                                }
+                                            }}
+                                            color="error"
+                                            sx={{ textTransform: "none", m: 0, p: 0, mr: 1 }}>
+                                            <ClearIcon fontSize="small" />
+                                        </IconButton>
+                                    }
                                     <CircleIcon sx={{ fontSize: 9, p: 1 }} />
                                     <Typography>{activity.name}</Typography>
                                 </Stack>

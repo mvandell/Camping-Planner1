@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/campgrounds" element={<CampgroundList />} />
         <Route path="/campgrounds/new/post" element={<NewCampground />} />
         <Route path="/campgrounds/:id/edit" element={<EditCampground />} />
-        <Route path="/campgrounds/:id" element={<CampgroundPage />} />
+        <Route path="/campground/:id" element={<CampgroundPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/account/edit" element={<EditUser />} />
