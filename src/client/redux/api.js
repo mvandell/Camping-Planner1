@@ -299,9 +299,10 @@ const api = createApi({
         }),
         //PATCH REMOVE FOOD FROM MEAL
         patchMealFoodRemove: builder.mutation({
-            query: ({ id, food }) => ({
-                url: `api/food/meal/${id}/${food}/remove`,
+            query: ({ id, name }) => ({
+                url: `api/food/meal/${id}/food/remove`,
                 method: "PATCH",
+                body: {name},
             }),
             invalidatesTags: ["Meals", "Food"]
         }),

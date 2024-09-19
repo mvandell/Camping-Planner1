@@ -157,13 +157,15 @@ foodRouter.patch("/meal/:id/edit", requireUser, async (req, res, next) => {
     }
 });
 //PATCH api/food/meal/:id/:food/remove
-foodRouter.patch("/meal/:id/:food/remove", requireUser, async (req, res, next) => {
+foodRouter.patch("/meal/:id/food/remove", requireUser, async (req, res, next) => {
+    const {name} = req.body;
     try {
+        console.log(req.params.id)
         const updatedMeal = await prisma.meals.update({
             where: {id: Number(req.params.id)},
             data: {
                 foods: {
-                    disconnect: [{id: Number(req.params.food)}],
+                    disconnect: [{name: name}],
                 },
             },
             include: {foods: true}

@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from "@mui/material/IconButton";
 import KitchenIcon from '@mui/icons-material/Kitchen';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ClearIcon from '@mui/icons-material/Clear';
 
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -74,25 +75,35 @@ const MealPage = () => {
                                     }}>
                                     <DeleteIcon fontSize="small" />
                                 </IconButton>
+                                <IconButton
+                                    onClick={() => {
+                                        if (confirm("Are you sure you want to remove this ingredient from this meal?") === true) {
+                                            removeFood({id: id, name: ingredient.name})
+                                        }
+                                    }}
+                                    color="error"
+                                    sx={{ textTransform: "none", m: 0, p: 0, mr: 1 }}>
+                                    <ClearIcon fontSize="small" />
+                                </IconButton>
                                 <Typography sx={{ flexGrow: 1, py: 1, fontWeight: "bold" }}>
                                     {ingredient.name}
                                 </Typography>
                                 <Checkbox
-                                defaultChecked={ingredient.cooler}
-                                onChange={async () => {
-                                    console.log("toggle cooler");
-                                    const response = await coolerToggle({ id: ingredient.id, cooler: !food.cooler });
-                                    console.log("cooler", response);
-                                }} />
-                            <KitchenIcon fontSize="medium" sx={{py: 1}}/>
-                            <Checkbox
-                                defaultChecked={ingredient.purchased}
-                                onChange={async () => {
-                                    console.log("toggle purchased");
-                                    const response = await purchaseToggle({ id: ingredient.id, purchased: !food.purchased });
-                                    console.log("purchased", response);
-                                }} />
-                            <ShoppingCartIcon fontSize="medium" sx={{py: 1}}/>
+                                    defaultChecked={ingredient.cooler}
+                                    onChange={async () => {
+                                        console.log("toggle cooler");
+                                        const response = await coolerToggle({ id: ingredient.id, cooler: !food.cooler });
+                                        console.log("cooler", response);
+                                    }} />
+                                <KitchenIcon fontSize="medium" sx={{ py: 1 }} />
+                                <Checkbox
+                                    defaultChecked={ingredient.purchased}
+                                    onChange={async () => {
+                                        console.log("toggle purchased");
+                                        const response = await purchaseToggle({ id: ingredient.id, purchased: !food.purchased });
+                                        console.log("purchased", response);
+                                    }} />
+                                <ShoppingCartIcon fontSize="medium" sx={{ py: 1 }} />
                             </Stack>
                             <Typography sx={{}}>
                                 {ingredient.user.username}
