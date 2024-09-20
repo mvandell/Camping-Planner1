@@ -297,6 +297,15 @@ const api = createApi({
             }),
             invalidatesTags: ["Meals"]
         }),
+        //PATCH ADD FOOD FROM MEAL
+        patchMealFoodAdd: builder.mutation({
+            query: ({ id, name }) => ({
+                url: `api/food/meal/${id}/food/add`,
+                method: "PATCH",
+                body: {name},
+            }),
+            invalidatesTags: ["Meals", "Food"]
+        }),
         //PATCH REMOVE FOOD FROM MEAL
         patchMealFoodRemove: builder.mutation({
             query: ({ id, name }) => ({
@@ -561,6 +570,7 @@ export const {
     usePatchTripMealRemoveMutation,
     usePatchBudgetMutation,
     usePatchMealMutation,
+    usePatchMealFoodAddMutation,
     usePatchMealFoodRemoveMutation,
     usePatchFoodMutation,
     usePatchClothingMutation,

@@ -156,11 +156,32 @@ foodRouter.patch("/meal/:id/edit", requireUser, async (req, res, next) => {
         next(error);
     }
 });
+//PATCH api/food/meal/:id/:food/add
+foodRouter.patch("/meal/:id/food/add", requireUser, async (req, res, next) => {
+    const {name} = req.body;
+    try {
+        const updatedMeal = await prisma.meals.update({
+            where: {id: Number(req.params.id)},
+            data: {
+                foods: {
+                    connect: [{name: name}],
+                },
+            },
+            include: {foods: true}
+        })
+        if (!updatedMeal) {
+            res.status(404).send({message: "Meal not found"});
+        } else {
+            res.send(updatedMeal);
+        }
+    } catch (error) {
+        next(error);
+    }
+});
 //PATCH api/food/meal/:id/:food/remove
 foodRouter.patch("/meal/:id/food/remove", requireUser, async (req, res, next) => {
     const {name} = req.body;
     try {
-        console.log(req.params.id)
         const updatedMeal = await prisma.meals.update({
             where: {id: Number(req.params.id)},
             data: {
