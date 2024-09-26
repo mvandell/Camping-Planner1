@@ -42,7 +42,6 @@ model Budget {
 
 model Meals {
     id Int @id @default(autoincrement())
-    day Int?
     course String
     name String?
     foods Food[]

@@ -376,7 +376,6 @@ async function seed() {
         })
         const nachos = await prisma.meals.create({
             data: {
-                day: 2,
                 course: "dinner",
                 name: "Campfire Nachos",
                 trips: {
@@ -390,7 +389,6 @@ async function seed() {
         })
         const hotDogs = await prisma.meals.create({
             data: {
-                day: 1,
                 course: "dinner",
                 name: "hot dogs",
                 trips: {
@@ -416,7 +414,6 @@ async function seed() {
         })
         const pastaPrimavera = await prisma.meals.create({
             data: {
-                day: 3,
                 course: "dinner",
                 name: "Pasta Primavera",
                 trips: { connect: { id: y2024.id } }
@@ -436,7 +433,6 @@ async function seed() {
         })
         const musubi = await prisma.meals.create({
             data: {
-                day: 1,
                 course: "lunch",
                 trips: {
                     connect: [
