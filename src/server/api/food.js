@@ -102,10 +102,9 @@ foodRouter.delete("/food/:id", requireUser, async (req, res, next) => {
 //POST api/food/meal
 foodRouter.post("/meal", requireUser, async (req, res, next) => {
     try {
-        const {day, course, name} = req.body;
+        const { course, name} = req.body;
         const newMeal = await prisma.meals.create({
             data: {
-                day,
                 course,
                 name
             }
@@ -138,11 +137,10 @@ foodRouter.post("/food/:meal", requireUser, async (req, res, next) => {
 //PATCH api/food/meal/:id/edit
 foodRouter.patch("/meal/:id/edit", requireUser, async (req, res, next) => {
     try {
-        const {day, course, name} = req.body;
+        const { course, name} = req.body;
         const updatedMeal = await prisma.meals.update({
             where: {id: Number(req.params.id)},
             data: {
-                day: day || undefined,
                 course: course || undefined,
                 name: name || undefined
             }

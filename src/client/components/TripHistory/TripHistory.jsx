@@ -74,7 +74,6 @@ const TripHistory = () => {
                                     {trip.campground.park}
                                 </Typography>
                             </Link>
-
                             <ForestIcon sx={{ mx: 6 }} fontSize="large" color="success" />
                         </Card>
                     ))}

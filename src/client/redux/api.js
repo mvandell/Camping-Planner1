@@ -290,10 +290,10 @@ const api = createApi({
         }),
         //PATCH MEAL
         patchMeal: builder.mutation({
-            query: ({ id, day, course, name }) => ({
+            query: ({ id, course, name }) => ({
                 url: `/api/food/meal/${id}/edit`,
                 method: "PATCH",
-                body: { day, course, name },
+                body: { course, name },
             }),
             invalidatesTags: ["Meals"]
         }),

@@ -33,7 +33,6 @@ const TripPage = () => {
     }
     //TODO: post meal
     //TODO: delete meal
-    //remove days from meals?
     const year = format(new Date(data.startDate), "yyyy");
     const start = format(new Date(data.startDate), "MMMM d");
     const end = format(new Date(data.endDate), "MMMM d");
