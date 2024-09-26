@@ -46,11 +46,6 @@ const MealPage = () => {
                 <Typography variant="h1" sx={{ m: 1 }}>
                     {data.name}
                 </Typography>
-                <Stack direction="column">
-                    <Typography variant="h3" sx={{ color: "#FFAC47" }}>
-                        {data.course}
-                    </Typography>
-                </Stack>
             </Stack>
             <Grid container>
                 <Grid item xs={3}></Grid>
