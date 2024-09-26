@@ -51,10 +51,10 @@ const TripPageBody = ({data}) => {
                     <Typography variant="h4" sx={{ color: "bisque" }}>
                         Meals
                     </Typography>
-                    {data.meals && data.meals.slice().sort(function (a, b) { return a.day - b.day }).map((meal) => (
+                    {data.meals && data.meals.map((meal) => (
                         <Card key={meal.id} sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                             <Typography variant="h6">
-                                {meal.course} Day {meal.day}
+                                {meal.course}
                             </Typography>
                             <Typography variant="h5">
                                 <Link to={`/meal/${meal.id}`}>

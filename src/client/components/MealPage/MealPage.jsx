@@ -50,11 +50,6 @@ const MealPage = () => {
                     <Typography variant="h3" sx={{ color: "#FFAC47" }}>
                         {data.course}
                     </Typography>
-                    {data.day &&
-                        <Typography variant="h3" sx={{ color: "#FFAC47" }}>
-                            Day {data.day}
-                        </Typography>
-                    }
                 </Stack>
             </Stack>
             <Grid container>
