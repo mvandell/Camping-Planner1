@@ -17,7 +17,6 @@ const MealPage = () => {
     const [userId, setUserId] = useState(null);
 
     const { data, error, isLoading } = useGetSingleMealQuery(id);
-    const [deleteFood] = useDeleteFoodMutation();
     const [postFood] = usePostFoodMutation();
     const [patchMeal] = usePatchMealMutation();
     //const [patchFood] = usePatchFoodMutation();
