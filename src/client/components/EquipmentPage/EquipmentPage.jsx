@@ -21,8 +21,8 @@ const EquipmentPage = () => {
     const [unpacked, setUnpacked] = useState(false);
     const [name, setName] = useState("");
 
-    const { data, error, isLoading } = useGetAdminQuery();
-    const [postEquipment] = usePostEquipmentMutation();
+    const { data } = useGetAdminQuery();
+    const [postEquipment, {error, isLoading}] = usePostEquipmentMutation();
 
     if (isLoading) {
         return <div> </div>;

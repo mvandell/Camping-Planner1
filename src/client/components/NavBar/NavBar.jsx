@@ -31,7 +31,7 @@ const NavBar = () => {
                             Campgrounds
                         </Button>
                     </Link>
-                    <Link to="/">
+                    <Link to="/equipment">
                         <Button variant="text" color="success" sx={{ textTransform: "none", ":hover": { backgroundColor: "#ADD9FF" } }}>
                             Equipment
                         </Button>
