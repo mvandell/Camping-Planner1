@@ -58,42 +58,6 @@ async function seed() {
                 })
             }
         }
-        //--------------------------ACTIVITIES--------------------------->
-        const kayak = await prisma.activities.create({
-            data: {
-                name: "kayaking"
-            }
-        })
-        const hike = await prisma.activities.create({
-            data: {
-                name: "hiking"
-            }
-        })
-        const cave = await prisma.activities.create({
-            data: {
-                name: "caves"
-            }
-        })
-        const swim = await prisma.activities.create({
-            data: {
-                name: "swimming"
-            }
-        })
-        const sulphur = await prisma.activities.create({
-            data: {
-                name: "Sulphur Works"
-            }
-        })
-        const canoe = await prisma.activities.create({
-            data: {
-                name: "canoeing"
-            }
-        })
-        const raft = await prisma.activities.create({
-            data: {
-                name: "rafting"
-            }
-        })
         //-------------------------CAMPGROUNDS--------------------------->
         const lassen = await prisma.campgrounds.create({
             data: {
@@ -107,11 +71,10 @@ async function seed() {
                 generalArea: "Northern Sierras",
                 picture: "https://cdn.recreation.gov/public/images/71691.jpg",
                 activities: {
-                    connect: [
-                        { id: sulphur.id },
-                        { id: kayak.id },
-                        { id: hike.id },
-                        { id: swim.id }
+                    create: [
+                        { name: "Sulphur Works" },
+                        { name: "kayak" },
+                        { name: "hike" },
                     ]
                 }
             },
@@ -129,8 +92,8 @@ async function seed() {
                 generalArea: "Southern Sierras",
                 picture: "https://cdn.recreation.gov/public/images/82369.jpg",
                 activities: {
-                    connect: {
-                        id: hike.id,
+                    create: {
+                        name: "hike"
                     }
                 }
             },
@@ -148,8 +111,8 @@ async function seed() {
                 generalArea: "Central Sierras",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/4e/be/81/walk-between-two-halves.jpg?w=1200&h=-1&s=1",
                 activities: {
-                    connect: {
-                        id: hike.id,
+                    create: {
+                        name: "hike"
                     }
                 }
             },
@@ -167,9 +130,9 @@ async function seed() {
                 generalArea: "Northern Coast Range",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/e8/30/7e/castle-crags-state-park.jpg?w=1200&h=-1&s=1",
                 activities: {
-                    connect: [
-                        { id: hike.id },
-                        { id: cave.id }
+                    create: [
+                        { name: "hike" },
+                        { name: "Shasta Caverns" }
                     ]
                 }
             },
@@ -187,8 +150,8 @@ async function seed() {
                 generalArea: "Central Sierras",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/58/b4/76/mining-equipment-near.jpg?w=1200&h=-1&s=1",
                 activities: {
-                    connect: {
-                        id: hike.id,
+                    create: {
+                        name: "hike"
                     }
                 }
             },
@@ -206,10 +169,10 @@ async function seed() {
                 generalArea: "Tahoe",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/5e/29/c7/sugar-pine-state-park.jpg?w=1100&h=-1&s=1",
                 activities: {
-                    connect: [
-                        { id: hike.id },
-                        { id: swim.id },
-                        { id: raft.id }
+                    create: [
+                        { name: "hike" },
+                        { name: "raft" },
+                        {name: "lake beach"}
                     ]
                 }
             },
@@ -227,10 +190,10 @@ async function seed() {
                 generalArea: "Tahoe",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/7a/3c/2a/20180620-135448-largejpg.jpg?w=1000&h=-1&s=1",
                 activities: {
-                    connect: [
-                        { id: hike.id },
-                        { id: swim.id },
-                        { id: raft.id }
+                    create: [
+                        { name: "hike" },
+                        { name: "raft" },
+                        {name: "lake beach"}
                     ]
                 }
             },
@@ -248,8 +211,8 @@ async function seed() {
                 generalArea: "Central Sierras",
                 picture: "https://cdn.recreation.gov/public/images/64980.jpg",
                 activities: {
-                    connect: {
-                        id: hike.id,
+                    create: {
+                        name: "hike"
                     }
                 }
             },
@@ -267,9 +230,10 @@ async function seed() {
                 generalArea: "Central Sierras",
                 picture: "https://cdn.recreation.gov/public/2021/04/14/00/55/2991_b79e9355-d662-4380-b51c-9c3f8b81ec24_700.jpeg",
                 activities: {
-                    connect: {
-                        id: hike.id,
-                    }
+                    create: [
+                        {name: "hike"},
+                        {name: "Spider Caves"}
+                    ]
                 }
             },
             include: { activities: true }
@@ -286,10 +250,10 @@ async function seed() {
                 generalArea: "Tahoe",
                 picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/8c/28/3f/dl-bliss-state-park.jpg?w=1000&h=-1&s=1",
                 activities: {
-                    connect: [
-                        { id: hike.id },
-                        { id: swim.id },
-                        { id: raft.id }
+                    create: [
+                        { name: "hike" },
+                        { name: "raft" },
+                        {name: "lake beach"}
                     ]
                 }
             },

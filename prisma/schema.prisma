@@ -83,8 +83,9 @@ model Campgrounds {
 
 model Activities {
     id Int @id @default(autoincrement())
-    name String @unique
-    campgrounds Campgrounds[]
+    name String
+    campgrounds Campgrounds @relation(fields: [campgroundId], references: [id], onDelete: Cascade)
+    campgroundId Int
 }
 
 model Equipment {
