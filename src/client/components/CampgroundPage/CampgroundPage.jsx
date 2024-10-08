@@ -16,6 +16,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGetSingleCampgroundQuery, useDeleteCampgroundMutation } from "../../redux/api";
 import { useGetAdminQuery } from "../../redux/api";
 import CampgroundInfo from "./CampgroundInfo.jsx"
+import CampgroundActivities from "./CampgroundActivities.jsx";
 
 const CampgroundPage = () => {
     const token = useSelector((state) => state.auth.token)
@@ -35,43 +36,15 @@ const CampgroundPage = () => {
     //TODO: add/remove activities
     //TODO: break up into more components
 
-    //remove activity table b/c not accessing specific activities
-        //simpler to just add/remove specific activities
-        //more specific
-        //require user, not admin
     return (
         <div>
             <Typography variant="h1">
                 <a href={data.website} target="_blank" id="parkTitle">{data.park}</a>
             </Typography>
             <Grid container>
-                <CampgroundInfo data={data}/>
+                <CampgroundInfo data={data} />
                 <Grid item xs={6}> {/* activities and drive info */}
-                    <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
-                        <Typography variant="h5" fontWeight="bold">
-                            Activities
-                        </Typography>
-                        {data.activities && data.activities.map((activity) => (
-                            <Box key={activity.id} sx={{ m: 1 }}>
-                                <Stack direction="row">
-                                    {token && adminData.isAdmin === true &&
-                                        <IconButton
-                                            onClick={() => {
-                                                if (confirm("Are you sure you want to remove this activity from this campground?") === true) {
-                                                    removeActivity({activityId: Number(activity.id)})
-                                                }
-                                            }}
-                                            color="error"
-                                            sx={{ textTransform: "none", m: 0, p: 0, mr: 1 }}>
-                                            <ClearIcon fontSize="small" />
-                                        </IconButton>
-                                    }
-                                    <CircleIcon sx={{ fontSize: 9, p: 1 }} />
-                                    <Typography>{activity.name}</Typography>
-                                </Stack>
-                            </Box>
-                        ))}
-                    </Card>
+                    <CampgroundActivities activities={data.activities} token={token} />
                     <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                         <Typography variant="h5" fontWeight="bold" sx={{ mb: 1 }}>
                             Drive Info
