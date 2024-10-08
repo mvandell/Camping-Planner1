@@ -265,49 +265,6 @@ authRouter.patch("/campground/:id/edit", [requireUser, requireAdmin], async (req
         next(error);
     }
 });
-//PATCH auth/campground/:id/:activity/add
-authRouter.patch("/campground/:id/:activity/add", [requireUser, requireAdmin], async (req, res, next) => {
-    try {
-        const updatedCampground = await prisma.campgrounds.update({
-            where: { id: Number(req.params.id) },
-            data: {
-                activities: {
-                    connect: { id: Number(req.params.activity) },
-                },
-            },
-            include: { activities: true }
-        });
-        if (!updatedCampground) {
-            res.status(404).send({ message: "Campground not found" });
-        } else {
-            res.send(updatedCampground);
-        }
-    } catch (error) {
-        next(error);
-    }
-});
-//PATCH auth/campground/:id/:activity/remove
-authRouter.patch("/campground/:id/activity/remove", [requireUser, requireAdmin], async (req, res, next) => {
-    try {
-        const { activityId } = req.body;
-        const updatedCampground = await prisma.campgrounds.update({
-            where: { id: Number(req.params.id) }, //campgrounds
-            data: {
-                activities: {
-                    disconnect: [{ id: activityId }], //activities
-                },
-            },
-            include: { activities: true }
-        })
-        if (!updatedCampground) {
-            res.status(404).send({ message: "Campground not found" });
-        } else {
-            res.send(updatedCampground);
-        }
-    } catch (error) {
-        next(error);
-    }
-});
 //<--------------------------PATCH EQUIPMENT------------------------>
 //ADMIN ONLY
 //PATCH auth/equipment/:id/edit

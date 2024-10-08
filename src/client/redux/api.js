@@ -471,23 +471,6 @@ const api = createApi({
             }),
             invalidatesTags: ["Campgrounds"]
         }),
-        //PATCH ADD ACTITITY TO CAMPGROUND
-        patchCampgroundActivityAdd: builder.mutation({
-            query: ({ id, activity }) => ({
-                url: `/auth/campground/${id}/${activity}/add`,
-                method: "PATCH",
-            }),
-            invalidatesTags: ["Campgrounds", "Activities"]
-        }),
-        //PATCH REMOVE ACTIVITY FROM CAMPGROUND
-        patchCampgroundActivityRemove: builder.mutation({
-            query: ({ id, activityId }) => ({
-                url: `/auth/campground/${id}/activity/remove`,
-                method: "PATCH",
-                body: {activityId},
-            }),
-            invalidatesTags: ["Campgrounds", "Activities"]
-        }),
         //PATCH EQUIPMENT
         patchEquipment: builder.mutation({
             query: ({ id, name }) => ({
@@ -592,8 +575,6 @@ export const {
     usePostCampgroundMutation,
     usePostEquipmentMutation,
     usePatchCampgroundMutation,
-    usePatchCampgroundActivityAddMutation,
-    usePatchCampgroundActivityRemoveMutation,
     usePatchEquipmentMutation,
     useDeleteTripMutation,
     useDeleteCampgroundMutation,

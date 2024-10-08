@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { useGetSingleCampgroundQuery, useDeleteCampgroundMutation } from "../../redux/api";
-import { usePatchCampgroundActivityAddMutation, usePatchCampgroundActivityRemoveMutation, useGetAdminQuery } from "../../redux/api";
+import { useGetAdminQuery } from "../../redux/api";
 import CampgroundInfo from "./CampgroundInfo.jsx"
 
 const CampgroundPage = () => {
@@ -25,7 +25,6 @@ const CampgroundPage = () => {
     const { data, error, isLoading } = useGetSingleCampgroundQuery(id);
     const { data: adminData, error: adminError, isLoading: adminIsLoading } = useGetAdminQuery();
     const [deleteCampground] = useDeleteCampgroundMutation();
-    const [removeActivity] = usePatchCampgroundActivityRemoveMutation();
 
     if (isLoading) {
         return <div> </div>;
