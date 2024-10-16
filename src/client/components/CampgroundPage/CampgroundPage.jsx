@@ -1,31 +1,19 @@
 import Card from "@mui/material/Card";
 import Typography from '@mui/material/Typography';
-import Stack from "@mui/material/Stack"
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Alert from "@mui/material/Alert";
-import Button from '@mui/material/Button';
-import CircleIcon from '@mui/icons-material/Circle';
-import ClearIcon from '@mui/icons-material/Clear';
-import IconButton from '@mui/material/IconButton';
 
-import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { useGetSingleCampgroundQuery, useDeleteCampgroundMutation } from "../../redux/api";
-import { useGetAdminQuery } from "../../redux/api";
 import CampgroundInfo from "./CampgroundInfo.jsx"
 import CampgroundActivities from "./CampgroundActivities.jsx";
 
 const CampgroundPage = () => {
     const token = useSelector((state) => state.auth.token)
     const { id } = useParams();
-    const navigate = useNavigate();
 
     const { data, error, isLoading } = useGetSingleCampgroundQuery(id);
-    const { data: adminData, error: adminError, isLoading: adminIsLoading } = useGetAdminQuery();
-    const [deleteCampground] = useDeleteCampgroundMutation();
 
     if (isLoading) {
         return <div> </div>;
@@ -33,7 +21,7 @@ const CampgroundPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    //TODO: add/remove activities
+    //TODO: post activities
     //TODO: break up into more components
 
     return (

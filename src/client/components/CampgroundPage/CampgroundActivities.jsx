@@ -7,6 +7,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import IconButton from '@mui/material/IconButton';
 
 import { usePostActivityMutation, useDeleteActivityMutation } from "../../redux/api";
+import NewActivity from "./NewActivity";
 
 const CampgroundActivities = ({ activities, token }) => {
     const [deleteActivity, { error, isLoading }] = useDeleteActivityMutation();
@@ -44,6 +45,9 @@ const CampgroundActivities = ({ activities, token }) => {
                     </Stack>
                 </Box>
             ))}
+            {token &&
+                <NewActivity />
+            }
         </Card>
     )
 }
