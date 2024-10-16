@@ -154,7 +154,7 @@ const EditCampground = () => {
                                 Update
                             </Button>
                             <Button
-                                onClick={() => navigate(`/campgrounds/${data.id}`)}
+                                onClick={() => navigate(`/campground/${data.id}`)}
                                 variant="contained"
                                 sx={{ textTransform: "none", m: 1, backgroundColor: "sienna", ":hover": { backgroundColor: "saddlebrown" } }}>
                                 Cancel

@@ -5,19 +5,35 @@ import Box from "@mui/material/Box";
 import CircleIcon from '@mui/icons-material/Circle';
 import ClearIcon from '@mui/icons-material/Clear';
 import IconButton from '@mui/material/IconButton';
+import TextField from "@mui/material/TextField";
+import AddIcon from '@mui/icons-material/Add';
+import CheckIcon from '@mui/icons-material/Check';
 
-import { usePostActivityMutation, useDeleteActivityMutation } from "../../redux/api";
+import { useState } from "react";
+import { useDeleteActivityMutation, usePostActivityMutation } from "../../redux/api";
 import NewActivity from "./NewActivity";
 
 const CampgroundActivities = ({ activities, token }) => {
-    const [deleteActivity, { error, isLoading }] = useDeleteActivityMutation();
-    const [postActivity] = usePostActivityMutation();
+    const [name, setName] = useState("");
+    const [alert, setAlert] = useState(false);
+//FIXME: too many re-renders - hooks
+    // const [deleteActivity] = useDeleteActivityMutation();
+    // const [postActivity] = usePostActivityMutation();
 
-    if (isLoading) {
-        return <div> </div>;
-    }
-    if (error) {
-        return <div>Error:{error.message}</div>;
+    // if (isLoading) {
+    //     return <div> </div>;
+    // }
+    // if (error) {
+    //     return <div>Error:{error.message}</div>;
+    // }
+    const handleSubmit = async (event) => {
+        try {
+            event.preventDefault();
+            const response = await postActivity({ name: name });
+            setAlert(false)
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
@@ -46,7 +62,27 @@ const CampgroundActivities = ({ activities, token }) => {
                 </Box>
             ))}
             {token &&
-                <NewActivity />
+                <>
+                    <IconButton onClick={setAlert(true)} color="info">
+                        <AddIcon />
+                    </IconButton>
+                    {alert &&
+                        <form onSubmit={handleSubmit}>
+                            <TextField
+                                label="New Activity"
+                                value={name}
+                                size="small"
+                                sx={{ m: 1 }}
+                                onChange={(event) => setName(event.target.value)} />
+                            <IconButton type="submit" color="success">
+                                <CheckIcon fontSize="small" />
+                            </IconButton>
+                            <IconButton onClick={setAlert(false)} color="error">
+                                <ClearIcon fontSize="small" />
+                            </IconButton>
+                        </form>
+                    }
+                </>
             }
         </Card>
     )

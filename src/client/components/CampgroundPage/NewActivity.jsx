@@ -1,7 +1,3 @@
-import Card from "@mui/material/Card";
-import Typography from '@mui/material/Typography';
-import Stack from "@mui/material/Stack"
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
@@ -9,19 +5,10 @@ import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 
 import { useState } from "react";
-import { usePostActivityMutation } from "../../redux/api";
 
-const NewActivity = () => {
+const NewActivity = ({postActivity}) => {
     const [name, setName] = useState("");
     const [alert, setAlert] = useState(false);
-    const [postActivity, {error, isLoading}] = usePostActivityMutation();
-    
-    if (isLoading) {
-        return <div> </div>;
-    }
-    if (error) {
-        return <div>Error:{error.message}</div>;
-    }
 
     const handleSubmit = async (event) => {
         try {
