@@ -63,7 +63,7 @@ const CampgroundActivities = ({ activities, token }) => {
             ))}
             {token &&
                 <>
-                    <IconButton onClick={setAlert(true)} color="info">
+                    <IconButton onClick={() => setAlert(true)} color="info">
                         <AddIcon />
                     </IconButton>
                     {alert &&
@@ -77,7 +77,7 @@ const CampgroundActivities = ({ activities, token }) => {
                             <IconButton type="submit" color="success">
                                 <CheckIcon fontSize="small" />
                             </IconButton>
-                            <IconButton onClick={setAlert(false)} color="error">
+                            <IconButton onClick={() => setAlert(false)} color="error">
                                 <ClearIcon fontSize="small" />
                             </IconButton>
                         </form>
