@@ -18,8 +18,6 @@ const CampgroundPage = () => {
     const { data, error, isLoading } = useGetSingleCampgroundQuery(id);
     const { data: adminData, error: adminError, isLoading: adminIsLoading } = useGetAdminQuery();
     const [deleteCampground] = useDeleteCampgroundMutation();
-    const [deleteActivity] = useDeleteActivityMutation();
-    const [postActivity] = usePostActivityMutation();
 
     if (isLoading) {
         return <div> </div>;
@@ -28,7 +26,6 @@ const CampgroundPage = () => {
         return <div>Error:{error.message}</div>;
     }
     //TODO: post activities
-    //TODO: break up into more components
 
     return (
         <div>
@@ -38,7 +35,7 @@ const CampgroundPage = () => {
             <Grid container>
                 <CampgroundInfo data={data} token={token} navigate={navigate} adminData={adminData} deleteCampground={deleteCampground} />
                 <Grid item xs={6}> {/* activities and drive info */}
-                    <CampgroundActivities activities={data.activities} token={token} deleteActivity={deleteActivity} postActivity={postActivity} />
+                    <CampgroundActivities activities={data.activities} token={token} id={id} />
                     <Card sx={{ m: 1, p: 1, backgroundColor: "linen" }}>
                         <Typography variant="h5" fontWeight="bold" sx={{ mb: 1 }}>
                             Drive Info

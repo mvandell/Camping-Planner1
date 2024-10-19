@@ -204,10 +204,11 @@ apiRouter.post("/clothing", requireUser, async (req, res, next) => {
 //POST api/activity
 apiRouter.post("/activity", requireUser, async (req, res, next) => {
     try {
-        const {name} = req.body;
+        const {name, campgroundId} = req.body;
         const newActivity = await prisma.activities.create({
             data: {
-                name
+                name,
+                campgrounds: {connect: {id: Number(campgroundId)}}
             }
         })
         res.status(201).send(newActivity);
