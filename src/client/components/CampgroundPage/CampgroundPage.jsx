@@ -25,7 +25,6 @@ const CampgroundPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    //TODO: post activities
 
     return (
         <div>

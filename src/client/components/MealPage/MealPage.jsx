@@ -17,8 +17,8 @@ const MealPage = () => {
     const [userId, setUserId] = useState(null);
 
     const { data, error, isLoading } = useGetSingleMealQuery(id);
-    const [postFood] = usePostFoodMutation();
-    const [patchMeal] = usePatchMealMutation();
+    //const [postFood] = usePostFoodMutation();
+    //const [patchMeal] = usePatchMealMutation();
     //const [patchFood] = usePatchFoodMutation();
 
     if (isLoading) {
@@ -27,8 +27,8 @@ const MealPage = () => {
     if (error) {
         return <div>Error:{error.message}</div>;
     }
-    //TODO: post food
-    //TODO: patch meal
+    //TODO: post food?
+    //TODO: patch meal?
     return (
         <div>
             <Stack direction="row">

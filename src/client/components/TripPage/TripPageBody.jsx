@@ -47,7 +47,7 @@ const TripPageBody = ({data}) => {
                         ))}
                     </Card>
                 </Grid>
-                <Grid item xs={4}> {/* meals */}
+                <Grid item xs={4}> {/* meals */} {/* TODO: tidy up meals, with links to only one breakfast and lunch */}
                     <Typography variant="h4" sx={{ color: "bisque" }}>
                         Meals
                     </Typography>
