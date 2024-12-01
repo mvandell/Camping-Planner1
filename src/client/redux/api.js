@@ -146,6 +146,14 @@ const api = createApi({
             }),
             providesTags: ["Meals"]
         }),
+         //GET ALL FOOD
+         getAllFood: builder.query({
+            query: () => ({
+                url: "/api/food/food",
+                method: "GET",
+            }),
+            providesTags: ["Food"]
+        }),
         //GET ALL ACTIVITIES
         getAllActivities: builder.query({
             query: () => ({
@@ -533,6 +541,7 @@ export const {
     useGetAllTripsQuery,
     useGetAllBudgetsQuery,
     useGetAllMealsQuery,
+    useGetAllFoodQuery,
     useGetAllActivitiesQuery,
     useGetCampgroundActivitiesQuery,
     //GET SINGLE
