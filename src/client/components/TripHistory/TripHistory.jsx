@@ -69,7 +69,7 @@ const TripHistory = () => {
                                     </Typography>
                                 </Link>
                             </Stack>
-                            <Link to={`/campgrounds/${trip.campgroundId}`}>
+                            <Link to={`/campground/${trip.campgroundId}`}>
                                 <Typography>
                                     {trip.campground.park}
                                 </Typography>
