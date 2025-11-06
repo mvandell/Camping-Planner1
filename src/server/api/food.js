@@ -115,18 +115,21 @@ foodRouter.post("/meal", requireUser, async (req, res, next) => {
     }
 });
 //<--------------------------POST NEW FOOD------------------------>
-//POST api/food/food/:meal
-foodRouter.post("/food/:meal", requireUser, async (req, res, next) => {
+//POST api/food/food/post
+//FIXME: gives 500 error
+foodRouter.post("/food/post", requireUser, async (req, res, next) => {
     try {
-        const {name, cooler, userId} = req.body;
+        const {name, mealNames, userId} = req.body;
         const newFood = await prisma.food.create({
             data: {
                 name,
-                cooler,
                 user: {connect: {id: userId}},
-                meals: {connect: {id: Number(req.params.meal)}}
+                meals: {connectOrCreate: mealNames.map(mealName => ({
+                    where: {name: mealName},
+                    create: {name: mealName},
+                }))}
             },
-            include: {user: true, meals: true}
+            include: {user: true, meals: true, meals: true}
         });
         res.status(201).send(newFood);
     } catch (error) {

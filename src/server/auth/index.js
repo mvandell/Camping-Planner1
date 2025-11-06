@@ -18,7 +18,7 @@ authRouter.get("/users/validate", async (req, res, next) => {
     try {
         const user = prisma.user
         const users = await user.findMany({
-            select: { username: true }
+            select: { username: true, id: true }
         });
 
         delete user.password

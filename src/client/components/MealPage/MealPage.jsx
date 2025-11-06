@@ -5,14 +5,17 @@ import Grid from "@mui/material/Grid";
 
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { useGetSingleMealQuery, useDeleteFoodMutation, usePostFoodMutation } from "../../redux/api";
 import { usePatchMealMutation, usePatchMealFoodRemoveMutation, usePatchFoodPurchaseToggleMutation } from "../../redux/api";
 import { usePatchFoodMutation, usePatchFoodCoolerToggleMutation } from "../../redux/api";
 import MealPageBody from "./MealPageBody";
+import NewFood from "./NewFood";
 
 const MealPage = () => {
     const { id } = useParams();
+    const token = useSelector((state) => state.auth.token)
     const [name, setName] = useState("");
     const [userId, setUserId] = useState(null);
 
@@ -50,6 +53,11 @@ const MealPage = () => {
                             </Typography>
                         </Card>
                     ))}
+                    {token &&
+                        <Card sx={{ backgroundColor: "linen", m: 1 }}>
+                            <NewFood id={id} />
+                        </Card>
+                    }
                 </Grid>
                 <Grid item xs={3}></Grid>
             </Grid>

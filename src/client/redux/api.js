@@ -228,7 +228,7 @@ const api = createApi({
         //POST FOOD
         postFood: builder.mutation({
             query: (food) => ({
-                url: "/api/food/food",
+                url: "/api/food/food/post",
                 method: "POST",
                 body: food,
             }),
